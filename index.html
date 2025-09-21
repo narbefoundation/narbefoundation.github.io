@@ -485,82 +485,26 @@
     }
     .contact-card.animate { opacity: 1; transform: translateY(0); }
     .contact-card:nth-child(1) { transition-delay: 0.1s; }
-    .contact-card:nth-child(2) { transition-delay: 0.3s; }
+    .contact-card:nth-child(2) { 
+      transition-delay: 0.3s;
+      animation: helpGlow 2.4s ease-out infinite;
+    }
+    .contact-card:nth-child(3) { 
+      transition-delay: 0.5s;
+    }
     .contact-card h4 { color: white; margin-bottom: 1rem; position: relative; z-index: 2; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
     .contact-card p { color: rgba(255,255,255,0.9); position: relative; z-index: 2; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
     .contact-card a { color: rgba(255,255,255,0.9); }
-    .contact-icon { 
-      position: absolute; 
-      top: 50%; 
-      left: 50%;
-      transform: translate(-50%, -50%); 
-      font-size: 9rem; 
-      opacity: 0.15; 
-      z-index: 1; 
-      pointer-events: none; 
-      line-height: 1;
-    }
 
-    /* Contact form (purple gradient) */
-    .contact-form-wrap {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: #fff;
-      padding: 2rem;
-      border-radius: 15px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.12);
-      margin-top: 2rem;
+    /* Help panel glow animation */
+    @keyframes helpGlow {
+      0% { box-shadow: 0 5px 20px rgba(0,0,0,0.08), 0 0 0 0 rgba(102,126,234,0.6); }
+      70% { box-shadow: 0 5px 20px rgba(0,0,0,0.08), 0 0 0 18px rgba(102,126,234,0); }
+      100% { box-shadow: 0 5px 20px rgba(0,0,0,0.08), 0 0 0 0 rgba(102,126,234,0); }
     }
-    .contact-form {
-      display: grid;
-      gap: 1rem;
+    @media (prefers-reduced-motion: reduce) {
+      .contact-card:nth-child(2) { animation: none !important; }
     }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-    .form-group label {
-      font-weight: 600;
-      color: rgba(255,255,255,0.95);
-    }
-    .form-control, .form-textarea {
-      width: 100%;
-      padding: 12px 14px;
-      border-radius: 10px;
-      border: 0;
-      background: rgba(255,255,255,0.95);
-      color: #0f172a;
-      outline: none;
-    }
-    .form-textarea { min-height: 120px; resize: vertical; }
-    .form-check {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 0.5rem;
-    }
-    .form-check input { width: 18px; height: 18px; }
-    .submit-btn {
-      align-self: start;
-      background: #1e293b;
-      color: #fff;
-      padding: 0.75rem 1.5rem;
-      border-radius: 50px;
-      font-weight: 600;
-      border: 0;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 22px rgba(30,41,59,0.35);
-      margin-top: 0.5rem;
-    }
-    .submit-btn:hover { transform: translateY(-1px); box-shadow: 0 12px 28px rgba(30,41,59,0.45); }
-
-    /* Removed unused error and image-captcha styles */
 
     /* Footer */
     footer { background: #1e293b !important; color: white; text-align: center; padding: 2rem 0; }
@@ -677,7 +621,6 @@
         <li><a href="#mission">Mission</a></li>
         <li><a href="#why">Our Why</a></li>
         <li><a href="#funding">Funding</a></li>
-        <li><a href="#founding-donor">Donate</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -725,7 +668,7 @@
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Our Mission</h2>
-        <p class="section-subtitle">To connect and support a community dedicated to creating and sharing free tools and games that bring immediate, meaningful access to those who need it most.</p>
+        <p class="section-subtitle">To connect and support a community dedicated to creating and sharing free or affordable tools and games that bring immediate, meaningful access to those who need it most.</p>
       </div>
 
       <div class="mission-grid">
@@ -866,6 +809,10 @@
         <div class="contact-card">
           <h4>Email</h4>
           <p><a href="mailto:info@narbefoundation.org" style="color:rgba(255,255,255,0.9); text-decoration:none;">info@narbefoundation.org</a></p>
+        </div>
+        <div class="contact-card">
+          <h4>Need Help?</h4>
+          <p><a href="https://forms.gle/au6DDP1FExDm5DRd6" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.9); text-decoration:none;">Complete our intake form to get started with accessible technology solutions</a></p>
         </div>
         <div class="contact-card">
           <h4>Mail and Packages</h4>
