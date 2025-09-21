@@ -496,6 +496,20 @@
     .contact-card p { color: rgba(255,255,255,0.9); position: relative; z-index: 2; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
     .contact-card a { color: rgba(255,255,255,0.9); }
 
+    /* Make the whole need help panel clickable */
+    .contact-card.clickable {
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .contact-card.clickable:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+    .contact-card.clickable h4,
+    .contact-card.clickable p {
+      pointer-events: none;
+    }
+
     /* Help panel glow animation */
     @keyframes helpGlow {
       0% { box-shadow: 0 5px 20px rgba(0,0,0,0.08), 0 0 0 0 rgba(102,126,234,0.6); }
@@ -810,10 +824,10 @@
           <h4>Email</h4>
           <p><a href="mailto:info@narbefoundation.org" style="color:rgba(255,255,255,0.9); text-decoration:none;">info@narbefoundation.org</a></p>
         </div>
-        <div class="contact-card">
+        <a href="https://forms.gle/au6DDP1FExDm5DRd6" target="_blank" rel="noopener noreferrer" class="contact-card clickable" style="text-decoration: none; color: inherit;">
           <h4>Need Help?</h4>
-          <p><a href="https://forms.gle/au6DDP1FExDm5DRd6" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.9); text-decoration:none;">Complete our intake form to get started with accessible technology solutions</a></p>
-        </div>
+          <p>Complete our intake form to get started with accessible technology solutions</p>
+        </a>
         <div class="contact-card">
           <h4>Mail and Packages</h4>
           <p>NARBE Foundation<br>5775 Post Rd #149<br>East Greenwich, RI 02818</p>
