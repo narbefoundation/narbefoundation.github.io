@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NARBE Foundation - Getting Started</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root { --header-h: 96px; --blue:#1e293b; --purple:#6366f1; --purple2:#764ba2; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; line-height:1.6; color:#1a1a1a; background:#fff; padding-top:var(--header-h); }
+  section { scroll-margin-top: var(--header-h); }
+  .container { max-width:1200px; margin:0 auto; padding:0 20px; }
+
+  /* Header (copied from original for continuity) */
+  header{position:fixed; top:0; left:0; right:0; background:rgba(255,255,255,.95); backdrop-filter:blur(10px); border-bottom:1px solid rgba(0,0,0,.1); z-index:1000; transition:all .3s ease;}
+  nav{display:flex; justify-content:space-between; align-items:center; padding:15px 0 0 0; position:relative;}
+  .logo{font-size:1.5rem; font-weight:700; color:#6366f1; display:flex; align-items:center;}
+  .logo img{height:80px; width:auto; max-width:320px; display:block;}
+  .site-title{display:none; font-weight:700; color:#6366f1; letter-spacing:.2px;}
+  .nav-links{display:flex; list-style:none; gap:2rem;}
+  .nav-links a{text-decoration:none; color:#333; font-weight:500;}
+  .nav-links a:hover{color:#6366f1;}
+  .mobile-menu-btn{display:none;}
+
+  @media (max-width: 992px){
+    :root{ --header-h:84px; }
+    nav{ position:relative; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:.9rem;}
+    .logo{ justify-self:start; grid-column:1; }
+    .site-title{ display:block; grid-column:2; justify-self:center; font-size:1.125rem;}
+    .mobile-menu-btn{ justify-self:end; display:flex; grid-column:3; flex-direction:column; cursor:pointer; padding:5px; background:none; border:none;}
+    .mobile-menu-btn span{ width:25px; height:3px; background:#333; margin:3px 0; transition:.3s; border-radius:2px;}
+    
+    /* Hide desktop nav links by default on mobile; only show when active */
+    .nav-links { 
+      display: none; 
+      position: absolute;
+      top: 100%;
+      right: 0;
+      min-width: 220px;
+      background: rgba(255,255,255,.98);
+      backdrop-filter: blur(10px);
+      flex-direction: column;
+      gap: 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,.1);
+      border-radius: 12px;
+      padding: .5rem 0;
+      transform: translateY(-10px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .2s ease, transform .2s ease, visibility .2s;
+      z-index: 999;
+    }
+    .nav-links.active{ 
+      display: flex;
+      transform: translateY(0); 
+      opacity: 1; 
+      visibility: visible;
+    }
+    .nav-links li{ border-bottom:1px solid rgba(0,0,0,.06); }
+    .nav-links li:last-child{ border-bottom:none;}
+    .nav-links a{ display:block; width:100%; padding:.8rem 1rem; font-size:1rem;}
+    .logo img{ height:70px; max-width:260px;}
+    nav{ padding:12px 0; }
+    
+    /* Fixed mobile donate footer */
+    .mobile-donate-footer {
+      display: flex;
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 1002;
+      justify-content: center;
+      background: rgba(241,245,249,0.96);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(0,0,0,0.12);
+      padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+      transition: opacity 0.2s ease;
+    }
+    .mobile-donate-footer .container { width: 100%; display: flex; justify-content: center; }
+    .mobile-donate-footer .donate-btn {
+      margin: 0;
+      padding: 0.68rem 1.2rem;
+      font-size: 1rem;
+    }
+    /* Add bottom padding so content isn't hidden behind fixed footer */
+    body { padding-bottom: calc(86px + env(safe-area-inset-bottom)); }
+    
+    /* Hide header donate on mobile */
+    nav .btn-donate { display: none; }
+  }
+
+  /* Buttons requested */
+  .btn{display:inline-block; text-decoration:none; padding:.8rem 1.4rem; border-radius:9999px; font-weight:700; transition:transform .15s ease, background-color .2s ease, color .2s ease, border-color .2s ease; border:2px solid transparent; }
+  .btn:focus-visible{ outline:3px solid rgba(99,102,241,.6); outline-offset:3px; }
+  .btn-row{display:flex; gap:.75rem; justify-content:center; flex-wrap:wrap;}
+
+  /* Back to Home + Resources */
+  .btn-home{ background:var(--blue); color:#fff; }
+  .btn-home:hover{ background:#ffffff; color:#111827; transform:scale(1.04); border-color:var(--blue); }
+
+  /* Purple buttons for quick links */
+  .btn-purple{ background:var(--purple); color:#fff; }
+  .btn-purple:hover{ background:#ffffff; color:#111827; transform:scale(1.03); border-color:var(--purple); }
+
+  /* Hero */
+  .hero{ padding:60px 0 50px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:#fff; }
+  .hero h1{ font-size: clamp(2.4rem, 3.5vw + 1rem, 3.5rem); font-weight:800; margin-bottom:1rem; text-align:center; }
+  .hero-subtitle{ font-size:1.125rem; opacity:.95; margin-bottom:2rem; text-align:center; max-width:820px; margin-left:auto; margin-right:auto; }
+
+  /* Disclaimer alert box - make it POP */
+  .disclaimer-alert {
+    background: #fee2e2;
+    border: 3px solid #dc2626;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin: 2rem auto;
+    max-width: 900px;
+    box-shadow: 0 8px 24px rgba(220, 38, 38, 0.3);
+  }
+  .disclaimer-alert h3 {
+    color: #dc2626;
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .disclaimer-alert p {
+    color: #7f1d1d;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    text-align: center;
+    margin: 0;
+  }
+
+  /* About content box */
+  .about-content {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 1.75rem;
+    margin: 2rem auto;
+    max-width: 900px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  .about-content h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .about-content p {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .about-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* NEW ANNOUNCEMENT BOX - make it POP */
+  .announcement-box {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    border: 4px solid #ffffff;
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2.5rem auto 2rem;
+    max-width: 900px;
+    box-shadow: 0 12px 40px rgba(251, 191, 36, 0.5);
+    position: relative;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .announcement-box::before {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 100px;
+    height: 100px;
+    background-image: url('images/BeaminBenny.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .announcement-box { animation: none !important; }
+  }
+  .announcement-badge {
+    display: inline-block;
+    background: #dc2626;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 800;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .announcement-box h3 {
+    color: #1e293b;
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .announcement-box p {
+    color: #1e293b;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  .announcement-box .btn-hub {
+    display: inline-block;
+    background: #1e293b;
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(30, 41, 59, 0.4);
+  }
+  .announcement-box .btn-hub:hover {
+    background: #0f172a;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(30, 41, 59, 0.6);
+  }
+  .btn-center {
+    text-align: center;
+  }
+
+  /* About section moved above disclaimer and styled dark blue */
+  .about{ background: var(--blue); color:#fff; padding:40px 0; }
+  .about .section-title{ color:#fff; }
+  .about .section-subtitle{ color:#e5e7eb; }
+
+  /* General section titles */
+  .section-title{ font-size: clamp(2rem, 1.5vw + 1rem, 2.2rem); font-weight:700; color:#1e293b; margin-bottom:.5rem; text-align:center; }
+  .section-subtitle{ font-size:1.05rem; color:#64748b; max-width: 820px; margin:.25rem auto 0; text-align:center; }
+
+  /* Disclaimer */
+  .disclaimer{ background:#f8fafc; padding:32px 0; }
+  .disclaimer .section-title{ color:#1e293b; }
+
+  /* Quick links as simple text links */
+  .quick-links{ padding: 18px 0 36px; }
+  .quick-links h3{ text-align:center; color:#1e293b; margin-bottom:1rem; }
+  .quick-links .link-row{ display:flex; gap:2rem; justify-content:center; flex-wrap:wrap; margin-top:.5rem; }
+  .quick-links a{ text-decoration:none; color:#333; font-weight:500; }
+  .quick-links a:hover{ color:#6366f1; }
+  .quick-links .coming-soon{ color:#64748b; font-weight:500; cursor:default; }
+
+  /* Step panels */
+  .steps{ background:#fff; padding:24px 0; }
+  .step-panel{ background: #1e293b; color:#fff; border-radius:16px; padding:20px; margin:18px 0; box-shadow: 0 6px 22px rgba(0,0,0,.08); }
+  .step-panel h2, .step-panel h3, .step-panel h4{ color:#fff; margin-bottom:.5rem; text-align:center; }
+  .step-panel p, .step-panel li, .step-panel a{ color: rgba(255,255,255,.95); }
+  .step-panel ul, .step-panel ol{ padding-left: 1.25rem; }
+
+  /* Community purple section with Discord button */
+  .community{ padding:36px 0 24px; background:#ffffff; color:#1e293b; text-align:center; }
+  .community h2{ color:#1e293b; margin-bottom:.5rem; }
+
+  /* Discord button styling to match index */
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  }
+  .social-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  }
+  .discord-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+
+  /* Footer baseline from original */
+  footer { background:#1e293b; color:#fff; text-align:center; padding:2rem 0; margin-top:0; }
+
+  .step1-wrap{ background:#1e293b; padding:18px 0; border-radius:20px; }
+  .step1-wrap .step-panel{ margin:0 auto; }
+
+  nav .btn{ margin-left:.75rem; }
+  @media (max-width: 992px){
+    nav .btn{ display:none; } /* keep header clean on mobile */
+  }
+
+  .steps-dark{ background:#ffffff; color:#1e293b; padding:24px 0; }
+  .steps-dark .section-title{ color:#1e293b; }
+
+  .btn-donate{ 
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    position: relative;
+    animation: donateGlow 2.4s ease-out infinite;
+    box-shadow: 0 6px 16px rgba(99,102,241,.25);
+  }
+  .btn-donate:hover{ 
+    box-shadow: 0 10px 25px rgba(99,102,241,0.45);
+    transform: translateY(-2px);
+  }
+
+  /* Add the missing .donate-btn styling for mobile footer */
+  .donate-btn {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    animation: donateGlow 2.4s ease-out infinite;
+    box-shadow: 0 6px 16px rgba(99,102,241,.25);
+  }
+  .donate-btn:hover {
+    box-shadow: 0 10px 25px rgba(99,102,241,0.45);
+    transform: translateY(-2px);
+  }
+
+  @keyframes donateGlow {
+    0% { box-shadow: 0 0 0 0 rgba(99,102,241,0.6); }
+    70% { box-shadow: 0 0 0 18px rgba(99,102,241,0); }
+    100% { box-shadow: 0 0 0 0 rgba(99,102,241,0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .btn-donate, .donate-btn { animation: none !important; }
+  }
+
+  /* Mobile donate footer baseline */
+  .mobile-donate-footer { display: none; }
+
+  @media (max-width: 992px){
+    :root{ --header-h:84px; }
+    nav{ position:relative; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:.9rem;}
+    .logo{ justify-self:start; grid-column:1; }
+    .site-title{ display:block; grid-column:2; justify-self:center; font-size:1.125rem;}
+    .mobile-menu-btn{ justify-self:end; display:flex; grid-column:3; flex-direction:column; cursor:pointer; padding:5px; background:none; border:none;}
+    .mobile-menu-btn span{ width:25px; height:3px; background:#333; margin:3px 0; transition:.3s; border-radius:2px;}
+    
+    /* Hide desktop nav links by default on mobile; only show when active */
+    .nav-links { 
+      display: none; 
+      position: absolute;
+      top: 100%;
+      right: 0;
+      min-width: 220px;
+      background: rgba(255,255,255,.98);
+      backdrop-filter: blur(10px);
+      flex-direction: column;
+      gap: 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,.1);
+      border-radius: 12px;
+      padding: .5rem 0;
+      transform: translateY(-10px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .2s ease, transform .2s ease, visibility .2s;
+      z-index: 999;
+    }
+    .nav-links.active{ 
+      display: flex;
+      transform: translateY(0); 
+      opacity: 1; 
+      visibility: visible;
+    }
+    .nav-links li{ border-bottom:1px solid rgba(0,0,0,.06); }
+    .nav-links li:last-child{ border-bottom:none;}
+    .nav-links a{ display:block; width:100%; padding:.8rem 1rem; font-size:1rem;}
+    .logo img{ height:70px; max-width:260px;}
+    nav{ padding:12px 0; }
+    
+    /* Fixed mobile donate footer */
+    .mobile-donate-footer {
+      display: flex;
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 1002;
+      justify-content: center;
+      background: rgba(241,245,249,0.96);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(0,0,0,0.12);
+      padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+      transition: opacity 0.2s ease;
+    }
+    .mobile-donate-footer .container { width: 100%; display: flex; justify-content: center; }
+    .mobile-donate-footer .donate-btn {
+      margin: 0;
+      padding: 0.68rem 1.2rem;
+      font-size: 1rem;
+    }
+    /* Add bottom padding so content isn't hidden behind fixed footer */
+    body { padding-bottom: calc(86px + env(safe-area-inset-bottom)); }
+    
+    /* Hide header donate on mobile */
+    nav .btn-donate { display: none; }
+  }
+
+</style>
+</head>
+<body>
+<header>
+<nav class="container">
+<div class="logo">
+<a aria-label="Home" href="index.html"><img alt="NARBE Foundation Logo" src="https://raw.githubusercontent.com/narbefoundation/images/refs/heads/main/purple%20more%20space.png"/></a>
+</div>
+<div class="site-title">NARBE Foundation</div>
+<ul class="nav-links" id="navLinks"><li><a href="index.html#story">Our Story</a></li><li><a href="index.html#mission">Mission</a></li><li><a href="index.html#why">Our Why</a></li><li><a href="index.html#funding">Funding</a></li><li><a href="index.html#contact">Contact</a></li><li><a href="#top">Getting Started</a></li><li><a href="resources.html">Resources</a></li></ul>
+<button class="mobile-menu-btn" id="mobileMenuBtn">
+<span></span><span></span><span></span>
+</button><a class="btn btn-donate" href="index.html#founding-donor" rel="noopener" target="_blank">Donate Now</a>
+</nav>
+</header>
+<main>
+<section class="hero">
+<div class="container">
+<h1>Getting Started</h1>
+<p class="hero-subtitle">A practical, step-by-step guide to building and adapting two-button systems for access, tools, and games. More updates coming soon.</p>
+
+<!-- DISCLAIMER ALERT -->
+<div class="disclaimer-alert">
+<h3>⚠️ Important Disclaimer</h3>
+<p>We are not medical professionals and our guides do not replace therapy or medical advice. Please collaborate with licensed SLPs, OTs, or Assistive Technology specialists whenever possible.</p>
+</div>
+
+<!-- ABOUT CONTENT -->
+<div class="about-content">
+<h3>What This Page Is About</h3>
+<p>Families ask us how to use technology like Ben's. This guide focuses on tools and games first. We also share a simple keyboard and phrase board so users can communicate while they explore games independently.</p>
+<p>We recommend exploring <a href="https://www.openaac.org" target="_blank" rel="noopener" style="color: #fff; text-decoration: underline;">OpenAAC.org</a> for broad AAC knowledge. Our focus is teaching you how to use AI to tailor or build your own tools and games when off-the-shelf options fall short.</p>
+</div>
+
+<!-- NEW ANNOUNCEMENT -->
+<div class="announcement-box">
+<div style="text-align: center;">
+<span class="announcement-badge">🎉 New Release as of 10/10/2025</span>
+</div>
+<h3>NARBE House presents<br>Benny's Accessibility Hub!</h3>
+<p style="font-weight: 600; margin-bottom: 0.5rem;">(Beta Release)</p>
+<p>We have now released a webapp version of Benny's Custom Software Hub! This will run fullscreen, you can use spacebar and return to navigate as well as mouse inputs (headtracking/eyetracking). It has a predictive keyboard, a phrase and MEDIA board with FULL customization and auto-populating images (and you can pick your own), it comes with 2 games: Benny's P3GL Adventure and Benny Says! More Games Coming Very Soon! The whole hub is fully customizable and will save your settings.</p>
+<div class="btn-center">
+<a class="btn-hub" href="https://narbehouse.github.io/bennyshub" target="_blank" rel="noopener">Launch Benny's Hub →</a>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- Steps section continues as before -->
+<section class="steps steps-dark" id="steps">
+<div class="container"><h2 class="section-title">How To Get Started</h2>
+<div class="step-panel">
+<h2>Step 1. Understand who you are building for</h2>
+<p>Begin with the person. What do they want to do or say. What movements can they perform comfortably and consistently. How do they show preference, frustration, or excitement.</p>
+<p>If communication is unclear, start with a yes and no method, then expand.</p>
+</div>
+<div class="step-panel">
+<h2>Step 2. Identify input methods</h2>
+<p>Input is how your loved one interacts with technology. The goal is a reliable, comfortable, repeatable movement that triggers an action.</p>
+<p><strong>Neutral brand note:</strong> we are not affiliated with any brand. The examples below are for general guidance. Availability and designs vary, so research what fits your user.</p>
+<ul>
+<li><strong>Switches and buttons</strong> - Jelly Bean, Buddy Button, low profile thumb switches. DIY options exist.</li>
+<li><strong>Head tracking</strong> - camera based options like SmartNav or TrackIR, or open source like Camera Mouse or Opentrack. Often combined with a switch to select.</li>
+<li><strong>Eye tracking</strong> - Tobii and EyeTech are common. Works best with stable posture.</li>
+<li><strong>Facial gesture</strong> - blinks, smiles, brow raises with software that interprets a webcam feed.</li>
+<li><strong>Joysticks and adaptive controllers</strong> - Xbox Adaptive Controller, Logitech Adaptive Gaming Kit, and specialty joysticks.</li>
+<li><strong>Sip and puff</strong> - breath based devices such as sip and puff switches or mouth controlled joysticks.</li>
+<li><strong>EMG and EEG</strong> - muscle sensor and brainwave systems for advanced or experimental setups.</li>
+</ul>
+<p><strong>How to choose:</strong> start with the simplest movement your user can repeat without strain. Test comfort over time. Prioritize stable positioning.</p>
+</div>
+<div class="step-panel">
+<h2>Step 3. Connect inputs to a computer or console</h2>
+<p>Common paths include USB switch interfaces, DIY microcontroller adapters, the Xbox Adaptive Controller, or the Microsoft Adaptive Hub. Many switches use 3.5 mm mono jacks. Mounting and positioning are just as important as the device itself.</p>
+</div>
+<div class="step-panel">
+<h2>Step 4. Try free or low cost software</h2>
+<p>Test before you build. Good options include AsTeRICS Grid, CoughDrop, and Cboard. Our own tools are available free:</p>
+<ul>
+<li><a href="/narbe-keyboard">NARBE Keyboard</a> - a simple predictive keyboard for one or two button access.</li>
+<li><a href="/narbe-phrase-board">NARBE Phrase Board</a> - an editable phrase board for daily communication.</li>
+</ul>
+<p>Start simple, learn what feels natural, then expand.</p>
+</div>
+<div class="step-panel">
+<h2>Step 5. Fine tune and adjust</h2>
+<ul>
+<li>Scan speed and rhythm</li>
+<li>Debounce timing to prevent double hits</li>
+<li>Audio feedback or text to speech</li>
+<li>High contrast themes and larger targets</li>
+<li>Auto scan versus manual scan</li>
+<li>Switch placement and posture</li>
+<li>Short sessions to avoid fatigue</li>
+</ul>
+</div>
+<div class="step-panel">
+<h2>Step 6. Use AI to tailor tools</h2>
+<p>You can personalize interfaces without prior coding. Try a clear prompt:</p>
+<blockquote style="background:rgba(255,255,255,.14); padding:1rem; border-radius:12px;">Create a two button scanning menu. Space moves to the next option and Enter selects. Add text to speech that reads each option aloud.</blockquote>
+<p>Iterate in small steps. Save working versions often. See the Resources page for upcoming walkthroughs.</p>
+</div>
+<div class="step-panel">
+<h2>Step 7. Try and adapt existing systems - starting with Ben's</h2>
+<p>Ben's software is a fully functional two button system you can try for free on our GitHub. It is a good sandbox to learn how scanning works and to gauge comfort.</p>
+<ol>
+<li>Visit the NARBE Foundation GitHub - link coming soon.</li>
+<li>Follow the Installation Guide - link coming soon.</li>
+<li>Connect two switches mapped to Space and Enter.</li>
+<li>Run on a Windows PC or tablet, then explore menus, games, and voice settings.</li>
+</ol>
+<p>If it feels like too much, start smaller. If it fits, adapt and expand with AI or your own code. The system is modular so you can disable menus or add new tools.</p>
+</div>
+<div class="step-panel">
+<h2>Step 8. Build accessible games</h2>
+<p>Games are a fun way to practice interaction. Focus on logic, turn based play, and choice driven stories that do not require fast reaction time.</p>
+<p>Visit the <a href="gaming-hub.html">Gaming Hub for 2 Button Access</a>. It is fully independent, mapped to Spacebar and Return, and always free to use and adapt.</p>
+<p>Find templates and examples on the Community Tools and Games page. External hubs like OneSwitch, SpecialEffect, and Game Accessibility Guidelines offer deep catalogs and best practices.</p>
+</div>
+<div class="step-panel">
+<h2>Step 9. Learn from the community</h2>
+<p>OpenAAC is a great place to learn about AAC ecosystems. AbleGamers and SpecialEffect share real world setups. OneSwitch curates switch friendly software. Use these to avoid reinventing the wheel, then build what you cannot find.</p>
+</div>
+<div class="step-panel">
+<h2>Step 10. Keep learning and sharing</h2>
+<p>Join our community, ask questions, and share what works so others can build on it.</p>
+</div>
+</div>
+</section>
+<!-- Dedicated community section -->
+<section class="community" id="community">
+<div class="container">
+<h2>Join our community, ask questions, and share what works so others can build on it.</h2>
+<div class="btn-row" style="margin-top:.75rem;">
+<a class="social-link" href="https://discord.gg/b82emKJhTC" rel="noopener" target="_blank">
+<svg class="discord-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M20.317 4.369A18.07 18.07 0 0 0 16.558 3c-.2.36-.43.85-.589 1.23a16.218 16.218 0 0 0-7.937 0c-.16-.38-.39-.87-.59-1.23-1.36.25-2.67.69-3.96 1.37C.533 9.053-.32 13.58.099 18.06a18.3 18.3 0 0 0 5.612 2.89c.45-.62.85-1.28 1.2-1.97-.66-.25-1.29-.55-1.89-.9.16-.12.32-.24.47-.37 3.64 1.7 7.57 1.7 11.18 0 .16.13.31.25.47.37-.6.35-1.23.65-1.89.9.35.69.75 1.35 1.2 1.97a18.3 18.3 0 0 0 5.61-2.89c.5-5.2-.84-9.65-2.63-13.69zM8.98 15.52c-1.07 0-1.94-.98-1.94-2.18s.86-2.18 1.94-2.18c1.07 0 1.94.98 1.94 2.18s-.86 2.18-1.94 2.18zm6.05 0c-1.07 0-1.94-.98-1.94-2.18s.86-2.18 1.94-2.18 1.94.98 1.94 2.18-.86 2.18-1.94 2.18z"></path>
+</svg>Join our Discord</a>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="container">
+<p>© 2025 NARBE Foundation. Building accessible technology for everyone.</p>
+</div>
+</footer>
+<!-- Fixed Donate footer for mobile -->
+<div class="mobile-donate-footer">
+<div class="container">
+<a class="donate-btn" href="index.html#founding-donor">Donate Now</a>
+</div>
+</div>
+<script>
+  // Mobile menu toggle with full functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    
+    if (mobileMenuBtn && navLinks) {
+      mobileMenuBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        navLinks.classList.toggle('active');
+        
+        // Animate hamburger menu
+        mobileMenuBtn.classList.toggle('active');
+        const spans = mobileMenuBtn.querySelectorAll('span');
+        if (navLinks.classList.contains('active')) {
+          spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+          spans[1].style.opacity = '0';
+          spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+        } else {
+          spans[0].style.transform = 'none';
+          spans[1].style.opacity = '1';
+          spans[2].style.transform = 'none';
+        }
+      });
+      
+      // Close menu when clicking on a link
+      navLinks.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+          navLinks.classList.remove('active');
+          mobileMenuBtn.classList.remove('active');
+          const spans = mobileMenuBtn.querySelectorAll('span');
+          spans[0].style.transform = 'none';
+          spans[1].style.opacity = '1';
+          spans[2].style.transform = 'none';
+        }
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!mobileMenuBtn.contains(e.target) && !navLinks.contains(e.target)) {
+          navLinks.classList.remove('active');
+          mobileMenuBtn.classList.remove('active');
+          const spans = mobileMenuBtn.querySelectorAll('span');
+          spans[0].style.transform = 'none';
+          spans[1].style.opacity = '1';
+          spans[2].style.transform = 'none';
+        }
+      });
+    }
+  });
+</script>
+</body>
+</html>
