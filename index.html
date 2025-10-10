@@ -622,7 +622,78 @@
         justify-self: center; /* center in grid column */
       }
     }
-  </style>
+
+    /* NEW: Announcement box for Mission section */
+    .announcement-box {
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+      border: 4px solid #ffffff;
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 3rem auto 0;
+      max-width: 900px;
+      box-shadow: 0 12px 40px rgba(251, 191, 36, 0.5);
+      position: relative;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .announcement-box { animation: none !important; }
+    }
+    .announcement-badge {
+      display: inline-block;
+      background: #dc2626;
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 800;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .announcement-box h3 {
+      color: #1e293b;
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .announcement-box p {
+      color: #1e293b;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .announcement-box p:last-child {
+      margin-bottom: 0;
+    }
+    .announcement-box .btn-hub {
+      display: inline-block;
+      background: #1e293b;
+      color: #fff;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(30, 41, 59, 0.4);
+    }
+    .announcement-box .btn-hub:hover {
+      background: #0f172a;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(30, 41, 59, 0.6);
+    }
+    .btn-center {
+      text-align: center;
+    }
+
+</style>
 </head>
 <body>
 <header>
@@ -720,6 +791,20 @@
 <p>We share our software, guides, and games freely so others can create solutions tailored to their own needs. AI can speed up the process, but it's never required — the focus is on giving people access to powerful, affordable tools that make life easier.</p>
 </div>
 </div>
+
+<!-- NEW ANNOUNCEMENT -->
+<div class="announcement-box">
+<div style="text-align: center;">
+<span class="announcement-badge">🎉 New Release as of 10/10/2025</span>
+</div>
+<h3>NARBE House presents<br>Benny's Accessibility Hub!</h3>
+<p style="font-weight: 600; margin-bottom: 0.5rem;">(Beta Release)</p>
+<p>We have now released a webapp version of Benny's Custom Software Hub! This will run fullscreen, you can use spacebar and return to navigate as well as mouse inputs (headtracking/eyetracking). It has a predictive keyboard, a phrase and MEDIA board with FULL customization and auto-populating images (and you can pick your own), it comes with 2 games: Benny's P3GL Adventure and Benny Says! More Games Coming Very Soon! The whole hub is fully customizable and will save your settings.</p>
+<div class="btn-center">
+<a class="btn-hub" href="https://narbehouse.github.io/bennyshub" target="_blank" rel="noopener">Launch Benny's Hub →</a>
+</div>
+</div>
+
 </div>
 </section>
 <section class="why" id="why">
