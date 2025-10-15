@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -15,930 +14,1089 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-BXR0H5SN9F');
 </script>
 <style>
   :root { --header-h: 96px; }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      line-height: 1.6;
-      color: #1a1a1a;
-      background: #ffffff;
-      padding-top: var(--header-h);
-    }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background: #ffffff;
+    padding-top: var(--header-h);
+  }
   section { scroll-margin-top: var(--header-h); }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-    /* Header */
-    header {
-      position: fixed; top: 0; left: 0; right: 0;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(0,0,0,0.1);
-      z-index: 1000;
-      transition: all 0.3s ease;
-    }
-    nav {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 15px 0 0 0; /* tighter to reduce white gap */
-      position: relative;
-    }
-    .logo { 
-      font-size: 1.5rem; 
-      font-weight: 700; 
-      color: #6366f1; 
-      display: flex;
-      align-items: center;
-    }
-    .logo img { 
-      height: 80px; /* doubled from 40px */
-      width: auto;
-      max-width: 320px; /* allow larger desktop logo */
-      display: block; /* ensure it renders and doesn't inline-gap */
-    }
-    /* Site title (hidden by default, shown on mobile) */
-  .site-title { display: none; font-weight: 700; color: #6366f1; letter-spacing: 0.2px; }
-  .nav-links { display: flex; list-style: none; gap: 2rem; }
-    .nav-links a { text-decoration: none; color: #333; font-weight: 500; }
-    .nav-links a:hover { color: #6366f1; }
-  /* Desktop defaults */
-  .mobile-menu-btn { display: none; }
-  .nav-links { display: flex; }
-  /* Reduce header height by removing extra donate margins on desktop */
-  header .donate-btn { margin-top: 0; margin-bottom: 0; }
+  /* Header - removed any potential purple border/line issues */
+  header {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+  }
+  
+  nav {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 15px 0 0 0;
+    position: relative;
+  }
+  
+  .logo { 
+    font-size: 1.5rem; 
+    font-weight: 700; 
+    color: #6366f1; 
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img { 
+    height: 80px;
+    width: auto;
+    max-width: 320px;
+    display: block;
+  }
+  
+  .site-title { 
+    display: none; 
+    font-weight: 700; 
+    color: #6366f1; 
+    letter-spacing: 0.2px; 
+  }
+  
+  .nav-links { 
+    display: flex; 
+    list-style: none; 
+    gap: 2rem; 
+  }
+  
+  .nav-links a { 
+    text-decoration: none; 
+    color: #333; 
+    font-weight: 500; 
+  }
+  
+  .nav-links a:hover { 
+    color: #6366f1; 
+  }
+  
+  .mobile-menu-btn { 
+    display: none; 
+  }
+  
+  header .donate-btn { 
+    margin-top: 0; 
+    margin-bottom: 0; 
+  }
     
-    /* Mobile menu styles */
-    .mobile-menu-btn {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      padding: 5px;
-      background: none;
-      border: none;
-    }
-    .mobile-menu-btn span {
-      width: 25px;
-      height: 3px;
-      background: #333;
-      margin: 3px 0;
-      transition: 0.3s;
-      border-radius: 2px;
-    }
-    /* Mobile donate footer baseline */
-    .mobile-donate-footer { display: none; }
+  /* Mobile menu styles */
+  .mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+    background: none;
+    border: none;
+  }
+  
+  .mobile-menu-btn span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+  }
+  
+  .mobile-donate-footer { 
+    display: none; 
+  }
     
-  /* Mobile / tablet styles (broadened to 992px for reliability) */
+  /* Mobile / tablet styles */
   @media (max-width: 992px) {
-      /* Use a smaller header height on mobile to avoid white gap */
-      :root { --header-h: 84px; }
-      nav {
-        position: relative;
-        display: grid;
-        grid-template-columns: 1fr auto 1fr; /* left: logo, center: donate, right: menu */
-        align-items: center;
-        gap: 0.9rem; /* increased gap for spacing around donate */
-      }
-  .logo { justify-self: start; grid-column: 1; }
-      /* Show centered site title on mobile */
-  .site-title { display: block; grid-column: 2; justify-self: center; font-size: 1.125rem; }
-      /* Hide header donate on mobile; we'll show a fixed footer donate instead */
-      header .donate-btn { display: none; }
-      .donate-btn {
-        justify-self: center;
-        grid-column: 2;
-        margin: 0;
-        padding: 0.45rem 0.9rem; /* slightly smaller to fit */
-        font-size: 0.85rem;
-        white-space: nowrap; /* prevent wrapping */
-        line-height: 1.1;
-      }
-  .mobile-menu-btn { justify-self: end; display: flex; grid-column: 3; }
-  /* Hide desktop nav links by default on mobile; only show when active */
-  .nav-links { display: none; }
-  .nav-links.active { display: flex; }
-      /* Fixed mobile donate footer */
-      .mobile-donate-footer {
-        display: flex;
-        position: fixed;
-        left: 0; right: 0; bottom: 0;
-        z-index: 1002;
-        justify-content: center;
-        background: rgba(241,245,249,0.96); /* slightly darker than pure white */
-        backdrop-filter: blur(10px);
-        border-top: 1px solid rgba(0,0,0,0.12); /* a touch stronger */
-        padding: 12px 20px calc(12px + env(safe-area-inset-bottom)); /* more padding around button */
-        transition: opacity 0.2s ease;
-      }
-      .mobile-donate-footer .container { width: 100%; display: flex; justify-content: center; }
-      .mobile-donate-footer .donate-btn {
-        margin: 0;
-        padding: 0.68rem 1.2rem; /* slightly larger for comfort */
-        font-size: 1rem; /* keep legible */
-      }
-      /* Add bottom padding so content isn't hidden behind fixed footer */
-      body { padding-bottom: calc(86px + env(safe-area-inset-bottom)); }
-      /* Dropdown aligned to right under the menu button */
-      .nav-links {
-        position: absolute;
-        top: 100%;
-        right: 0;          /* anchor at right */
-        left: auto;        /* don't stretch full width */
-        min-width: 220px;  /* reasonable width for items */
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(10px);
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        border-radius: 12px;
-        padding: 0.5rem 0;
-        transform: translateY(-10px);
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
-        z-index: 999;
-      }
-      .nav-links.active {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
-      }
-      .nav-links li {
-        padding: 0;
-        border-bottom: 1px solid rgba(0,0,0,0.06);
-      }
-      .nav-links li:last-child { border-bottom: none; }
-      .nav-links a {
-        display: block;
-        width: 100%;
-        padding: 0.8rem 1rem;
-        font-size: 1rem;
-      }
-      .logo img { height: 70px; max-width: 260px; } /* doubled mobile size from 35 -> 70 */
-      nav { padding: 12px 0; }
-    }
-  /* Hide mobile footer while interacting with video so controls are accessible */
-  .footer-hidden .mobile-donate-footer { opacity: 0; pointer-events: none; }
-
-    /* Donate button with glow */
-    @keyframes donateGlow {
-      0% { box-shadow: 0 0 0 0 rgba(99,102,241,0.6); }
-      70% { box-shadow: 0 0 0 18px rgba(99,102,241,0); }
-      100% { box-shadow: 0 0 0 0 rgba(99,102,241,0); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .donate-btn { animation: none !important; }
-    }
-    .donate-btn {
-      background: linear-gradient(135deg, #6366f1, #8b5cf6);
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      margin-top: 25px;
-      margin-bottom: 25px;
-      position: relative;
-      animation: donateGlow 2.4s ease-out infinite;
-    }
-    .donate-btn:hover {
-      box-shadow: 0 10px 25px rgba(99,102,241,0.45);
-      transform: translateY(-2px);
-    }
-
-    /* Hero */
-    .hero {
-      padding: 90px 0 56px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white; text-align: center; position: relative; overflow: hidden;
-    }
-    .hero h1 { font-size: clamp(2.4rem, 3.5vw + 1rem, 3.5rem); font-weight: 800; margin-bottom: 1rem; }
-    .hero-subtitle { font-size: 1.125rem; margin-bottom: 2rem; opacity: 0.95; }
-
-    /* Story (dark blue background like funding) */
-    .story-dark { padding: 56px 0; background: #1e293b; color: white; text-align: center; }
-
-    /* Mission */
-    .mission { padding: 56px 0; background: #f8fafc; }
-    .section-header { text-align: center; margin-bottom: 3rem; }
-    .section-title { font-size: clamp(2rem, 1.5vw + 1rem, 2.5rem); font-weight: 700; color: #1e293b; margin-bottom: 1rem; }
-    .section-subtitle { font-size: 1.05rem; color: #64748b; max-width: 640px; margin: 0 auto; }
-    .mission-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 2rem; margin-top: 3rem; }
-    .mission-card { 
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-      color: white; 
-      padding: 2rem; 
-      border-radius: 20px; 
-      box-shadow: 0 5px 25px rgba(0,0,0,0.08); 
-      transition: all 0.3s ease; 
-      opacity: 0; 
-      transform: translateY(30px); 
-      position: relative;
-      overflow: hidden;
-    }
-    .mission-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
-    .mission-card.animate { opacity: 1; transform: translateY(0); }
-    .mission-card:nth-child(1) { transition-delay: 0.1s; }
-    .mission-card:nth-child(2) { transition-delay: 0.3s; }
-    .mission-card:nth-child(3) { transition-delay: 0.5s; }
-    .mission-card h3 { color: white; position: relative; z-index: 2; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-    .mission-card p { color: rgba(255,255,255,0.9); position: relative; z-index: 2; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
-    .mission-icon { 
-      position: absolute; 
-      top: 50%; 
-      right: -1rem; 
-      transform: translateY(-50%); 
-      font-size: 8rem; 
-      opacity: 0.15; 
-      z-index: 1; 
-      pointer-events: none; 
-      line-height: 1;
-    }
-
-    /* Feature mirrored block (video left, text right) */
-    .feature-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 4rem; }
-    .feature-text h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; color: #1e293b; }
-  .feature-text p { font-size: 1.05rem; color: #475569; margin-bottom: 1rem; line-height: 1.7; ; text-align: left;}
-
-    /* Our Why */
-    .why { padding: 56px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
-    .why-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .why-text h2 { font-size: 2.1rem; font-weight: 700; margin-bottom: 1rem; color: white; }
-    .why-text p { font-size: 1.05rem; color: #475569; margin-bottom: 1rem; line-height: 1.7; }
-
-    /* Purple gradient framed video box for Mission section */
-    .video-image {
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      border-radius: 20px;
-      padding: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    }
-  .video-inner { border-radius: 16px; background: #000; overflow: visible; width: 100%; }
+    :root { --header-h: 84px; }
     
-    /* White framed video box for Our Why section */
-    .video-image-white {
-      background: white;
-      border-radius: 20px;
-      padding: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    }
-  .video-inner-white { border-radius: 16px; background: #000; overflow: visible; width: 100%; }
-    .tiktok-embed { margin: 0 auto !important; width: 100% !important; max-width: 100% !important; }
-    /* TikTok lazy placeholder */
-    .tiktok-placeholder {
-      width: 100%;
-      aspect-ratio: 9 / 16; /* Instagram Story/Reel portrait ratio */
-      border-radius: 12px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
+    nav {
       position: relative;
-      cursor: pointer;
-      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 0.9rem;
     }
-    /* Centered, small-radius clickable area around the Play pill */
-    .tiktok-placeholder .play-hit {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 150px; /* smaller, focused radius */
-      height: 150px;
-      border-radius: 9999px;
-      border: 0;
-      background: transparent;
-      padding: 0;
+    
+    .logo { 
+      justify-self: start; 
+      grid-column: 1; 
+    }
+    
+    .site-title { 
+      display: block; 
+      grid-column: 2; 
+      justify-self: center; 
+      font-size: 1.125rem; 
+    }
+    
+    header .donate-btn { 
+      display: none; 
+    }
+    
+    .donate-btn {
+      justify-self: center;
+      grid-column: 2;
       margin: 0;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.85rem;
+      white-space: nowrap;
+      line-height: 1.1;
+    }
+    
+    .mobile-menu-btn { 
+      justify-self: end; 
+      display: flex; 
+      grid-column: 3; 
+    }
+    
+    .nav-links { 
+      display: none; 
+    }
+    
+    .nav-links.active { 
+      display: flex; 
+    }
+    
+    /* Fixed mobile donate footer */
+    .mobile-donate-footer {
       display: flex;
-      align-items: center;
+      position: fixed;
+      left: 0; 
+      right: 0; 
+      bottom: 0;
+      z-index: 1002;
       justify-content: center;
-      cursor: pointer;
+      background: rgba(241,245,249,0.96);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(0,0,0,0.12);
+      padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+      transition: opacity 0.2s ease;
     }
-    .tiktok-placeholder .play-hit:focus-visible {
-      outline: 3px solid rgba(255,255,255,0.7);
-      outline-offset: 4px;
+    
+    .mobile-donate-footer .container { 
+      width: 100%; 
+      display: flex; 
+      justify-content: center; 
     }
-    .tiktok-placeholder .play {
-      display: inline-flex;
-      align-items: center;
-      gap: 11px;
-      background: rgba(0,0,0,0.35);
-      padding: 12px 20px; /* slightly larger than original, but smaller than before */
-      border-radius: 999px;
-      font-weight: 600;
-      backdrop-filter: blur(2px);
-      color: #fff;
+    
+    .mobile-donate-footer .donate-btn {
+      margin: 0;
+      padding: 0.68rem 1.2rem;
       font-size: 1rem;
     }
-    .tiktok-placeholder .triangle {
-      width: 0; height: 0;
-      border-left: 14px solid #fff; /* moderate size */
-      border-top: 9px solid transparent;
-      border-bottom: 9px solid transparent;
+    
+    body { 
+      padding-bottom: calc(86px + env(safe-area-inset-bottom)); 
     }
-    /* Lightweight loading spinner for TikTok iframe init */
-    .tiktok-placeholder .spinner {
+    
+    /* Dropdown menu */
+    .nav-links {
       position: absolute;
-      top: 50%; left: 50%;
-      width: 36px; height: 36px;
-      border: 3px solid rgba(255,255,255,0.4);
-      border-top-color: #fff;
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      animation: spin 1s linear infinite;
-      pointer-events: none;
-    }
-    @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
-
-    /* Funding (no PayPal embed here) */
-    .funding { padding: 56px 0; background: #1e293b; color: white; text-align: center; }
-    .funding-amount {
-      font-size: 3.2rem; font-weight: 800; margin: 2rem 0;
-      background: linear-gradient(135deg, #6366f1, #8b5cf6);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .funding-breakdown { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 2rem; margin: 3rem 0; }
-    .funding-item { background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 15px; backdrop-filter: blur(10px); }
-    .funding-item h4 { font-size: 1.05rem; margin-bottom: .4rem; color: #8bb0ff; }
-    .funding-item .amount { font-size: 1.3rem; font-weight: 700; margin-bottom: .4rem; }
-
-    /* Funding animation UI */
-    .funding-progress-wrap { max-width: 640px; margin: 0.5rem auto 0; }
-    .funding-progress {
-      height: 12px;
-      background: rgba(255,255,255,0.15);
-      border-radius: 999px;
-      overflow: hidden;
-      box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
-    }
-    .funding-progress-bar {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, #34d399, #10b981);
-      transition: width 80ms linear, background 120ms linear;
-    }
-    .funding-progress-meta {
+      top: 100%;
+      right: 0;
+      left: auto;
+      min-width: 220px;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
       display: flex;
-      justify-content: space-between;
-      color: rgba(255,255,255,0.9);
-      font-size: 0.95rem;
-      margin-top: 6px;
+      flex-direction: column;
+      gap: 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      padding: 0.5rem 0;
+      transform: translateY(-10px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+      z-index: 999;
     }
+    
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .nav-links li {
+      padding: 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    
+    .nav-links li:last-child { 
+      border-bottom: none; 
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+    }
+    
+    .logo img { 
+      height: 70px; 
+      max-width: 260px; 
+    }
+    
+    nav { 
+      padding: 12px 0; 
+    }
+  }
+  
+  .footer-hidden .mobile-donate-footer { 
+    opacity: 0; 
+    pointer-events: none; 
+  }
 
-    /* Confetti burst */
-    .confetti { position: relative; height: 0; pointer-events: none; overflow: visible; }
-    .confetti-piece {
-      position: absolute;
-      left: 50%;
-      top: 0;
-      width: 8px;
-      height: 12px;
-      border-radius: 2px;
-      background: var(--c, #fff);
-      opacity: 0.95;
-      transform: translate(-50%, 0) rotate(0deg);
-      animation: confettiBurst 900ms ease-out forwards;
-    }
-    @keyframes confettiBurst {
-      0% { transform: translate(-50%, 0) rotate(0deg); opacity: 1; }
-      100% { transform: translate(calc(-50% + var(--dx)), var(--dy)) rotate(var(--rot)); opacity: 0; }
-    }
+  /* Donate button with glow */
+  @keyframes donateGlow {
+    0% { box-shadow: 0 0 0 0 rgba(99,102,241,0.6); }
+    70% { box-shadow: 0 0 0 18px rgba(99,102,241,0); }
+    100% { box-shadow: 0 0 0 0 rgba(99,102,241,0); }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .donate-btn { animation: none !important; }
+  }
+  
+  .donate-btn {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    position: relative;
+    animation: donateGlow 2.4s ease-out infinite;
+  }
+  
+  .donate-btn:hover {
+    box-shadow: 0 10px 25px rgba(99,102,241,0.45);
+    transform: translateY(-2px);
+  }
 
-    /* Ensure dynamic color for the counter overrides the old gradient text */
-    .funding-amount {
-      background: none !important;
-      -webkit-text-fill-color: initial;
-      background-clip: initial;
-    }
-    .funding-amount #fundingCounter { color: #ffffff; transition: color 120ms linear; }
+  /* Hero */
+  .hero {
+    padding: 90px 0 56px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white; 
+    text-align: center; 
+    position: relative; 
+    overflow: hidden;
+  }
+  
+  .hero h1 { 
+    font-size: clamp(2.4rem, 3.5vw + 1rem, 3.5rem); 
+    font-weight: 800; 
+    margin-bottom: 1rem; 
+  }
+  
+  .hero-subtitle { 
+    font-size: 1.125rem; 
+    margin-bottom: 2rem; 
+    opacity: 0.95; 
+  }
 
-    /* Removed Dynamic funding progress bar - single bar */
+  /* Story (dark blue background) */
+  .story-dark { 
+    padding: 56px 0; 
+    background: #1e293b; 
+    color: white; 
+    text-align: center; 
+  }
 
-    /* Auto-sync status indicator */
-    .sync-status {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 1rem;
-      font-size: 0.85rem;
-      opacity: 0.8;
-    }
-    .sync-indicator {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #10b981;
-      animation: pulse 2s infinite;
-    }
-    .sync-indicator.checking {
-      background: #f59e0b;
-    }
-    .sync-indicator.error {
-      background: #ef4444;
-      animation: none;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
+  /* You are not alone section */
+  .hope { 
+    padding: 56px 0; 
+    background: #f1f5f9; 
+    text-align: center; 
+  }
+  
+  .hope .section-title { 
+    color: #1e293b; 
+  }
+  
+  .hope .section-subtitle { 
+    color: #64748b; 
+  }
+  
+  .hope-text { 
+    max-width: 800px; 
+    margin: 0 auto 2rem; 
+    font-size: 1.05rem; 
+    color: #475569; 
+    line-height: 1.7; 
+  }
 
-    /* Founding Donor section (purple gradient, with PayPal card) */
-    .founding-donor {
-      padding: 56px 0;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: #fff;
-      text-align: center;
-    }
-    .donor-inner { max-width: 900px; margin: 0 auto; }
-    .donor-title { font-size: clamp(2rem, 1.5vw + 1rem, 2.5rem); font-weight: 800; margin-bottom: 0.5rem; }
-    .donor-subtitle { font-size: 1.05rem; opacity: 0.95; margin-bottom: 2rem; }
-    .donor-card { display: flex; flex-direction: column; align-items: center; }
-    .donor-fallback { margin-top: .75rem; font-size: .95rem; opacity: .95; }
-    .donor-fallback a { color: #e6e8ff; text-decoration: underline; }
+  /* Mission section */
+  .mission { 
+    padding: 56px 0; 
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+  }
+  
+  .section-header { 
+    text-align: center; 
+    margin-bottom: 3rem; 
+  }
+  
+  .section-title { 
+    font-size: clamp(2rem, 1.5vw + 1rem, 2.5rem); 
+    font-weight: 700; 
+    color: #1e293b; 
+    margin-bottom: 1rem; 
+  }
+  
+  .section-subtitle { 
+    font-size: 1.05rem; 
+    color: #64748b; 
+    max-width: 640px; 
+    margin: 0 auto; 
+  }
+    
+  .mission .section-title { 
+    color: #fff; 
+  }
+  
+  .mission .section-subtitle { 
+    color: rgba(255,255,255,0.95); 
+  }
+    
+  .mission-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); 
+    gap: 2rem; 
+    margin-top: 3rem; 
+  }
+  
+  .mission-card { 
+    background: rgba(255, 255, 255, 0.95);
+    color: #1e293b;
+    padding: 2rem; 
+    border-radius: 20px; 
+    box-shadow: 0 5px 25px rgba(0,0,0,0.15); 
+    transition: all 0.3s ease; 
+    opacity: 0; 
+    transform: translateY(30px); 
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .mission-card:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    background: rgba(255, 255, 255, 1);
+  }
+  
+  .mission-card.animate { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+  
+  .mission-card:nth-child(1) { 
+    transition-delay: 0.1s; 
+  }
+  
+  .mission-card:nth-child(2) { 
+    transition-delay: 0.3s; 
+  }
+  
+  .mission-card:nth-child(3) { 
+    transition-delay: 0.5s; 
+  }
+  
+  .mission-card h3 { 
+    color: #1e293b;
+    position: relative; 
+    z-index: 2; 
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  
+  .mission-card p { 
+    color: #475569;
+    position: relative; 
+    z-index: 2; 
+    line-height: 1.6;
+  }
 
-    /* Contact */
-    .contact { 
-      padding: 56px 0 20px; 
-      background: #f8fafc; 
-      text-align: center; 
+  /* Feature content layout */
+  .feature-content { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 4rem; 
+    align-items: center; 
+    margin-top: 4rem; 
+  }
+  
+  .feature-text h3 { 
+    font-size: 1.8rem; 
+    font-weight: 700; 
+    margin-bottom: 1rem; 
+    color: #fff;
+  }
+  
+  .feature-text p { 
+    font-size: 1.05rem; 
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 1rem; 
+    line-height: 1.7; 
+    text-align: left;
+  }
+
+  /* Video container */
+  .video-image {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 20px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  }
+  
+  .video-inner { 
+    border-radius: 16px; 
+    background: #000; 
+    overflow: visible; 
+    width: 100%; 
+  }
+    
+  .tiktok-embed { 
+    margin: 0 auto !important; 
+    width: 100% !important; 
+    max-width: 100% !important; 
+  }
+  
+  /* TikTok placeholder */
+  .tiktok-placeholder {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  
+  .tiktok-placeholder .play-hit {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    border-radius: 9999px;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .tiktok-placeholder .play-hit:focus-visible {
+    outline: 3px solid rgba(255,255,255,0.7);
+    outline-offset: 4px;
+  }
+  
+  .tiktok-placeholder .play {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    background: rgba(0,0,0,0.35);
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-weight: 600;
+    backdrop-filter: blur(2px);
+    color: #fff;
+    font-size: 1rem;
+  }
+  
+  .tiktok-placeholder .triangle {
+    width: 0; 
+    height: 0;
+    border-left: 14px solid #fff;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+  }
+  
+  .tiktok-placeholder .spinner {
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    width: 36px; 
+    height: 36px;
+    border: 3px solid rgba(255,255,255,0.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: spin 1s linear infinite;
+    pointer-events: none;
+  }
+  
+  @keyframes spin { 
+    to { transform: translate(-50%, -50%) rotate(360deg); } 
+  }
+
+  /* Want to help section */
+  .help { 
+    padding: 56px 0; 
+    background: #f8fafc; 
+    color: #1e293b; 
+    text-align: center; 
+  }
+  
+  .help .section-title { 
+    color: #1e293b; 
+  }
+  
+  .help .section-subtitle { 
+    color: #64748b; 
+  }
+  
+  .help-content { 
+    max-width: 900px; 
+    margin: 0 auto; 
+  }
+  
+  .help-text { 
+    font-size: 1.05rem; 
+    color: #475569; 
+    line-height: 1.7; 
+    margin-bottom: 1rem; 
+    text-align: center;
+  }
+  
+  .help-list { 
+    list-style: none; 
+    padding: 0; 
+    margin: 2rem 0; 
+    text-align: left; 
+    max-width: 800px; 
+    margin-left: auto; 
+    margin-right: auto;
+  }
+  
+  .help-list li { 
+    font-size: 1.05rem; 
+    color: #475569; 
+    line-height: 1.7; 
+    margin-bottom: 1rem; 
+    padding-left: 1.5rem; 
+    position: relative;
+  }
+  
+  .help-list li:before { 
+    content: "•"; 
+    color: #6366f1; 
+    font-size: 1.2rem; 
+    position: absolute; 
+    left: 0; 
+    top: 0;
+  }
+
+  /* Founding Donor section */
+  .founding-donor {
+    padding: 56px 0;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    text-align: center;
+  }
+  
+  .donor-inner { 
+    max-width: 900px; 
+    margin: 0 auto; 
+  }
+  
+  .donor-title { 
+    font-size: clamp(2rem, 1.5vw + 1rem, 2.5rem); 
+    font-weight: 800; 
+    margin-bottom: 0.5rem; 
+  }
+  
+  .donor-subtitle { 
+    font-size: 1.05rem; 
+    opacity: 0.95; 
+    margin-bottom: 2rem; 
+  }
+  
+  .donor-card { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+  }
+  
+  .donor-fallback { 
+    margin-top: .75rem; 
+    font-size: .95rem; 
+    opacity: .95; 
+  }
+  
+  .donor-fallback a { 
+    color: #e6e8ff; 
+    text-decoration: underline; 
+  }
+
+  /* Contact section */
+  .contact { 
+    padding: 56px 0 20px; 
+    background: #ffffff; 
+    text-align: center; 
+  }
+  
+  .contact-info { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); 
+    gap: 2rem; 
+    margin: 3rem 0 0; 
+  }
+  
+  .contact-card { 
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+    color: white; 
+    padding: 2rem; 
+    border-radius: 15px; 
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08); 
+    position: relative;
+    overflow: hidden;
+    opacity: 0; 
+    transform: translateY(30px); 
+    transition: all 0.3s ease;
+  }
+  
+  .contact-card.animate { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+  
+  .contact-card:nth-child(1) { 
+    transition-delay: 0.1s; 
+  }
+  
+  .contact-card:nth-child(2) { 
+    transition-delay: 0.3s;
+    animation: helpGlow 2.4s ease-out infinite;
+  }
+  
+  .contact-card:nth-child(3) { 
+    transition-delay: 0.5s;
+  }
+  
+  .contact-card h4 { 
+    color: white; 
+    margin-bottom: 1rem; 
+    position: relative; 
+    z-index: 2; 
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3); 
+  }
+  
+  .contact-card p { 
+    color: rgba(255,255,255,0.9); 
+    position: relative; 
+    z-index: 2; 
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3); 
+  }
+  
+  .contact-card a { 
+    color: rgba(255,255,255,0.9); 
+  }
+
+  .contact-card.clickable {
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .contact-card.clickable:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  }
+  
+  .contact-card.clickable h4,
+  .contact-card.clickable p {
+    pointer-events: none;
+  }
+
+  @keyframes helpGlow {
+    0% { box-shadow: 0 5px 20px rgba(0,0,0,0.08), 0 0 0 0 rgba(102,126,234,0.6); }
+    70% { box-shadow: 0 5px 20px rgba(0,0,0,0.08), 0 0 0 18px rgba(102,126,234,0); }
+    100% { box-shadow: 0 5px 20px rgba(0,0,0,0.08), 0 0 0 0 rgba(102,126,234,0); }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .contact-card:nth-child(2) { animation: none !important; }
+  }
+
+  /* Footer */
+  footer { 
+    background: #1e293b !important; 
+    color: white; 
+    text-align: center; 
+    padding: 2rem 0; 
+  }
+
+  .form-success {
+    display: none;
+    text-align: center;
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.95);
+    padding: 1rem 0;
+  }
+
+  /* Social media section */
+  .social-media {
+    background: #f1f5f9;
+    padding: 2rem 0;
+    text-align: center;
+  }
+  
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+  
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  }
+  
+  .social-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  }
+  
+  .discord-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+
+  .instagram-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+
+  .legal-note { 
+    margin-bottom: 12px; 
+    text-align: center; 
+  }
+
+  /* Section paddings */
+  .hero { padding: 90px 0 56px; }
+  .story-dark { padding: 56px 0; }
+  .hope { padding: 56px 0; }
+  .mission { padding: 56px 0; }
+  .help { padding: 56px 0; }
+  .founding-donor { padding: 56px 0; }
+  .contact { padding: 56px 0 20px; }
+
+  /* Our Story layout */
+  .story-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  
+  .story-text h2 { 
+    color: #fff; 
+  }
+  
+  .story-image {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .story-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 900px) {
+    .feature-content { 
+      grid-template-columns: 1fr; 
     }
-    .contact-info { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); 
+    
+    .story-content { 
+      display: flex; 
+      flex-direction: column; 
       gap: 2rem; 
-      margin: 3rem 0 0; 
     }
-    .contact-card { 
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-      color: white; 
-      padding: 2rem; 
-      border-radius: 15px; 
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08); 
-      position: relative;
-      overflow: hidden;
-      opacity: 0; 
-      transform: translateY(30px); 
-      transition: all 0.3s ease;
+    
+    .story-image { 
+      order: 0; 
     }
-    .contact-card.animate { opacity: 1; transform: translateY(0); }
-    .contact-card:nth-child(1) { transition-delay: 0.1s; }
-    .contact-card:nth-child(2) { 
-      transition-delay: 0.3s;
-      animation: helpGlow 2.4s ease-out infinite;
-    }
-    .contact-card:nth-child(3) { 
-      transition-delay: 0.5s;
-    }
-    .contact-card h4 { color: white; margin-bottom: 1rem; position: relative; z-index: 2; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-    .contact-card p { color: rgba(255,255,255,0.9); position: relative; z-index: 2; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
-    .contact-card a { color: rgba(255,255,255,0.9); }
+  }
 
-    /* Make the whole need help panel clickable */
-    .contact-card.clickable {
-      cursor: pointer;
-      transition: all 0.3s ease;
+  @media (min-width: 901px) {
+    .video-image {
+      width: 100%;
+      max-width: min(922px, calc((100vh - var(--header-h) - 80px) * 0.5625));
+      justify-self: center;
     }
-    .contact-card.clickable:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-    }
-    .contact-card.clickable h4,
-    .contact-card.clickable p {
-      pointer-events: none;
-    }
-
-    /* Help panel glow animation */
-    @keyframes helpGlow {
-      0% { box-shadow: 0 5px 20px rgba(0,0,0,0.08), 0 0 0 0 rgba(102,126,234,0.6); }
-      70% { box-shadow: 0 5px 20px rgba(0,0,0,0.08), 0 0 0 18px rgba(102,126,234,0); }
-      100% { box-shadow: 0 5px 20px rgba(0,0,0,0.08), 0 0 0 0 rgba(102,126,234,0); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .contact-card:nth-child(2) { animation: none !important; }
-    }
-
-    /* Footer */
-    footer { background: #1e293b !important; color: white; text-align: center; padding: 2rem 0; }
-
-    .form-success {
-      display: none;
-      text-align: center;
-      font-size: 1.05rem;
-      color: rgba(255,255,255,0.95);
-      padding: 1rem 0;
-    }
-
-    /* Social media section */
-    .social-media {
-      background: #f8fafc;
-      padding: 2rem 0;
-      text-align: center;
-    }
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 1rem;
-    }
-    .social-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-    }
-    .social-link:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-    }
-    .discord-icon {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-    }
-
-    .instagram-icon {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-    }
-
-    /* Add a small gap above the footer */
-    .legal-note { margin-bottom: 12px; text-align: center; }
-
-    /* Tighter section paddings */
-    .hero { padding: 90px 0 56px; }
-    .story-dark { padding: 56px 0; }
-    .mission { padding: 56px 0; }
-    .why { padding: 56px 0; }
-    .funding { padding: 56px 0; }
-    .founding-donor { padding: 56px 0; }
-    .contact { padding: 56px 0 20px; }
-
-    /* Our Story: two-column layout (text left, image right) */
-    .story-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-    .story-text h2 { color: #fff; }
-    .story-image {
-      display: flex;
-      justify-content: center;
-    }
-    .story-image img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 15px;
-    }
-
-    /* Responsive tweaks */
-    @media (max-width: 900px) {
-      .why-content { grid-template-columns: 1fr; gap: 2rem; }
-      .feature-content { grid-template-columns: 1fr; }
-  /* On mobile, show Our Story text above the photo */
-      .story-content { display: flex; flex-direction: column; gap: 2rem; }
-      .story-image { order: 0; }
-    }
-
-    /* Desktop-only: ensure video fits within viewport height without scrolling */
-    @media (min-width: 901px) {
-      .video-image, .video-image-white {
-        width: 100%;
-        /* Larger desktop size while fitting height. 9/16 = 0.5625 */
-        max-width: min(922px, calc((100vh - var(--header-h) - 80px) * 0.5625));
-        justify-self: center; /* center in grid column */
-      }
-    }
-
-    /* NEW: Announcement box for Mission section */
-    .announcement-box {
-      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-      border: 4px solid #ffffff;
-      border-radius: 20px;
-      padding: 2rem;
-      margin: 3rem auto 0;
-      max-width: 900px;
-      box-shadow: 0 12px 40px rgba(251, 191, 36, 0.5);
-      position: relative;
-      animation: pulse 2s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.02); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .announcement-box { animation: none !important; }
-    }
-    .announcement-badge {
-      display: inline-block;
-      background: #dc2626;
-      color: #fff;
-      font-size: 0.85rem;
-      font-weight: 800;
-      padding: 0.4rem 1rem;
-      border-radius: 50px;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .announcement-box h3 {
-      color: #1e293b;
-      font-size: 2rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-      text-align: center;
-      text-transform: uppercase;
-    }
-    .announcement-box p {
-      color: #1e293b;
-      font-size: 1.1rem;
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-    .announcement-box p:last-child {
-      margin-bottom: 0;
-    }
-    .announcement-box .btn-hub {
-      display: inline-block;
-      background: #1e293b;
-      color: #fff;
-      padding: 1rem 2rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 6px 20px rgba(30, 41, 59, 0.4);
-    }
-    .announcement-box .btn-hub:hover {
-      background: #0f172a;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(30, 41, 59, 0.6);
-    }
-    .btn-center {
-      text-align: center;
-    }
-
+  }
 </style>
 </head>
 <body>
 <header>
-<nav class="container">
-<div class="logo">
-
-<a aria-label="Home" href="index.html"><img alt="NARBE Foundation Logo" src="https://raw.githubusercontent.com/narbefoundation/images/refs/heads/main/purple%20more%20space.png"/></a></div>
-<div class="site-title">NARBE Foundation</div>
-<ul class="nav-links">
-<li><a href="#story">Our Story</a></li>
-<li><a href="#mission">Mission</a></li>
-<li><a href="#why">Our Why</a></li>
-<li><a href="#funding">Funding</a></li>
-<li><a href="#contact">Contact</a></li>
-<li><a href="getting-started.html">Getting Started</a></li><li><a href="resources.html">Resources</a></li></ul>
-<button class="mobile-menu-btn" id="mobileMenuBtn">
-<span></span>
-<span></span>
-<span></span>
-</button>
-<a class="donate-btn" href="#founding-donor">Donate Now</a>
-</nav>
+  <nav class="container">
+    <div class="logo">
+      <a aria-label="Home" href="index.html">
+        <img alt="NARBE Foundation Logo" src="https://raw.githubusercontent.com/narbefoundation/images/refs/heads/main/purple%20more%20space.png"/>
+      </a>
+    </div>
+    <div class="site-title">NARBE Foundation</div>
+    <ul class="nav-links">
+      <li><a href="#story">Founders' Story</a></li>
+      <li><a href="#mission">Mission</a></li>
+      <li><a href="#help">Want to Help?</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="getting-started.html">Getting Started</a></li>
+      <li><a href="resources.html">Resources</a></li>
+    </ul>
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <a class="donate-btn" href="#founding-donor">Support Our Mission</a>
+  </nav>
 </header>
+
 <section class="hero">
-<div class="container">
-<h1>Empowering Lives Through Custom Accessible Technology</h1>
-<p class="hero-subtitle">Where families and creators come together to build access through free tools and games.</p>
-</div>
+  <div class="container">
+    <h1>Learning the Latest Technology to Build Custom Accessible Solutions</h1>
+    <p class="hero-subtitle">Where families and creators come together to build access through free tools and games.</p>
+  </div>
 </section>
 <section class="story-dark" id="story">
-<div class="container">
-<div class="story-content">
-<!-- Text left -->
-<div class="story-text">
-<h2 class="section-title" style="color:#fff;">Our Story</h2>
-<div style="max-width: 800px; margin: 0; text-align: left;">
-<p style="font-size: 1.05rem; color: rgba(255,255,255,0.9); margin-bottom: 1rem; line-height: 1.7;">We are Ari, Nancy, and Ben — a brother and sister-in-law caregiving team.</p>
-<p style="font-size: 1.05rem; color: rgba(255,255,255,0.9); margin-bottom: 1rem; line-height: 1.7;">Ben lives with an ultra-rare condition called TUBB4A-related leukodystrophy. As his condition progressed, he became nonverbal and quadriplegic, leaving him with very limited options for interaction. His mind, however, remains sharp and full of life.</p>
-<p style="font-size: 1.05rem; color: rgba(255,255,255,0.9); margin-bottom: 1rem; line-height: 1.7;">When we searched for tools to help Ben, most focused only on basic communication. They were slow to get, costly, and limited in what they offered. Ben wanted more — to play games, browse the internet, watch his favorite shows, and truly connect with the world.</p>
-<p style="font-size: 1.05rem; color: rgba(255,255,255,0.9); margin-bottom: 1rem; line-height: 1.7;">So, we built our own. Using creativity and AI, we designed a custom two-button system that Ben controls with his head. Now he can type, communicate, watch shows and movies on any streaming platform, search YouTube and Google Images, and play custom-built games — all through one simple, accessible hub.</p>
-<p style="font-size: 1.05rem; color: rgba(255,255,255,0.9); margin-bottom: 1rem; line-height: 1.7;">Our journey showed us what's possible when families and technology come together to create tools built not just for basic needs, but for connection and joy.</p>
-</div>
-</div>
-<!-- Image right -->
-<div class="story-image">
-<img alt="NARBE Foundation Family" src="https://raw.githubusercontent.com/narbefoundation/images/main/website-family.png">
-</img></div>
-</div>
-</div>
+  <div class="container">
+    <div class="story-content">
+      <div class="story-text">
+        <h2 class="section-title" style="color:#fff;">Founders' Story</h2>
+        <div style="max-width: 800px; margin: 0; text-align: left;">
+          <p style="font-size: 1.05rem; color: rgba(255,255,255,0.9); margin-bottom: 1rem; line-height: 1.7;">We are Ari, Nancy, and Ben — a brother and sister-in-law caregiving team.</p>
+          <p style="font-size: 1.05rem; color: rgba(255,255,255,0.9); margin-bottom: 1rem; line-height: 1.7;">Ben lives with an ultra-rare condition called TUBB4A-related leukodystrophy. As his condition progressed, he became nonverbal and quadriplegic, leaving him with very limited options for interaction. His mind, however, remains sharp and full of life.</p>
+          <p style="font-size: 1.05rem; color: rgba(255,255,255,0.9); margin-bottom: 1rem; line-height: 1.7;">When we searched for tools to help Ben, most focused only on basic communication. They were slow to get, costly, and limited in what they offered. Ben wanted more — to play games, browse the internet, watch his favorite shows, and truly connect with the world.</p>
+          <p style="font-size: 1.05rem; color: rgba(255,255,255,0.9); margin-bottom: 1rem; line-height: 1.7;">So, we built our own. Using creativity and AI, we designed a custom two-button system that Ben controls with his head. Now he can type, communicate, watch shows and movies on any streaming platform, search YouTube and Google Images, and play custom-built games — all through one simple, accessible hub.</p>
+          <p style="font-size: 1.05rem; color: rgba(255,255,255,0.9); margin-bottom: 1rem; line-height: 1.7;">Our journey showed us what's possible when families and technology come together to create tools built not just for basic needs, but for connection and joy.</p>
+        </div>
+      </div>
+      <div class="story-image">
+        <img alt="NARBE Foundation Family" src="https://raw.githubusercontent.com/narbefoundation/images/main/website-family.png">
+        </img>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="hope" id="hope">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">You are not alone.</h2>
+      <p class="section-subtitle">We understand the feeling of being stuck, wondering if anyone will help, and searching for hope.</p>
+    </div>
+    <div class="hope-text">
+      <p>We've been exactly where you are. The countless hours researching solutions that don't quite fit. The frustration of expensive tools that promise everything but deliver limitations. The feeling that your loved one might never have the access they deserve.</p>
+      <p>But here's what we've learned: with today's rapidly evolving technology — especially AI — families no longer have to wait for someone else to build the perfect solution. We can take the power into our own hands and create exactly what our loved ones need.</p>
+      <p>What seemed impossible just a few years ago is now within reach for any determined family. You don't need to be a programmer or engineer. You just need the willingness to learn, experiment, and build something meaningful together.</p>
+      <p>Our story with Ben is proof that extraordinary things happen when love meets innovation. We're here to show you what's possible and help you discover the tools and confidence to create your own breakthrough moments.</p>
+    </div>
+  </div>
 </section>
 <section class="mission" id="mission">
-<div class="container">
-<div class="section-header">
-<h2 class="section-title">Our Mission</h2>
-<p class="section-subtitle">To connect and support a community dedicated to creating and sharing free or affordable tools and games that bring immediate, meaningful access to those who need it most.</p>
-</div>
-<div class="mission-grid">
-<div class="mission-card">
-<h3>Free Games and Tools</h3>
-<p>Accessible games and interactive tools that work for people with limited mobility.</p>
-</div>
-<div class="mission-card">
-<h3>Family Support</h3>
-<p>Resources, education, and community that help families move forward.</p>
-</div>
-<div class="mission-card">
-<h3>Custom Solutions</h3>
-<p>Community driven templates and guides for how to make it work for you.</p>
-</div>
-</div>
-<!-- Mirrored purple TikTok feature: video left, text right -->
-<div class="feature-content">
-<!-- Video left -->
-<div class="video-image">
-<div class="video-inner">
-<div class="tiktok-placeholder" data-video-id="7525825420613192991" style="background-image:url('https://raw.githubusercontent.com/narbefoundation/images/refs/heads/main/CONCENTRATION-COMPETITIVE.png'); background-size:cover; background-position:center;">
-<button aria-label="Play Video" class="play-hit">
-<div class="play"><span class="triangle"></span> <span>Play Video</span></div>
-</button>
-</div>
-</div>
-</div>
-<!-- Text right -->
-<div class="feature-text" style="text-align: center;">
-<h3>Mission in Action</h3>
-<p>We had no background in software development — only a need to give Ben a way to connect with the world. With the help of AI, we learned step by step how to build completely custom tools for him.</p>
-<p>Now, with just two buttons, Ben can:</p>
-<p>• Watch his favorite shows and movies on any streaming platform</p>
-<p>• Search YouTube and Google Images</p>
-<p>• Play custom-built games made just for him</p>
-<p>• Type and communicate with a predictive keyboard and phrase boards</p>
-<p>• Control computer settings</p>
-<p>• Ask questions, play music, and get answers through a voice assistant</p>
-<p>What started as a solution for Ben has grown into a mission to help others. Families and professionals shouldn't be held back by high costs, long wait times, or one-size-fits-all tools.</p>
-<p>We share our software, guides, and games freely so others can create solutions tailored to their own needs. AI can speed up the process, but it's never required — the focus is on giving people access to powerful, affordable tools that make life easier.</p>
-</div>
-</div>
-
-<!-- NEW ANNOUNCEMENT -->
-<div class="announcement-box">
-<div style="text-align: center;">
-<span class="announcement-badge">🎉 New Release as of 10/10/2025</span>
-</div>
-<h3>NARBE House presents<br>Benny's Accessibility Hub!</h3>
-<p style="font-weight: 600; margin-bottom: 0.5rem;">(Beta Release)</p>
-<p>We have now released a webapp version of Benny's Custom Software Hub! This will run fullscreen, you can use spacebar and return to navigate as well as mouse inputs (headtracking/eyetracking). It has a predictive keyboard, a phrase and MEDIA board with FULL customization and auto-populating images (and you can pick your own), it comes with 2 games: Benny's P3GL Adventure and Benny Says! More Games Coming Very Soon! The whole hub is fully customizable and will save your settings.</p>
-<div class="btn-center">
-<a class="btn-hub" href="https://narbehouse.github.io/bennyshub" target="_blank" rel="noopener">Launch Benny's Hub →</a>
-</div>
-</div>
-
-</div>
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Our Mission</h2>
+      <p class="section-subtitle">To connect and support a community dedicated to creating and sharing free or affordable tools and games that bring immediate, meaningful access to those who need it most.</p>
+    </div>
+    <div class="mission-grid">
+      <div class="mission-card">
+        <h3>Free Games and Tools</h3>
+        <p>Accessible games and interactive tools that work for people with limited mobility.</p>
+      </div>
+      <div class="mission-card">
+        <h3>Community Support</h3>
+        <p>Resources, education, and community that help families move forward.</p>
+      </div>
+      <div class="mission-card">
+        <h3>Custom Solutions</h3>
+        <p>Community driven templates and guides for how to make it work for you.</p>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 2rem;">
+      <p style="font-size: 1.1rem; color: rgba(255,255,255,0.9); margin-bottom: 1rem;">Want to get started?</p>
+      <a href="getting-started.html" style="color: #fff; text-decoration: underline; font-size: 1.1rem; font-weight: 600;">View Getting Started Guide</a>
+    </div>
+    <div class="feature-content">
+      <div class="video-image">
+        <div class="video-inner">
+          <div class="tiktok-placeholder" data-video-id="7525825420613192991" style="background-image:url('https://raw.githubusercontent.com/narbefoundation/images/refs/heads/main/CONCENTRATION-COMPETITIVE.png'); background-size:cover; background-position:center;">
+            <button aria-label="Play Video" class="play-hit">
+              <div class="play"><span class="triangle"></span> <span>Play Video</span></div>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="feature-text" style="text-align: center;">
+        <h3>Mission in Action</h3>
+        <p>We had no background in software development — only a need to give Ben a way to connect with the world. With the help of AI, we learned step by step how to build completely custom tools for him.</p>
+        <p>Now, with just two buttons, Ben can:</p>
+        <p>• Watch his favorite shows and movies on any streaming platform</p>
+        <p>• Search YouTube and Google Images</p>
+        <p>• Play custom-built games made just for him</p>
+        <p>• Type and communicate with a predictive keyboard and phrase boards</p>
+        <p>• Control computer settings</p>
+        <p>• Ask questions, play music, and get answers through a voice assistant</p>
+        <p>What started as a solution for Ben has grown into a mission to help others. Families and professionals shouldn't be held back by high costs, long wait times, or one-size-fits-all tools.</p>
+        <p>We share our tools, guides, and games freely so others can create solutions tailored to their own needs. AI can speed up the process, but it's never required — the focus is on giving people access to powerful, affordable tools that make life easier.</p>
+      </div>
+    </div>
+  </div>
 </section>
-<section class="why" id="why">
-<div class="container">
-<div class="why-content">
-<div class="why-text">
-<h2 style="text-align: center;">Our Why</h2>
-<p style="font-size: 1.05rem; color: rgba(255,255,255,0.9); margin-bottom: 1rem; line-height: 1.7;">
-            Ben hasn't been able to speak or play his favorite video games for nearly a decade. Because his condition is progressive, it was incredibly difficult to find a solution that not only worked but truly engaged him. For years, Ben went without access until he moved into NARBE House. With the help of AI, Ari built custom software that gave Ben the ability to enjoy his favorite entertainment independently once again — and as a bonus, it gave him a voice. Our mission is to help more people like Ben and families like ours so they don’t have to live in silence, and to discover new ways to bring greater independence and quality of life.
-          </p>
-</div>
-<div class="video-image-white">
-<div class="video-inner-white">
-<div class="tiktok-placeholder" data-video-id="7493511609009114398" style="background-image:url('https://raw.githubusercontent.com/narbefoundation/images/refs/heads/main/Untitled%20design.png'); background-size:cover; background-position:center;">
-<button aria-label="Play Video" class="play-hit">
-<div class="play"><span class="triangle"></span> <span>Play Video</span></div>
-</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="funding" id="funding">
-<div class="container">
-<div class="section-header">
-<h2 class="section-title" style="color:#fff;">First Year Funding Goal</h2>
-<p class="section-subtitle" style="color:rgba(255,255,255,.9);">
-          To launch the NARBE Foundation and support families like ours, we’re hoping to raise $10,000 to cover our first year of operations. If you believe in what we’re building, any amount you can give would mean the world to us. Everything beyond that initial goal will go directly toward providing tablets to families in need, helping us travel to share this work, hiring developers to improve our programs, and building a stronger community together.
-        </p>
-</div>
-<div class="funding-amount">
-<span id="fundingCounter">$0</span>
-</div>
-<div class="funding-progress-wrap">
-<div class="funding-progress">
-<div class="funding-progress-bar" id="fundingProgress"></div>
-</div>
-<div class="funding-progress-meta">
-<span id="fundingPercent">0%</span>
-<span>Goal: $10,000</span>
-</div>
-<div aria-hidden="true" class="confetti" id="confettiContainer"></div>
-</div>
-<!-- Removed funding breakdown panels -->
-<!-- <div class="funding-breakdown"> ... </div> -->
-</div>
+<section class="help" id="help">
+  <div class="container">
+    <div class="help-content">
+      <div class="section-header">
+        <h2 class="section-title">Want to help?</h2>
+        <p class="section-subtitle">We are always looking for volunteers and collaborators to join our community.</p>
+      </div>
+      <div class="help-text">
+        <p><strong>Spread the word.</strong> Share our mission with families, professionals, and communities who might benefit from accessible technology solutions.</p>
+        <p><strong>Start a campaign.</strong> Our operational costs are low, but with additional funding, we can do extraordinary things:</p>
+      </div>
+      <ul class="help-list">
+        <li>Provide tablets and hardware to families who need access but can't afford the tools</li>
+        <li>Fund travel to work hands-on with individuals and families in their communities</li>
+        <li>Organize game development contests and community events that bring creators together</li>
+        <li>Support promising community projects by hiring developers to package and distribute them</li>
+        <li>Create comprehensive training programs for caregivers and professionals</li>
+        <li>Develop emergency backup systems for families who depend on assistive technology</li>
+        <li>Build partnerships with schools and therapy centers to expand access</li>
+      </ul>
+      <div class="help-text">
+        <p><strong>Calling streamers and content creators:</strong> If you're a Twitch streamer, consider starting a campaign through the PayPal giving fund directly on your platform. Reach out to us so we can rally our community to support you and amplify your impact.</p>
+        <p>Every contribution, whether it's time, expertise, or funding, helps us build a more accessible world for everyone.</p>
+      </div>
+    </div>
+  </div>
 </section>
 <section class="founding-donor" id="founding-donor">
-<div class="container">
-<div class="donor-inner">
-<h2 class="donor-title">Be a Founding Donor</h2>
-<p class="donor-subtitle">Help us launch our first year and build free, accessible tools and games for families like ours.</p>
-<div class="donor-card">
-<iframe frameborder="0" height="550" id="paypalFrame" scrolling="no" src="https://www.paypal.com/giving/campaigns?campaign_id=W673SAD2HRDFC" style="border-radius:12px; overflow:hidden; border:0; width:100%; max-width:382px; background:#fff;" title="PayPal donate campaign card" width="382"></iframe>
-<p class="donor-fallback">
-            If the card does not load, use this
-            <a href="https://www.paypal.com/donate?campaign_id=W673SAD2HRDFC">direct donate link</a>.
-          </p>
-</div>
-</div>
-</div>
+  <div class="container">
+    <div class="donor-inner">
+      <h2 class="donor-title">Be a Founding Donor</h2>
+      <p class="donor-subtitle">Help us launch our first year and build free, accessible tools and games for families like ours.</p>
+      <div class="donor-card">
+        <iframe frameborder="0" height="550" id="paypalFrame" scrolling="no" src="https://www.paypal.com/giving/campaigns?campaign_id=W673SAD2HRDFC" style="border-radius:12px; overflow:hidden; border:0; width:100%; max-width:382px; background:#fff;" title="PayPal donate campaign card" width="382"></iframe>
+        <p class="donor-fallback">
+          If the card does not load, use this
+          <a href="https://www.paypal.com/donate?campaign_id=W673SAD2HRDFC">direct donate link</a>.
+        </p>
+      </div>
+    </div>
+  </div>
 </section>
 <section class="contact" id="contact">
-<div class="container">
-<div class="section-header">
-<h2 class="section-title">Get In Touch</h2>
-<p class="section-subtitle">We'd love to hear from you.</p>
-</div>
-<!-- Contact info panels -->
-<div class="contact-info">
-<div class="contact-card">
-<h4>Email</h4>
-<p><a href="mailto:info@narbefoundation.org" style="color:rgba(255,255,255,0.9); text-decoration:none;">info@narbefoundation.org</a></p>
-</div>
-<a class="contact-card clickable" href="https://forms.gle/au6DDP1FExDm5DRd6" rel="noopener noreferrer" style="text-decoration: none; color: inherit;" target="_blank">
-<h4>Need Help?</h4>
-<p>Complete our intake form to get started with accessible technology solutions</p>
-</a>
-<div class="contact-card">
-<h4>Mail and Packages</h4>
-<p>NARBE Foundation<br/>5775 Post Rd #149<br/>East Greenwich, RI 02818</p>
-</div>
-</div>
-</div>
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="section-subtitle">We'd love to hear from you.</p>
+    </div>
+    <div class="contact-info">
+      <div class="contact-card">
+        <h4>Email</h4>
+        <p><a href="mailto:info@narbefoundation.org" style="color:rgba(255,255,255,0.9); text-decoration:none;">info@narbefoundation.org</a></p>
+      </div>
+      <a class="contact-card clickable" href="https://forms.gle/au6DDP1FExDm5DRd6" rel="noopener noreferrer" style="text-decoration: none; color: inherit;" target="_blank">
+        <h4>Need Help?</h4>
+        <p>Complete our intake form to get started with accessible technology solutions</p>
+      </a>
+      <div class="contact-card">
+        <h4>Mail and Packages</h4>
+        <p>NARBE Foundation<br/>5775 Post Rd #149<br/>East Greenwich, RI 02818</p>
+      </div>
+    </div>
+  </div>
 </section>
-<!-- Social Media Section -->
 <section class="social-media">
-<div class="container">
-<h3 style="color: #1e293b; margin-bottom: 0.5rem;">Join Our Community</h3>
-<p style="color: #64748b; margin-bottom: 1rem;">Connect with other families, developers, and advocates</p>
-<div class="social-links">
-<a class="social-link" href="https://discord.gg/b82emKJhTC" rel="noopener noreferrer" target="_blank">
-<svg class="discord-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"></path>
-</svg>
-          Join our Discord
-        </a>
-<a class="social-link" href="https://instagram.com/narbefoundation" rel="noopener noreferrer" target="_blank">
-<svg class="instagram-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
-</svg>
-          Follow on Instagram
-        </a>
-</div>
-</div>
+  <div class="container">
+    <h3 style="color: #1e293b; margin-bottom: 0.5rem;">Join Our Community</h3>
+    <p style="color: #64748b; margin-bottom: 1rem;">Connect with other families, developers, and advocates</p>
+    <div class="social-links">
+      <a class="social-link" href="https://discord.gg/b82emKJhTC" rel="noopener noreferrer" target="_blank">
+        <svg class="discord-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"></path>
+        </svg>
+        Join our Discord
+      </a>
+      <a class="social-link" href="https://instagram.com/narbefoundation" rel="noopener noreferrer" target="_blank">
+        <svg class="instagram-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+        </svg>
+        Follow on Instagram
+      </a>
+    </div>
+  </div>
 </section>
-<!-- Legal / EIN note just above footer -->
 <section class="legal-note">
-<div class="container">
-<p>501(c)(3) Nonprofit Organization</p>
-<p>EIN: 39-3343898</p>
-<p>All donations are tax-deductible to the fullest extent allowed by law.</p>
-</div>
+  <div class="container">
+    <p>501(c)(3) Nonprofit Organization</p>
+    <p>EIN: 39-3343898</p>
+    <p>All donations are tax-deductible to the fullest extent allowed by law.</p>
+  </div>
 </section>
 <footer>
-<div class="container">
-<p>© 2025 NARBE Foundation. Building accessible technology for everyone.</p>
-</div>
+  <div class="container">
+    <p>© 2025 NARBE Foundation. Building accessible technology for everyone.</p>
+  </div>
 </footer>
-<!-- Fixed Donate footer for mobile -->
 <div class="mobile-donate-footer">
-<div class="container">
-<a class="donate-btn" href="#founding-donor">Donate Now</a>
-</div>
+  <div class="container">
+    <a class="donate-btn" href="#founding-donor">Support Our Mission</a>
+  </div>
 </div>
 <script>
     // TikTok tap-to-play with autoplay: on user gesture, inject iframe that starts playing
@@ -999,7 +1157,7 @@
           clearTimeout(restoreTimer);
           document.removeEventListener('pointerdown', onPointer, true);
           document.removeEventListener('touchstart', onPointer, true);
-          document.removeEventListener('scroll', onScroll, true);
+          document.removeEventListener('scroll', onScroll, { once: true, passive: true, capture: true });
         };
         document.addEventListener('pointerdown', onPointer, true);
         document.addEventListener('touchstart', onPointer, true);
@@ -1108,119 +1266,12 @@
       }, observerOptions);
       document.querySelectorAll('.mission-card, .contact-card').forEach(card => observer.observe(card));
     });
-
-    document.addEventListener('DOMContentLoaded', () => {
-      // Funding counter + progress animation loop (slower + dynamic colors)
-      const TARGET = 10000;
-      const DURATION = 6000; // slower count-up
-      const HOLD = 2000;     // longer pause at goal
-      const LOOP_DELAY = 1000;
-
-      const counterEl = document.getElementById('fundingCounter');
-      const barEl = document.getElementById('fundingProgress');
-      const percentEl = document.getElementById('fundingPercent');
-      const confettiEl = document.getElementById('confettiContainer');
-
-      if (counterEl && barEl && percentEl) {
-        const fmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
-
-        const hexToRgb = (hex) => {
-          const m = hex.replace('#','');
-          return [parseInt(m.substring(0,2),16), parseInt(m.substring(2,4),16), parseInt(m.substring(4,6),16)];
-        };
-        const lerp = (a,b,t) => Math.round(a + (b - a) * t);
-        const STOPS = [
-          { p: 0.00, c: [255,255,255] },           // white
-          { p: 0.25, c: hexToRgb('#fde047') },     // yellow-400
-          { p: 0.50, c: hexToRgb('#22c55e') },     // green-500
-          { p: 0.75, c: hexToRgb('#3b82f6') },     // blue-500
-          { p: 1.00, c: hexToRgb('#8b5cf6') }      // purple-500
-        ];
-        const colorAt = (t) => {
-          const clamped = Math.max(0, Math.min(1, t));
-          let a = STOPS[0], b = STOPS[STOPS.length - 1];
-          for (let i = 0; i < STOPS.length - 1; i++) {
-            if (clamped >= STOPS[i].p && clamped <= STOPS[i+1].p) { a = STOPS[i]; b = STOPS[i+1]; break; }
-          }
-          const localT = (clamped - a.p) / (b.p - a.p || 1);
-          const r = lerp(a.c[0], b.c[0], localT);
-          const g = lerp(a.c[1], b.c[1], localT);
-          const bl = lerp(a.c[2], b.c[2], localT);
-          return `rgb(${r}, ${g}, ${bl})`;
-        };
-
-        const updateUI = (val) => {
-          const ratio = Math.min(1, Math.max(0, val / TARGET));
-          const pct = Math.round(ratio * 100);
-          const color = colorAt(ratio);
-
-          counterEl.textContent = fmt.format(val);
-          counterEl.style.color = color;
-
-          barEl.style.width = pct + '%';
-          barEl.style.background = color;
-
-          percentEl.textContent = pct + '%';
-          percentEl.style.color = color;
-        };
-
-        const resetUI = () => { updateUI(0); };
-
-        const confettiBurst = () => {
-          if (!confettiEl) return;
-          const colors = ['#fde047','#fb7185','#34d399','#60a5fa','#a78bfa','#fbbf24','#22d3ee'];
-          const pieces = 36;
-          for (let i = 0; i < pieces; i++) {
-            const piece = document.createElement('span');
-            piece.className = 'confetti-piece';
-            const angle = (Math.random() * 2 - 1) * 120;
-            const height = - (Math.random() * 140 + 80);
-            const rot = (Math.random() * 360 - 180) + 'deg';
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            piece.style.setProperty('--dx', angle + 'px');
-            piece.style.setProperty('--dy', height + 'px');
-            piece.style.setProperty('--rot', rot);
-            piece.style.setProperty('--c', color);
-            confettiEl.appendChild(piece);
-            piece.addEventListener('animationend', () => piece.remove());
-          }
-        };
-
-        const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
-
-        const run = () => {
-          let start;
-          const step = (ts) => {
-            if (!start) start = ts;
-            const elapsed = ts - start;
-            const t = Math.min(1, elapsed / DURATION);
-            const val = Math.round(TARGET * easeOutCubic(t));
-            updateUI(val);
-            if (t < 1) {
-              requestAnimationFrame(step);
-            } else {
-              confettiBurst();
-              setTimeout(() => {
-                resetUI();
-                setTimeout(run, LOOP_DELAY);
-              }, HOLD);
-            }
-          };
-          requestAnimationFrame(step);
-        };
-
-        // kick off loop
-        resetUI();
-        run();
-      }
-    });
   </script>
-<!-- Hidden Netlify detection form (belt-and-suspenders) -->
 <form data-netlify="true" data-netlify-honeypot="bot-field" hidden="" method="POST" name="contact" netlify="">
-<input name="form-name" type="hidden" value="contact"/>
-<input name="name" type="text"/>
-<input name="email" type="email"/>
-<textarea name="message"></textarea>
+  <input name="form-name" type="hidden" value="contact"/>
+  <input name="name" type="text"/>
+  <input name="email" type="email"/>
+  <textarea name="message"></textarea>
 </form>
 </body>
 </html>
