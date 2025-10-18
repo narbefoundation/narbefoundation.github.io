@@ -178,101 +178,9 @@
 
   /* NEW ANNOUNCEMENT BOX - make it POP */
   .announcement-box {
-    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-    border: 4px solid #ffffff;
-    border-radius: 20px;
-    padding: 2rem 2rem 2rem 120px; /* Consistent left padding for image */
-    margin: 2.5rem auto 2rem;
-    max-width: 900px;
-    box-shadow: 0 12px 40px rgba(251, 191, 36, 0.5);
-    position: relative;
-    animation: pulse 2s ease-in-out infinite;
-    min-height: 120px; /* Ensure minimum height for image */
-  }
-  .announcement-box::before {
-    content: '';
-    position: absolute;
-    top: 20px; /* Fixed distance from top */
-    left: 20px; /* Fixed distance from left */
-    width: 100px;
-    height: 100px;
-    background-image: url('images/BeaminBenny.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.02); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .announcement-box { animation: none !important; }
+    display: none;
   }
   
-  /* Mobile adjustments for announcement box */
-  @media (max-width: 768px) {
-    .announcement-box {
-      padding: 2rem 1.5rem 2rem 1.5rem; /* Even padding on mobile */
-      padding-top: 100px; /* Space for image at top */
-      min-height: auto;
-    }
-    .announcement-box::before {
-      top: 15px; /* Keep it at top */
-      left: 50%;
-      transform: translateX(-50%); /* Center horizontally on mobile */
-      width: 70px;
-      height: 70px;
-    }
-  }
-  
-  .announcement-badge {
-    display: inline-block;
-    background: #dc2626;
-    color: #fff;
-    font-size: 0.85rem;
-    font-weight: 800;
-    padding: 0.4rem 1rem;
-    border-radius: 50px;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  .announcement-box h3 {
-    color: #1e293b;
-    font-size: 2rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-    text-align: center;
-    text-transform: uppercase;
-  }
-  .announcement-box p {
-    color: #1e293b;
-    font-size: 1.1rem;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-    text-align: center;
-  }
-  .announcement-box .btn-hub {
-    display: inline-block;
-    background: #1e293b;
-    color: #fff;
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 20px rgba(30, 41, 59, 0.4);
-  }
-  .announcement-box .btn-hub:hover {
-    background: #0f172a;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(30, 41, 59, 0.6);
-  }
-  .btn-center {
-    text-align: center;
-  }
-
   /* About section moved above disclaimer and styled dark blue */
   .about{ background: var(--blue); color:#fff; padding:40px 0; }
   .about .section-title{ color:#fff; }
@@ -625,26 +533,6 @@
 <p>We are not medical professionals and our guides do not replace therapy or medical advice. Please collaborate with licensed SLPs, OTs, or Assistive Technology specialists whenever possible.</p>
 </div>
 
-<!-- ABOUT CONTENT -->
-<div class="about-content">
-<h3>What This Page Is About</h3>
-<p>Families ask us how to use technology like Ben's. This guide focuses on tools and games first. We also share a simple keyboard and phrase board so users can communicate while they explore games independently.</p>
-<p>We recommend exploring <a href="https://www.openaac.org" target="_blank" rel="noopener" style="color: #fff; text-decoration: underline;">OpenAAC.org</a> for broad AAC knowledge. Our focus is teaching you how to use AI to tailor or build your own tools and games when off-the-shelf options fall short.</p>
-</div>
-
-<!-- NEW ANNOUNCEMENT -->
-<div class="announcement-box">
-<div style="text-align: center;">
-<span class="announcement-badge">🎉 New Release as of 10/10/2025</span>
-</div>
-<h3>NARBE House presents<br>Benny's Accessibility Hub!</h3>
-<p style="font-weight: 600; margin-bottom: 0.5rem;">(Beta Release)</p>
-<p>We have now released a webapp version of Benny's Custom Software Hub! This will run fullscreen, you can use spacebar and return to navigate as well as mouse inputs (headtracking/eyetracking). It has a predictive keyboard, a phrase and MEDIA board with FULL customization and auto-populating images (and you can pick your own), it comes with games and more are updated every month! The whole hub is fully customizable and will save your settings.</p>
-<div class="btn-center">
-<a class="btn-hub" href="https://narbehouse.github.io/bennyshub" target="_blank" rel="noopener">Launch Benny's Hub →</a>
-</div>
-</div>
-
 </div>
 </section>
 
@@ -659,9 +547,9 @@
 
 <div class="info-preface">
 <h3>Before diving in, please note:</h3>
-<p>NARBE Foundation is not an AAC manufacturer or therapy provider. There are already many excellent AAC systems available such as CoughDrop, Proloquo2Go, TD Snap, Grid 3, and TouchChat.</p>
-<p>Our focus is on building community, sharing education, and providing free accessible tools and games that help people regain independence through play, creativity, and personal choice.</p>
-<p>While we include some AAC-style tools and options, our mission is centered on giving people ways to enjoy, explore, and express themselves using technology that fits their unique abilities and interests.</p>
+<p>NARBE Foundation is not an AAC manufacturer or therapy provider. There are already many excellent free and open-source AAC systems available such as CoughDrop, Cboard, WeaveChat, and AsTeRICS Grid.</p>
+<p>Our focus is on building community, sharing education, and providing free accessible tools and games that help people regain independence through play, creativity, and personal choice. If you're specifically interested in developing comprehensive AAC systems, we recommend exploring <a href="https://www.openaac.org" target="_blank" rel="noopener" style="color: #6366f1; text-decoration: underline;">OpenAAC.org</a> — a community-driven hub dedicated to open-source AAC development.</p>
+<p>While we include some AAC-style tools and options, our mission is centered on giving people ways to enjoy, explore, and express themselves using technology that fits their unique abilities and interests. For example, in Benny's Hub, there's a simple keyboard and phrase + media board to give communication options while browsing games — enhancing quality of life through both play and communication.</p>
 <p>Everyone's journey is different. What worked for our brother Ben may not work for you. Ben already understood language, spelling, and technology before he became nonverbal and quadriplegic. Progress depends on many factors, so please view this guide as inspiration, not instruction.</p>
 <p><strong>We make no guarantees — your mileage may vary.</strong></p>
 </div>
@@ -689,7 +577,7 @@
 <ul>
 <li><strong>Switches and buttons</strong> – Jelly Bean, Buddy Button, or DIY builds.</li>
 <li><strong>Head tracking</strong> – SmartNav, TrackIR, or open-source options like Camera Mouse.</li>
-<li><strong>Eye tracking</strong> – Tobii or EyeTech.</li>
+<li><strong>Eye tracking</strong> – GazeRecorder or OptiKey.</li>
 <li><strong>Facial gesture control</strong> – tools that detect smiles, blinks, or eyebrow raises.</li>
 <li><strong>Joysticks and adaptive controllers</strong> – such as the Xbox Adaptive Controller.</li>
 <li><strong>Sip-and-puff</strong> – breath-based control.</li>
@@ -705,6 +593,18 @@
 <li>Xbox Adaptive Controller or Microsoft Adaptive Hub</li>
 </ul>
 <p>Make sure everything is mounted securely and within easy reach. The best setups come from testing and adjusting together.</p>
+
+<div class="info-callout">
+<p><strong>Hardware costs can add up quickly.</strong> Commercial adaptive switches often range from $60-200+ each, and mounting systems can cost hundreds more. Fortunately, there are excellent resources for affordable and DIY alternatives.</p>
+</div>
+
+<h4>Recommended resources for budget-friendly hardware:</h4>
+<ul>
+<li><strong><a href="https://www.switchedtoys.org/" target="_blank" rel="noopener">Switched Toys</a></strong> – A comprehensive resource for affordable adaptive switches, DIY tutorials, and switch-adapted toys. They offer detailed guides for building your own switches using common materials, often for under $20.</li>
+<li><strong><a href="https://www.makersmakingchange.com/" target="_blank" rel="noopener">Makers Making Change</a></strong> – An open-source community that designs and shares accessible technology solutions. Their library includes 3D-printable switch housings, mounting systems, and complete DIY adaptive devices with step-by-step instructions.</li>
+</ul>
+
+<p>Many families start with simple DIY solutions – even a large button from an electronics store can be converted into an effective switch with basic wiring. The key is finding what works reliably for your person's specific movement and comfort needs.</p>
 </div>
 
 <div class="info-step">
