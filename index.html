@@ -302,6 +302,57 @@
     transform: translateY(-2px);
   }
 
+  /* Founding Donor section - compact spacing + custom list */
+  .founding-donor {
+    padding: 36px 0; /* reduced from 56px */
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    text-align: center;
+  }
+  .donor-inner { max-width: 900px; margin: 0 auto; }
+  .donor-title { font-size: clamp(1.9rem, 1.4vw + 1rem, 2.3rem); font-weight: 800; margin-bottom: 0.25rem; }
+  .donor-subtitle { font-size: 1.02rem; opacity: 0.95; margin-bottom: 1.25rem; }
+  .donor-points { 
+    list-style: none; 
+    padding: 0; 
+    margin: 0.5rem auto 1.25rem; 
+    text-align: left; 
+    max-width: 780px; 
+  }
+  .donor-points li { 
+    position: relative; 
+    padding-left: 1.5rem; 
+    margin: 0.4rem 0; 
+    line-height: 1.6; 
+    color: rgba(255,255,255,0.95);
+  }
+  .donor-points li::before { 
+    content: ""; 
+    position: absolute; 
+    left: 0; 
+    top: 0.6rem; 
+    width: 8px; 
+    height: 8px; 
+    border-radius: 50%; 
+    background: #e0e7ff; 
+    box-shadow: 0 0 0 3px rgba(224,231,255,0.18); 
+  }
+  .donor-cta { 
+    display: inline-block; 
+    background: linear-gradient(135deg, #ffffff, #e0e7ff); 
+    color: #3730a3; 
+    padding: 0.7rem 1.4rem; 
+    border-radius: 999px; 
+    text-decoration: none; 
+    font-weight: 800; 
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18), 0 6px 16px rgba(99,102,241,0.28); 
+    transition: transform .2s ease, box-shadow .2s ease; 
+  }
+  .donor-cta:hover { 
+    transform: translateY(-2px); 
+    box-shadow: 0 12px 30px rgba(0,0,0,0.22), 0 10px 22px rgba(99,102,241,0.35);
+  }
+
   /* Hero */
   .hero {
     padding: 90px 0 56px;
@@ -633,7 +684,7 @@
 
   /* Founding Donor section */
   .founding-donor {
-    padding: 56px 0;
+    padding: 36px 0;
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: #fff;
     text-align: center;
@@ -645,32 +696,60 @@
   }
   
   .donor-title { 
-    font-size: clamp(2rem, 1.5vw + 1rem, 2.5rem); 
+    font-size: clamp(1.9rem, 1.4vw + 1rem, 2.3rem); 
     font-weight: 800; 
-    margin-bottom: 0.5rem; 
+    margin-bottom: 0.25rem; 
   }
   
   .donor-subtitle { 
-    font-size: 1.05rem; 
+    font-size: 1.02rem; 
     opacity: 0.95; 
-    margin-bottom: 2rem; 
+    margin-bottom: 1.25rem; 
   }
   
-  .donor-card { 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
+  .donor-points { 
+    list-style: none; 
+    padding: 0; 
+    margin: 0.5rem auto 1.25rem; 
+    text-align: left; 
+    max-width: 780px; 
   }
   
-  .donor-fallback { 
-    margin-top: .75rem; 
-    font-size: .95rem; 
-    opacity: .95; 
+  .donor-points li { 
+    position: relative; 
+    padding-left: 1.5rem; 
+    margin: 0.4rem 0; 
+    line-height: 1.6; 
+    color: rgba(255,255,255,0.95); 
   }
   
-  .donor-fallback a { 
-    color: #e6e8ff; 
-    text-decoration: underline; 
+  .donor-points li::before { 
+    content: ""; 
+    position: absolute; 
+    left: 0; 
+    top: 0.6rem; 
+    width: 8px; 
+    height: 8px; 
+    border-radius: 50%; 
+    background: #e0e7ff; 
+    box-shadow: 0 0 0 3px rgba(224,231,255,0.18); 
+  }
+  
+  .donor-cta { 
+    display: inline-block; 
+    background: linear-gradient(135deg, #ffffff, #e0e7ff); 
+    color: #3730a3; 
+    padding: 0.7rem 1.4rem; 
+    border-radius: 999px; 
+    text-decoration: none; 
+    font-weight: 800; 
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18), 0 6px 16px rgba(99,102,241,0.28); 
+    transition: transform .2s ease, box-shadow .2s ease; 
+  }
+  
+  .donor-cta:hover { 
+    transform: translateY(-2px); 
+    box-shadow: 0 12px 30px rgba(0,0,0,0.22), 0 10px 22px rgba(99,102,241,0.35); 
   }
 
   /* Contact section */
@@ -887,7 +966,7 @@
   .hope { padding: 56px 0; }
   .mission { padding: 56px 0; }
   .help { padding: 56px 0; }
-  .founding-donor { padding: 56px 0; }
+  .founding-donor { padding: 36px 0; }
   .contact { padding: 56px 0 20px; }
 
   /* Our Story layout */
@@ -961,7 +1040,7 @@
       <span></span>
       <span></span>
     </button>
-    <a class="donate-btn" href="#founding-donor">Support Our Mission</a>
+    <a class="donate-btn" href="https://www.paypal.com/donate/?hosted_button_id=RBGVHUDQ9GK66" target="_blank" rel="noopener">Support Our Mission</a>
   </nav>
 </header>
 
@@ -1085,14 +1164,15 @@
 <section class="founding-donor" id="founding-donor">
   <div class="container">
     <div class="donor-inner">
-      <h2 class="donor-title">Be a Founding Donor</h2>
-      <p class="donor-subtitle">Help us launch our first year and build free, accessible tools and games for families like ours.</p>
-      <div class="donor-card">
-        <iframe frameborder="0" height="550" id="paypalFrame" scrolling="no" src="https://www.paypal.com/giving/campaigns?campaign_id=W673SAD2HRDFC" style="border-radius:12px; overflow:hidden; border:0; width:100%; max-width:382px; background:#fff;" title="PayPal donate campaign card" width="382"></iframe>
-        <p class="donor-fallback">
-          If the card does not load, use this
-          <a href="https://www.paypal.com/donate?campaign_id=W673SAD2HRDFC">direct donate link</a>.
-        </p>
+      <h2 class="donor-title">Support Our Mission</h2>
+      <p class="donor-subtitle">Help us bring affordable, switch-accessible technology and games to families who need them.</p>
+      <ul class="donor-points">
+        <li>Share DIY guides and recommend low‑cost adaptive hardware and switch devices</li>
+        <li>Host and publish free, switch‑accessible games and open tools</li>
+        <li>Provide community‑led training and hands‑on setup support</li>
+      </ul>
+      <div class="donor-card" style="background: transparent; box-shadow: none; padding: 0;">
+        <a class="donor-cta" href="https://www.paypal.com/donate/?hosted_button_id=RBGVHUDQ9GK66" target="_blank" rel="noopener" aria-label="Donate via PayPal">Donate via PayPal</a>
       </div>
     </div>
   </div>
@@ -1139,13 +1219,6 @@
     </div>
   </div>
 </section>
-<section class="legal-note">
-  <div class="container">
-    <p>501(c)(3) Nonprofit Organization</p>
-    <p>EIN: 39-3343898</p>
-    <p>All donations are tax-deductible to the fullest extent allowed by law.</p>
-  </div>
-</section>
 <footer>
   <div class="container">
     <div class="footer-social-links">
@@ -1166,11 +1239,16 @@
       </a>
     </div>
     <p>© 2025 NARBE Foundation. Building accessible technology for everyone.</p>
+    <div class="footer-legal">
+      <p>501(c)(3) Nonprofit Organization</p>
+      <p>EIN: 39-3343898</p>
+      <p>All donations are tax-deductible to the fullest extent allowed by law.</p>
+    </div>
   </div>
 </footer>
 <div class="mobile-donate-footer">
   <div class="container">
-    <a class="donate-btn" href="#founding-donor">Support Our Mission</a>
+    <a class="donate-btn" href="https://www.paypal.com/donate/?hosted_button_id=RBGVHUDQ9GK66" target="_blank" rel="noopener">Support Our Mission</a>
   </div>
 </div>
 <script>
