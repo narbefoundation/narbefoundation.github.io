@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NARBE Foundation - Streamer Collaborations</title>
+<link rel="icon" type="image/png" href="images/narbefoundation.png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXR0H5SN9F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);} 
+  gtag('js', new Date());
+  gtag('config', 'G-BXR0H5SN9F');
+</script>
+<meta name="robots" content="noindex, nofollow" />
+<style>
+  :root { --header-h: 96px; --blue:#1e293b; --purple:#6366f1; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; line-height:1.6; color:#1a1a1a; background:#fff; padding-top:var(--header-h); }
+  section { scroll-margin-top: var(--header-h); }
+  .container { max-width:1200px; margin:0 auto; padding:0 20px; }
+
+  /* Header */
+  header{position:fixed; top:0; left:0; right:0; background:rgba(255,255,255,.95); backdrop-filter:blur(10px); border-bottom:1px solid rgba(0,0,0,.1); z-index:1000; transition:all .3s ease;}
+  nav{display:flex; justify-content:space-between; align-items:center; padding:15px 0 0 0; position:relative;}
+  .logo{display:flex; align-items:center;}
+  .logo img{height:80px; width:auto; max-width:320px; display:block;}
+  .site-title{display:none; font-weight:700; color:#6366f1; letter-spacing:.2px;}
+  .nav-links{display:flex; list-style:none; gap:2rem;}
+  .nav-links a{text-decoration:none; color:#333; font-weight:500;}
+  .nav-links a:hover{color:#6366f1;}
+  .mobile-menu-btn{display:none;}
+  .donate-btn { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: #fff; padding: 0.75rem 1.5rem; border-radius: 999px; text-decoration: none; font-weight: 700; transition: all .3s ease; box-shadow:0 6px 16px rgba(99,102,241,.25); }
+  .donate-btn:hover { transform: translateY(-2px); box-shadow:0 10px 25px rgba(99,102,241,.45); }
+
+  @media (max-width: 992px){
+    :root{ --header-h:84px; }
+    nav{ display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:.9rem; }
+    .logo{ justify-self:start; grid-column:1; }
+    .site-title{ display:block; grid-column:2; justify-self:center; font-size:1.125rem; }
+    .mobile-menu-btn{ justify-self:end; display:flex; grid-column:3; flex-direction:column; cursor:pointer; padding:5px; background:none; border:none; }
+    .mobile-menu-btn span{ width:25px; height:3px; background:#333; margin:3px 0; transition:.3s; border-radius:2px; }
+    .nav-links { display:none; position:absolute; top:100%; right:0; min-width: 220px; background: rgba(255,255,255,.98); backdrop-filter: blur(10px); flex-direction: column; gap: 0; box-shadow: 0 4px 20px rgba(0,0,0,.1); border-radius: 12px; padding: .5rem 0; transform: translateY(-10px); opacity: 0; visibility: hidden; transition: opacity .2s ease, transform .2s ease, visibility .2s; z-index: 999; }
+    .nav-links.active{ display:flex; transform:translateY(0); opacity:1; visibility:visible; }
+    .nav-links li{ border-bottom:1px solid rgba(0,0,0,.06); }
+    .nav-links li:last-child{ border-bottom:none; }
+    .nav-links a{ display:block; width:100%; padding:.8rem 1rem; font-size:1rem; }
+    .logo img{ height:70px; max-width:260px; }
+    nav{ padding:12px 0; }
+    .donate-btn { display: none; }
+  }
+
+  /* Hero */
+  .hero{ 
+    padding:60px 0 20px; 
+    color:#fff; 
+    text-align:center; 
+    background: 
+      linear-gradient(135deg, rgba(102,126,234,0.85) 0%, rgba(118,75,162,0.85) 100%),
+      url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  }
+  .hero h1{ font-size: clamp(2.2rem, 3vw + 1rem, 3.2rem); font-weight:800; margin-bottom:1rem; }
+  .hero p{ font-size:1.1rem; opacity:.95; max-width: 900px; margin: 0.5rem auto 0; }
+  /* removed hero inline img, using background instead */
+
+  /* Sections */
+  .section{ padding:36px 0; background:#fff; }
+  .section.alt{ background:#f8fafc; }
+  .section h2{ font-size: clamp(1.6rem, 1.5vw + 1rem, 2rem); color:#1e293b; text-align:center; margin-bottom:1rem; }
+  .section p{ color:#475569; font-size:1.05rem; line-height:1.8; max-width:900px; margin:0.5rem auto; }
+  .section ul{ max-width:900px; margin: 0.75rem auto; padding-left: 1.25rem; }
+  .section li{ color:#475569; line-height:1.8; margin:.4rem 0; }
+  .section img{ width:100%; height:auto; border-radius:14px; margin:18px auto; display:block; box-shadow:0 8px 24px rgba(0,0,0,0.08); }
+
+  .cta{ text-align:center; padding:40px 0; }
+  .cta a.btn{ display:inline-block; background:#1e293b; color:#fff; padding:.85rem 1.4rem; border-radius:999px; font-weight:800; text-decoration:none; }
+  .cta a.btn:hover{ background:#111827; transform: translateY(-2px); transition: all .2s ease; }
+
+  /* Footer with socials */
+  footer { background:#1e293b; color:#fff; text-align:center; padding:2rem 0; margin-top:0; }
+  .footer-social-links { display:flex; justify-content:center; gap:1.5rem; margin-bottom:1.5rem; }
+  .footer-social-link { display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; background:rgba(255,255,255,0.1); border-radius:50%; color:white; transition: all .3s ease; }
+  .footer-social-link:hover{ background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+  .footer-social-link svg{ width:20px; height:20px; fill:currentColor; }
+  .facebook-icon, .youtube-icon, .instagram-icon{ width:20px; height:20px; fill:currentColor; }
+
+  /* Mobile donate footer baseline */
+  .mobile-donate-footer { display: none; }
+
+  /* Mobile styles for fixed donate footer */
+  @media (max-width: 992px){
+    /* Hide only header donate on mobile */
+    nav .donate-btn { display: none; }
+
+    /* Show fixed donate footer */
+    .mobile-donate-footer {
+      display: flex;
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 1002;
+      justify-content: center;
+      background: rgba(241,245,249,0.96);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(0,0,0,0.12);
+      padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+      transition: opacity 0.2s ease;
+    }
+    .mobile-donate-footer .container { width: 100%; display: flex; justify-content: center; }
+    .mobile-donate-footer .donate-btn { margin: 0; padding: 0.68rem 1.2rem; font-size: 1rem; display: inline-block; }
+
+    /* Prevent content from being hidden behind the fixed footer */
+    body { padding-bottom: calc(86px + env(safe-area-inset-bottom)); }
+  }
+</style>
+</head>
+<body>
+<header>
+  <nav class="container">
+    <div class="logo">
+      <a aria-label="Home" href="index.html"><img alt="NARBE Foundation Logo" src="https://raw.githubusercontent.com/narbefoundation/images/refs/heads/main/purple%20more%20space.png"/></a>
+    </div>
+    <div class="site-title">NARBE Foundation</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#story">Founders' Story</a></li>
+      <li><a href="index.html#mission">Mission</a></li>
+      <li><a href="index.html#help">Want to Help?</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="getting-started.html">Getting Started</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <!-- removed Streamers nav item to keep page hidden -->
+    </ul>
+    <button class="mobile-menu-btn" id="mobileMenuBtn"><span></span><span></span><span></span></button>
+    <a class="donate-btn" href="https://www.paypal.com/donate/?hosted_button_id=RBGVHUDQ9GK66" target="_blank" rel="noopener">Support Our Mission</a>
+  </nav>
+</header>
+<main>
+  <section class="hero">
+    <div class="container">
+      <h1>Streamer Fundraising Collaborations with NARBE Foundation</h1>
+      <p>Join a small group of creators raising awareness and support for accessible gaming and communication through community-powered streams.</p>
+      <!-- removed placeholder hero image -->
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>What this is about</h2>
+      <p>We’re inviting a small group of streamers to collaborate with us on fundraising events that raise awareness for people who live with conditions that affect their ability to use traditional gaming or entertainment systems.</p>
+      <p>Through the NARBE Foundation, we facilitate a community of builders and families alike to create and release simple adaptive games and communication tools using AI, sharing them with families for free or at low cost. Our goal is to show how creativity and technology can restore joy, play, and connection — and to teach others how to do it too.</p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <h2>Why it might be cool for you</h2>
+      <ul>
+        <li>Be part of something that directly impacts real families and lives.</li>
+        <li>The foundation is partnered with our founder family, NARBE House (@narbehouse), which has over 140,000 followers across YouTube, TikTok, and Instagram — we’ll promote your streams and highlight your community’s impact.</li>
+        <li>Streamers who participate will be featured on our website and socials, with clips, thank-yous, and ongoing recognition.</li>
+        <li>Fun incentives and milestones tailored for your platform to celebrate fundraising success.</li>
+        <li>Complete creative freedom — gaming, art, chatting, or storytelling, it all makes a difference.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>How it works</h2>
+      <ul>
+        <li>Pick a day to stream for the cause.</li>
+        <li>We’ll provide overlays, donation links, and visuals.</li>
+        <li>You stream your way — games, art, discussion, or collab events.</li>
+        <li>We’ll amplify your stream through both NARBE Foundation and NARBE House channels.</li>
+        <li>After the event, we’ll share highlights, thank-yous, and impact clips.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <h2>What we’re building</h2>
+      <ul>
+        <li>A community to create accessible games and tools — like one- or two-button games for people who can’t use traditional controllers.</li>
+        <li>Free and low-cost communication and entertainment systems shared openly.</li>
+        <li>Tutorials and guides that teach families how to build adaptive tech using AI.</li>
+        <li>Demonstrations and competitions for accessible game creation, with prize pools.</li>
+        <li>Future initiatives to acquire and donate adaptive hardware to families in need.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section cta">
+    <div class="container">
+      <h2>Get involved</h2>
+      <p>If this sounds like something you’d like to be part of, fill out this short form:</p>
+      <p style="margin-top: .75rem;">
+        👉 <a class="btn" href="https://forms.gle/1A525AkppGGcKE6e9" target="_blank" rel="noopener">Streamer Interest Form</a>
+      </p>
+      <p style="margin-top:1rem;">Learn more at <a href="https://narbefoundation.org" target="_blank" rel="noopener">narbefoundation.org</a></p>
+      <p>Follow @narbefoundation for updates · Partnered with NARBE House (@narbehouse)</p>
+      <img alt="NARBE Foundation logo" src="images/narbefoundation.png" style="max-width:220px; width:100%; height:auto; margin:16px auto; display:block;"/>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="container">
+    <div class="footer-social-links">
+      <a class="footer-social-link" href="https://www.facebook.com/narbefoundation" target="_blank" rel="noopener noreferrer">
+        <svg class="facebook-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.31h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.324-.593 1.324-1.324V1.325C24 .593 23.407 0 22.675 0z"/></svg>
+      </a>
+      <a class="footer-social-link" href="https://www.youtube.com/@narbefoundation" target="_blank" rel="noopener noreferrer">
+        <svg class="youtube-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a2.99 2.99 0 0 0-2.106-2.106C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.392.58A2.99 2.99 0 0 0 .502 6.186C0 8.08 0 12 0 12s0 3.92.502 5.814a2.99 2.99 0 0 0 2.106 2.106C4.5 20.5 12 20.5 12 20.5s7.5 0 9.392-.58a2.99 2.99 0 0 0 2.106-2.106C24 15.92 24 12 24 12s0-3.92-.502-5.814zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+      </a>
+      <a class="footer-social-link" href="https://www.instagram.com/narbefoundation" target="_blank" rel="noopener noreferrer">
+        <svg class="instagram-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+    </div>
+    <p>© 2025 NARBE Foundation. Building accessible technology for everyone.</p>
+  </div>
+</footer>
+<!-- Fixed Donate footer for mobile -->
+<div class="mobile-donate-footer">
+  <div class="container">
+    <a class="donate-btn" href="https://www.paypal.com/donate/?hosted_button_id=RBGVHUDQ9GK66" target="_blank" rel="noopener">Support Our Mission</a>
+  </div>
+</div>
+<script>
+  // Mobile menu toggle
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    if (mobileMenuBtn && navLinks) {
+      mobileMenuBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        navLinks.classList.toggle('active');
+        mobileMenuBtn.classList.toggle('active');
+        const spans = mobileMenuBtn.querySelectorAll('span');
+        if (navLinks.classList.contains('active')) {
+          spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+          spans[1].style.opacity = '0';
+          spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+        } else {
+          spans[0].style.transform = 'none';
+          spans[1].style.opacity = '1';
+          spans[2].style.transform = 'none';
+        }
+      });
+      document.addEventListener('click', (e) => {
+        if (!mobileMenuBtn.contains(e.target) && !navLinks.contains(e.target)) {
+          navLinks.classList.remove('active');
+          mobileMenuBtn.classList.remove('active');
+          const spans = mobileMenuBtn.querySelectorAll('span');
+          spans[0].style.transform = 'none';
+          spans[1].style.opacity = '1';
+          spans[2].style.transform = 'none';
+        }
+      });
+    }
+  });
+</script>
+</body>
+
+</html>
