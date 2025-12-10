@@ -1,4 +1,4 @@
-# Narbehouse.github.io (Foundation Edition)
+# Benny's Hub (Foundation Edition)
 
 **© 2025 NARBE Foundation.**
 *Open Source Accessibility Software for the Disability Community.*
