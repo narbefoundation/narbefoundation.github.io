@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>NARBE Foundation - Resources</title>
-<link rel="icon" type="image/png" href="images/narbefoundation.png">
+<link rel="icon" type="image/png" href="images/branding/favicon.png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
@@ -15,313 +14,208 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-BXR0H5SN9F');
 </script>
 <style>
-  :root { --header-h: 96px; --blue:#1e293b; --purple:#6366f1; --purple2:#764ba2; }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior:smooth; min-height: 100%; }
-  body { 
-    font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; 
-    line-height:1.6; 
-    color:#1a1a1a; 
-    background:#fff; 
-    padding-top:var(--header-h); 
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  :root { --header-h: 96px; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background: #ffffff;
+    padding-top: var(--header-h);
   }
   section { scroll-margin-top: var(--header-h); }
-  .container { max-width:1200px; margin:0 auto; padding:0 20px; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-  /* Header (matching getting-started.html) */
-  header{position:fixed; top:0; left:0; right:0; background:rgba(255,255,255,.95); backdrop-filter:blur(10px); border-bottom:1px solid rgba(0,0,0,.1); z-index:1000; transition:all .3s ease;}
-  nav{display:flex; justify-content:space-between; align-items:center; padding:15px 0 0 0; position:relative;}
-  .logo{font-size:1.5rem; font-weight:700; color:#6366f1; display:flex; align-items:center;}
-  .logo img{height:80px; width:auto; max-width:320px; display:block;}
-  .site-title{display:none; font-weight:700; color:#6366f1; letter-spacing:.2px;}
-  .nav-links{display:flex; list-style:none; gap:2rem;}
-  .nav-links a{text-decoration:none; color:#333; font-weight:500;}
-  .nav-links a:hover{color:#6366f1;}
-  .mobile-menu-btn{display:none;}
-
-  /* Hide mobile donate footer on desktop */
-  .mobile-donate-footer {
-    display: none;
+  /* Skip Link */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: #000;
+    color: white;
+    padding: 8px;
+    z-index: 10001;
+    transition: top 0.3s;
+  }
+  .skip-link:focus {
+    top: 0;
   }
 
-  /* Responsive mobile styles */
-  @media (max-width: 992px){
-    :root{ --header-h:84px; }
-    nav{ position:relative; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:.9rem;}
-    .logo{ justify-self:start; grid-column:1; }
-    .site-title{ display:block; grid-column:2; justify-self:center; font-size:1.125rem;}
-    .mobile-menu-btn{ justify-self:end; display:flex; grid-column:3; flex-direction:column; cursor:pointer; padding:5px; background:none; border:none;}
-    .mobile-menu-btn span{ width:25px; height:3px; background:#333; margin:3px 0; transition:.3s; border-radius:2px;}
+  /* Header */
+  header {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+  
+  nav {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 15px 0 0 0;
+    position: relative;
+  }
+  
+  .logo { 
+    font-size: 1.5rem; 
+    font-weight: 700; 
+    color: #6366f1; 
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img { 
+    height: 80px;
+    width: auto;
+    max-width: 320px;
+    display: block;
+  }
+  
+  .site-title { 
+    display: none; 
+    font-weight: 700; 
+    color: #6366f1; 
+    letter-spacing: 0.2px; 
+  }
+  
+  .nav-links { 
+    display: flex; 
+    list-style: none; 
+    gap: 2rem; 
+  }
+  
+  .nav-links a { 
+    text-decoration: none; 
+    color: #333; 
+    font-weight: 500; 
+  }
+  
+  .nav-links a:hover, .nav-links a.active { 
+    color: #6366f1; 
+  }
+  
+  .mobile-menu-btn { 
+    display: none; 
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+    background: none;
+    border: none;
+  }
+  
+  .mobile-menu-btn span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+  }
+  
+  header .donate-btn { 
+    margin-top: 0; 
+    margin-bottom: 0; 
+  }
+
+  /* Mobile / tablet styles */
+  @media (max-width: 992px) {
+    :root { --header-h: 84px; }
+    
+    nav {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    
+    .logo { 
+      justify-self: start; 
+      grid-column: 1; 
+    }
+    
+    .site-title { 
+      display: block; 
+      grid-column: 2; 
+      justify-self: center; 
+      font-size: 1.125rem; 
+    }
+    
+    header .donate-btn { 
+      display: none; 
+    }
+    
+    .mobile-menu-btn { 
+      justify-self: end; 
+      display: flex; 
+      grid-column: 3; 
+    }
     
     .nav-links { 
       display: none; 
       position: absolute;
       top: 100%;
       right: 0;
+      left: auto;
       min-width: 220px;
-      background: rgba(255,255,255,.98);
+      background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(10px);
       flex-direction: column;
       gap: 0;
-      box-shadow: 0 4px 20px rgba(0,0,0,.1);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
       border-radius: 12px;
-      padding: .5rem 0;
+      padding: 0.5rem 0;
       transform: translateY(-10px);
       opacity: 0;
       visibility: hidden;
-      transition: opacity .2s ease, transform .2s ease, visibility .2s;
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
       z-index: 999;
     }
-    .nav-links.active{ 
-      display: flex;
-      transform: translateY(0); 
-      opacity: 1; 
+    
+    .nav-links.active { 
+      display: flex; 
+      transform: translateY(0);
+      opacity: 1;
       visibility: visible;
     }
-    .nav-links li{ border-bottom:1px solid rgba(0,0,0,.06); }
-    .nav-links li:last-child{ border-bottom:none;}
-    .nav-links a{ display:block; width:100%; padding:.8rem 1rem; font-size:1rem;}
-    .logo img{ height:70px; max-width:260px;}
-    nav{ padding:12px 0; }
     
-    /* Fixed mobile donate footer */
-    .mobile-donate-footer {
-      display: flex;
-      position: fixed;
-      left: 0; right: 0; bottom: 0;
-      z-index: 1002;
-      justify-content: center;
-      background: rgba(241,245,249,0.96);
-      backdrop-filter: blur(10px);
-      border-top: 1px solid rgba(0,0,0,0.12);
-      padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
-      transition: opacity 0.2s ease;
+    .nav-links li {
+      padding: 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
     }
-    .mobile-donate-footer .container { width: 100%; display: flex; justify-content: center; }
-    .mobile-donate-footer .donate-btn {
-      margin: 0;
-      padding: 0.68rem 1.2rem;
+    
+    .nav-links li:last-child { 
+      border-bottom: none; 
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
       font-size: 1rem;
     }
-    /* Add bottom padding so content isn't hidden behind fixed footer */
-    body { padding-bottom: calc(86px + env(safe-area-inset-bottom)); }
     
-    /* Hide header donate on mobile */
-    nav .btn-donate { display: none; }
+    .logo img { 
+      height: 70px; 
+      max-width: 260px; 
+    }
+    
+    nav { 
+      padding: 12px 0; 
+    }
   }
 
-  /* Hero */
-  .hero{ padding:60px 0 50px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:#fff; }
-  .hero h1{ font-size: clamp(2.4rem, 3.5vw + 1rem, 3.5rem); font-weight:800; margin-bottom:1rem; text-align:center; }
-  .hero-subtitle{ font-size:1.125rem; opacity:.95; margin-bottom:2rem; text-align:center; max-width:820px; margin-left:auto; margin-right:auto; }
-
-  /* About section - dark blue like getting-started */
-  .about{ background: var(--blue); color:#fff; padding:40px 0; }
-  .about .section-title{ color:#fff; }
-  .about .section-subtitle{ color:#e5e7eb; }
-
-  /* Section styling */
-  .section-title{ font-size: clamp(2rem, 1.5vw + 1rem, 2.2rem); font-weight:700; color:#1e293b; margin-bottom:.5rem; text-align:center; }
-  .section-subtitle{ font-size:1.05rem; color:#64748b; max-width: 820px; margin:.25rem auto 0; text-align:center; }
-
-  /* Info sections */
-  .info-section {
-    background: #ffffff;
-    padding: 48px 0;
-  }
-  
-  .info-content {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  
-  .info-header {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-  
-  .info-header h2 {
-    font-size: clamp(2rem, 1.5vw + 1rem, 2.5rem);
-    font-weight: 700;
-    color: #1e293b;
-    margin-bottom: 1rem;
-  }
-  
-  .info-preface {
-    background: #f8fafc;
-    border-left: 4px solid #6366f1;
-    padding: 1.5rem;
-    margin: 2rem 0;
-    border-radius: 8px;
-  }
-  
-  .info-preface h3 {
-    color: #1e293b;
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-  }
-  
-  .info-preface p {
-    color: #475569;
-    font-size: 1rem;
-    line-height: 1.7;
-    margin-bottom: 0.75rem;
-  }
-  
-  .info-preface p:last-child {
-    margin-bottom: 0;
-  }
-  
-  .info-step {
-    margin: 3rem 0;
-  }
-  
-  .info-step h3 {
-    color: #1e293b;
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid #e5e7eb;
-  }
-  
-  .info-step h4 {
-    color: #334155;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin: 1.5rem 0 0.75rem;
-  }
-  
-  .info-step p {
-    color: #475569;
-    font-size: 1.05rem;
-    line-height: 1.8;
-    margin-bottom: 1rem;
-  }
-  
-  .info-step ul,
-  .info-step ol {
-    margin: 1rem 0 1.5rem;
-    padding-left: 1.5rem;
-  }
-  
-  .info-step li {
-    color: #475569;
-    font-size: 1.05rem;
-    line-height: 1.8;
-    margin-bottom: 0.75rem;
-  }
-  
-  .info-step li strong {
-    color: #1e293b;
-    font-weight: 600;
-  }
-  
-  .info-step a {
-    color: #6366f1;
-    text-decoration: underline;
-  }
-  
-  .info-step a:hover {
-    color: #4f46e5;
-  }
-  
-  .info-callout {
-    background: #fef3c7;
-    border: 1px solid #fbbf24;
-    border-radius: 8px;
-    padding: 1rem 1.25rem;
-    margin: 1.5rem 0;
-  }
-  
-  .info-callout p {
-    color: #78350f;
-    font-size: 1rem;
-    margin: 0;
-  }
-  
-  .info-quote {
-    background: #f0f9ff;
-    border-left: 4px solid #0ea5e9;
-    padding: 1rem 1.5rem;
-    margin: 1.5rem 0;
-    border-radius: 0 8px 8px 0;
-    font-style: italic;
-    color: #0c4a6e;
-  }
-
-  /* Resource grid for tools */
-  .resource-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin: 2rem 0;
-  }
-  
-  .resource-card {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 1.5rem;
-    transition: all 0.3s ease;
-  }
-  
-  .resource-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    border-color: #6366f1;
-  }
-  
-  .resource-card h4 {
-    color: #1e293b;
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 0.75rem;
-  }
-  
-  .resource-card h4 a {
-    color: #6366f1;
-    text-decoration: none;
-  }
-  
-  .resource-card h4 a:hover {
-    text-decoration: underline;
-  }
-  
-  .resource-card p {
-    color: #475569;
-    font-size: 1rem;
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  /* Donate button */
-  .btn-donate{ 
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    position: relative;
-    animation: donateGlow 2.4s ease-out infinite;
-    box-shadow: 0 6px 16px rgba(99,102,241,.25);
-  }
-  .btn-donate:hover{ 
-    box-shadow: 0 10px 25px rgba(99,102,241,0.45);
-    transform: translateY(-2px);
-  }
+  /* Buttons */
   .donate-btn {
     background: linear-gradient(135deg, #6366f1, #8b5cf6);
     color: white;
@@ -330,74 +224,152 @@
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
-    position: relative;
-    animation: donateGlow 2.4s ease-out infinite;
-    box-shadow: 0 6px 16px rgba(99,102,241,.25);
+    display: inline-block;
   }
+  
   .donate-btn:hover {
     box-shadow: 0 10px 25px rgba(99,102,241,0.45);
     transform: translateY(-2px);
   }
-  @keyframes donateGlow {
-    0% { box-shadow: 0 0 0 0 rgba(99,102,241,0.6); }
-    70% { box-shadow: 0 0 0 18px rgba(99,102,241,0); }
-    100% { box-shadow: 0 0 0 0 rgba(99,102,241,0); }
+
+  /* Hero */
+  .hero {
+    padding: 60px 0 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white; 
+    text-align: center; 
   }
-  @media (prefers-reduced-motion: reduce) {
-    .btn-donate, .donate-btn { animation: none !important; }
+  
+  .hero h1 { 
+    font-size: clamp(2.4rem, 3.5vw + 1rem, 3.5rem); 
+    font-weight: 800; 
+    margin-bottom: 1rem; 
+  }
+  
+  .hero-subtitle { 
+    font-size: 1.125rem; 
+    margin-bottom: 2rem; 
+    opacity: 0.95; 
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  /* Community section */
-  .community{ padding:36px 0 24px; background:#ffffff; color:#1e293b; text-align:center; }
-  .community h2{ color:#1e293b; margin-bottom:.5rem; }
-  .social-link {
+  /* Resources Sections */
+  .resource-section {
+    padding: 64px 0;
+  }
+
+  .resource-section:nth-child(even) {
+    background: #f8fafc;
+  }
+
+  .resource-section:nth-child(odd) {
+    background: #ffffff;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  .resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+  
+  .resource-card {
+    background: #fff;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  }
+  
+  .resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    border-color: rgba(99, 102, 241, 0.3);
+  }
+
+  .resource-logo {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .resource-logo img {
+    max-height: 100%;
+    max-width: 150px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .resource-card h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: #1e293b;
+  }  .resource-card h4 a {
+    color: #1e293b;
+    text-decoration: none;
+  }
+  
+  .resource-card h4 a:hover {
+    color: #6366f1;
+  }
+  
+  .resource-card p {
+    color: #475569;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+  }
+
+  .resource-link {
+    color: #6366f1;
+    text-decoration: none;
+    font-weight: 600;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .resource-link:hover {
+    text-decoration: underline;
+  }
+
+  .btn-discord {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #5865F2;
     color: white;
-    text-decoration: none;
+    padding: 0.75rem 1.5rem;
     border-radius: 50px;
+    text-decoration: none;
     font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    transition: transform 0.2s ease;
+    margin-top: 1rem;
   }
-  .social-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-  }
-  .discord-icon {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
-  }
-
-  .instagram-icon {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
-  }
-
-  .facebook-icon {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
-  }
-
-  .youtube-icon {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
-  }
+  .btn-discord:hover { transform: translateY(-2px); }
 
   /* Footer */
   footer { 
-    background:#1e293b; 
-    color:#fff; 
-    text-align:center; 
-    padding:2rem 0; 
-    margin-top: auto;
+    background: #1e293b; 
+    color: white; 
+    text-align: center; 
+    padding: 2rem 0; 
   }
 
   .footer-social-links {
@@ -430,343 +402,347 @@
     fill: currentColor;
   }
 
-  main {
-    flex: 1;
+  /* Mobile Donate Footer */
+  .mobile-donate-footer { 
+    display: none; 
+  }
+
+  .footer-hidden .mobile-donate-footer { 
+    opacity: 0; 
+    pointer-events: none; 
+  }
+
+  @media (max-width: 992px) {
+    /* Fixed mobile donate footer */
+    .mobile-donate-footer {
+      display: flex;
+      position: fixed;
+      left: 0; 
+      right: 0; 
+      bottom: 0;
+      z-index: 1002;
+      justify-content: center;
+      background: rgba(241,245,249,0.96);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(0,0,0,0.12);
+      padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+      transition: opacity 0.2s ease;
+    }
+    
+    .mobile-donate-footer .container { 
+      width: 100%; 
+      display: flex; 
+      justify-content: center; 
+    }
+    
+    .mobile-donate-footer .donate-btn {
+      margin: 0;
+      padding: 0.68rem 1.2rem;
+      font-size: 1rem;
+    }
+    
+    body { 
+      padding-bottom: calc(86px + env(safe-area-inset-bottom)); 
+    }
   }
 </style>
 </head>
 <body>
-<header>
-<nav class="container">
-<div class="logo">
-<a aria-label="Home" href="index.html"><img alt="NARBE Foundation Logo" src="https://raw.githubusercontent.com/narbefoundation/images/refs/heads/main/purple%20more%20space.png"/></a>
-</div>
-<div class="site-title">NARBE Foundation</div>
-<ul class="nav-links" id="navLinks">
-<li><a href="index.html#story">Founders' Story</a></li>
-<li><a href="index.html#mission">Mission</a></li>
-<li><a href="index.html#help">Want to Help?</a></li>
-<li><a href="index.html#contact">Contact</a></li>
-<li><a href="getting-started.html">Getting Started</a></li>
-<li><a href="#top">Resources</a></li>
-</ul>
-<button class="mobile-menu-btn" id="mobileMenuBtn">
-<span></span><span></span><span></span>
-</button>
-<a class="btn-donate" href="https://www.paypal.com/donate/?hosted_button_id=RBGVHUDQ9GK66" target="_blank" rel="noopener">Support Our Mission</a>
-</nav>
-</header>
+  <a href="#main" class="skip-link">Skip to content</a>
 
-<main>
-<section class="hero">
-<div class="container">
-<h1>NARBE Foundation Resources</h1>
-<p class="hero-subtitle">Guides, downloads, and tutorials to help you build accessible technology solutions</p>
-</div>
-</section>
+  <header>
+    <nav class="container">
+      <div class="logo">
+        <a aria-label="Home" href="index.html">
+          <img alt="NARBE Foundation Logo" src="https://raw.githubusercontent.com/narbefoundation/images/refs/heads/main/purple%20more%20space.png"/>
+        </a>
+      </div>
+      <div class="site-title">NARBE Foundation</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#story">Founders</a></li>
+        <li><a href="index.html#latest-updates">News</a></li>
+        <li><a href="resources.html" class="active">Resources</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="getting-started.html">Getting Started</a></li>
+      </ul>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a class="donate-btn" href="https://www.paypal.com/donate/?hosted_button_id=RBGVHUDQ9GK66" target="_blank" rel="noopener">Support Our Mission</a>
+    </nav>
+  </header>
 
-<section class="about">
-<div class="container">
-<h2 class="section-title">Our Goal</h2>
-<p class="section-subtitle">We believe everyone deserves access to communication and play. Whether you're a caregiver, educator, or developer, the tools below can help you begin your journey toward building or discovering the right solutions for your loved one.</p>
-<div style="margin-top: 2rem; text-align: center;">
-<p style="color: #e5e7eb; font-size: 1.05rem; line-height: 1.7;">We encourage families to start with free or low-cost options before investing in expensive commercial systems. The right tool is always the one your loved one can actually use and enjoy.</p>
-</div>
-</div>
-</section>
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <h1>Resources</h1>
+        <p class="hero-subtitle">We list resources that support one and two button access, as well as a broader range of accessible tools and guides to help families and builders create inclusive experiences.</p>
+      </div>
+    </section>
 
-<section class="info-section">
-<div class="container">
-<div class="info-content">
-<div class="info-header">
-<h2>Free & Low Cost AAC Tools and Platforms We Recommend</h2>
-<p style="color: #475569; font-size: 1.05rem; line-height: 1.7; max-width: 800px; margin: 0 auto;">These are some of the best free and open-source AAC platforms available today. We suggest exploring these before anything else, as they give you a strong foundation in how AAC systems work.</p>
-</div>
+    <section class="resource-section">
+      <div class="container">
+        <h2 class="section-title">Switch Hardware and Adapters</h2>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <div class="resource-logo">
+              <img src="images/logos/switched-toys.avif" alt="Switched Toys Logo">
+            </div>
+            <h4><a href="https://www.switchedtoys.org/" target="_blank" rel="noopener">Switched Toys</a></h4>
+            <p>Affordable adaptive switches, DIY tutorials, and switch-adapted toys. Detailed guides for building your own switches.</p>
+            <a href="https://www.switchedtoys.org/" class="resource-link" target="_blank" rel="noopener">Visit Site &rarr;</a>
+          </div>
+          <div class="resource-card">
+            <div class="resource-logo">
+              <img src="images/logos/makers-making-change.webp" alt="Makers Making Change Logo">
+            </div>
+            <h4><a href="https://www.makersmakingchange.com/" target="_blank" rel="noopener">Makers Making Change</a></h4>
+            <p>Open-source community sharing accessible technology solutions, including 3D-printable switch housings and mounting systems.</p>
+            <a href="https://www.makersmakingchange.com/" class="resource-link" target="_blank" rel="noopener">Visit Site &rarr;</a>
+          </div>
+          <div class="resource-card">
+            <div class="resource-logo">
+              <img src="images/logos/adafruit.png" alt="Adafruit Logo">
+            </div>
+            <h4><a href="https://www.adafruit.com/" target="_blank" rel="noopener">Adafruit</a></h4>
+            <p>Source for components and guides. Great for building adaptive switches and USB HID inputs like the TRRS Trinkey.</p>
+            <a href="https://www.adafruit.com/" class="resource-link" target="_blank" rel="noopener">Visit Site &rarr;</a>
+          </div>
+          <div class="resource-card">
+            <div class="resource-logo">
+              <img src="images/branding/favicon.png" alt="NARBE Foundation Logo">
+            </div>
+            <h4><a href="https://github.com/NARBEHOUSE/Benny-s-Trinkey" target="_blank" rel="noopener">Benny's Trinkey Setup</a></h4>
+            <p>Code and configuration for the TRRS Trinkey to map two switches to keyboard inputs.</p>
+            <a href="https://github.com/NARBEHOUSE/Benny-s-Trinkey" class="resource-link" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="resource-grid">
-<div class="resource-card">
-<h4><a href="https://www.openaac.org" target="_blank" rel="noopener">OpenAAC.org</a></h4>
-<p>A community-driven hub dedicated to open-source AAC. It's a great place to discover free software, symbol sets, and shared projects designed to make communication more accessible for everyone.</p>
-</div>
+    <section class="resource-section">
+      <div class="container">
+        <h2 class="section-title">One and Two Button Scanning</h2>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <div class="resource-logo">
+              <img src="images/branding/beamin-benny.png" alt="Benny's Hub Logo">
+            </div>
+            <h4><a href="/bennyshub/" target="_blank" rel="noopener">Benny's Accessibility Hub</a></h4>
+            <p>Our collection of switch-accessible games and interactive tools designed specifically for two-switch access.</p>
+            <a href="/bennyshub/" class="resource-link" target="_blank" rel="noopener">Open Hub &rarr;</a>
+          </div>
+          <div class="resource-card">
+            <div class="resource-logo">
+              <img src="images/logos/one-switch.png" alt="One Switch Logo">
+            </div>
+            <h4><a href="https://oneswitch.org.uk" target="_blank" rel="noopener">One Switch</a></h4>
+            <p>Comprehensive resource for switch-accessible games, software, and hardware information.</p>
+            <a href="https://oneswitch.org.uk" class="resource-link" target="_blank" rel="noopener">Visit Site &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="resource-card">
-<h4><a href="https://weavechat.com" target="_blank" rel="noopener">WeaveChat</a></h4>
-<p>A modern web-based AAC platform that allows users to chat, share messages, and connect through simple, customizable communication boards. Great for users who want a conversational, social AAC experience.</p>
-</div>
+    <section class="resource-section">
+      <div class="container">
+        <h2 class="section-title">AAC and Platforms with Switch Support</h2>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <div class="resource-logo">
+              <img src="images/logos/openaac.svg" alt="OpenAAC Logo">
+            </div>
+            <h4><a href="https://www.openaac.org" target="_blank" rel="noopener">OpenAAC.org</a></h4>
+            <p>Community-driven hub dedicated to open-source AAC, free software, and symbol sets.</p>
+            <a href="https://www.openaac.org" class="resource-link" target="_blank" rel="noopener">Visit Site &rarr;</a>
+          </div>
+          <div class="resource-card">
+            <div class="resource-logo">
+              <img src="images/logos/weavechat.webp" alt="WeaveChat Logo">
+            </div>
+            <h4><a href="https://weavechat.com" target="_blank" rel="noopener">WeaveChat</a></h4>
+            <p>Modern web-based AAC platform for chatting and connecting through simple communication boards.</p>
+            <a href="https://weavechat.com" class="resource-link" target="_blank" rel="noopener">Visit Site &rarr;</a>
+          </div>
+          <div class="resource-card">
+            <div class="resource-logo">
+              <img src="images/logos/coughdrop.png" alt="CoughDrop Logo">
+            </div>
+            <h4><a href="https://www.mycoughdrop.com" target="_blank" rel="noopener">CoughDrop</a></h4>
+            <p>Flexible AAC app that runs on almost any device with an open approach to sharing boards.</p>
+            <a href="https://www.mycoughdrop.com" class="resource-link" target="_blank" rel="noopener">Visit Site &rarr;</a>
+          </div>
+          <div class="resource-card">
+            <div class="resource-logo">
+              <img src="images/logos/cboard.svg" alt="Cboard Logo">
+            </div>
+            <h4><a href="https://www.cboard.io" target="_blank" rel="noopener">Cboard</a></h4>
+            <p>Free, open-source AAC app that works in your browser with text-to-speech and multilingual support.</p>
+            <a href="https://www.cboard.io" class="resource-link" target="_blank" rel="noopener">Visit Site &rarr;</a>
+          </div>
+          <div class="resource-card">
+            <div class="resource-logo">
+              <img src="images/logos/asterics.svg" alt="AsTeRICS Grid Logo">
+            </div>
+            <h4><a href="https://grid.asterics.eu" target="_blank" rel="noopener">AsTeRICS Grid</a></h4>
+            <p>Powerful open-source communication grid system that is completely customizable.</p>
+            <a href="https://grid.asterics.eu" class="resource-link" target="_blank" rel="noopener">Visit Site &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="resource-card">
-<h4><a href="https://www.mycoughdrop.com" target="_blank" rel="noopener">CoughDrop</a></h4>
-<p>A flexible AAC app that runs on almost any device. It has a free trial and an open approach to sharing and editing boards, making it easy to explore AAC layouts and vocabularies.</p>
-</div>
+    <section class="resource-section">
+      <div class="container">
+        <h2 class="section-title">Gaming Adaptations</h2>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <div class="resource-logo">
+              <img src="images/logos/overjoyed.png" alt="Overjoyed Accessible Gaming Logo">
+            </div>
+            <h4><a href="https://apps.microsoft.com/detail/9nbj29g9x5jd?hl=en-US&gl=US" target="_blank" rel="noopener">Overjoyed Accessible Gaming</a></h4>
+            <p>Created by Anthony DeVergillo, a collaborator and friend of the NARBE Foundation, Overjoyed Accessible Gaming provides a game controller adapter designed specifically for gamers with mobility challenges. Their flagship device allows for mouse control when using a standard controller isn't possible</p>
+            <a href="https://apps.microsoft.com/detail/9nbj29g9x5jd?hl=en-US&gl=US" class="resource-link" target="_blank" rel="noopener">Visit Site &rarr;</a>
+          </div>
+          <div class="resource-card">
+            <div class="resource-logo">
+              <img src="images/logos/special-effect.png" alt="SpecialEffect Logo">
+            </div>
+            <h4><a href="https://www.specialeffect.org.uk/" target="_blank" rel="noopener">SpecialEffect</a></h4>
+            <p>SpecialEffect is a UK-based charity that helps people with physical disabilities enjoy video games. They provide free assessments and loan specialized gaming equipment tailored to individual needs.</p>
+            <a href="https://www.specialeffect.org.uk/" class="resource-link" target="_blank" rel="noopener">Visit Site &rarr;</a>
+          </div>
+          <div class="resource-card">
+            <div class="resource-logo">
+              <img src="images/logos/ablegamers.webp" alt="AbleGamers Charity Logo">
+            </div>
+            <h4><a href="https://ablegamers.org/" target="_blank" rel="noopener">AbleGamers Charity</a></h4>
+            <p>AbleGamers is a nonprofit organization that provides resources and community support to enable people with disabilities to play video games. They offer grants for adaptive gaming equipment and advocate for more inclusive game design.</p>
+            <a href="https://ablegamers.org/" class="resource-link" target="_blank" rel="noopener">Visit Site &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="resource-card">
-<h4><a href="https://www.cboard.io" target="_blank" rel="noopener">Cboard</a></h4>
-<p>An entirely free, open-source AAC app that works in your browser and on mobile. It includes text-to-speech, symbol-based communication, and multilingual support — perfect for getting started quickly.</p>
-</div>
+    <section class="resource-section" style="background: #f8fafc;">
+      <div class="container">
+        <h2 class="section-title">Want to build your own?</h2>
+        <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+          <p style="margin-bottom: 1.5rem; color: #475569; font-size: 1.1rem; line-height: 1.7;">Many of the games and tools in Benny’s Hub were created by the founders while building for their brother Ben. Modern tools, including AI, made it possible to prototype quickly, iterate often, and focus on what actually works for one- and two-button access. As technology continues to change, the way these tools are built changes with it.</p>
+          <p style="margin-bottom: 1.5rem; color: #475569; font-size: 1.1rem; line-height: 1.7;">The NARBE Foundation hosts a Discord community for families and builders who want to learn, share ideas, and experiment together. The best way to get started is by joining the conversation, asking questions, and learning alongside others. From time to time, the Foundation may also host live demonstrations and introductory workshops related to building simple one- and two-button tools.</p>
+          <div style="text-align: center; margin-top: 2rem;">
+            <a href="https://discord.gg/b82emKJhTC" target="_blank" rel="noopener" class="btn-discord">
+              <svg class="discord-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 24px; fill: white;">
+                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.086 2.157 2.419 0 1.334-.956 2.42-2.157 2.42zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.086 2.157 2.419 0 1.334-.946 2.42-2.157 2.42z"/>
+              </svg>
+              Join our Discord
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="resource-card">
-<h4><a href="https://grid.asterics.eu" target="_blank" rel="noopener">AsTeRICS Grid</a></h4>
-<p>A powerful open-source communication grid system that's completely customizable. You can host it locally, modify it for your needs, and connect it to assistive input devices — ideal for those who want full control and flexibility.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
+  </main>
 
-<section class="info-section" style="background: #f8fafc;">
-<div class="container">
-<div class="info-content">
-<div class="info-header">
-<h2>Hardware Resources for Affordable & DIY Solutions</h2>
-<p style="color: #475569; font-size: 1.05rem; line-height: 1.7; max-width: 800px; margin: 0 auto;">Commercial adaptive hardware can be expensive, with switches ranging from $60-200+ each and mounting systems costing hundreds more. These resources provide affordable alternatives and DIY solutions to help you get started without breaking the bank.</p>
-</div>
+  <footer>
+    <div class="container">
+      <div class="footer-social-links">
+        <a class="footer-social-link" href="https://www.facebook.com/narbefoundation" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg class="facebook-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.675 0h-21.35c-0.733 0-1.325 0.592-1.325 1.325v21.351c0 0.733 0.592 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.463 0.099 2.795 0.143v3.24l-1.918 0.001c-1.504 0-1.794 0.715-1.794 1.763v2.312h3.587l-0.467 3.622h-3.12v9.294h6.116c0.733 0 1.325-0.591 1.325-1.324v-21.351c0-0.733-0.592-1.325-1.325-1.325z"/>
+          </svg>
+        </a>
+        <a class="footer-social-link" href="https://www.youtube.com/@narbefoundation" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <svg class="youtube-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M23.498 6.186c-0.273-1.031-1.081-1.84-2.112-2.112-1.863-0.504-9.326-0.504-9.326-0.504s-7.463 0-9.326 0.504c-1.031 0.273-1.84 1.081-2.112 2.112-0.504 1.863-0.504 5.754-0.504 5.754s0 3.891 0.504 5.754c0.273 1.031 1.081 1.84 2.112 2.112 1.863 0.504 9.326 0.504 9.326 0.504s7.463 0 9.326-0.504c1.031-0.273 1.84-1.081 2.112-2.112 0.504-1.863 0.504-5.754 0.504-5.754s0-3.891-0.504-5.754zM9.545 15.568v-7.136l6.545 3.568-6.545 3.568z"/>
+          </svg>
+        </a>
+        <a class="footer-social-link" href="https://www.instagram.com/narbefoundation" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg class="instagram-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+          </svg>
+        </a>
+      </div>
+      <p>© 2025 NARBE Foundation. Unlocking the world, one switch at a time.</p>
+      <div class="footer-legal">
+        <p>501(c)(3) Nonprofit Organization</p>
+        <p>EIN: 39-3343898</p>
+        <p>All donations are tax-deductible to the fullest extent allowed by law.</p>
+      </div>
+    </div>
+  </footer>
 
-<div class="info-preface">
-<h3>Why DIY Hardware Matters</h3>
-<p>Many families need adaptive switches and mounting solutions but face significant cost barriers with commercial products. The DIY approach not only saves money but also allows for complete customization to meet specific physical needs and preferences.</p>
-<p>Starting with simple, affordable solutions helps you understand what works before investing in more expensive equipment. Many families find their DIY solutions work just as well as commercial alternatives.</p>
-</div>
-
-<div class="resource-grid">
-<div class="resource-card">
-<h4><a href="https://www.switchedtoys.org/" target="_blank" rel="noopener">Switched Toys</a></h4>
-<p>A comprehensive resource for affordable adaptive switches, DIY tutorials, and switch-adapted toys. They offer detailed guides for building your own switches using common materials, often for under $20. Includes step-by-step instructions for everything from basic button switches to more complex adaptive devices, plus reviews of commercial options and modification techniques.</p>
-</div>
-
-<div class="resource-card">
-<h4><a href="https://www.makersmakingchange.com/" target="_blank" rel="noopener">Makers Making Change</a></h4>
-<p>An open-source community that designs and shares accessible technology solutions. Their library includes 3D-printable switch housings, mounting systems, and complete DIY adaptive devices with step-by-step instructions. All designs are free to download and modify, with an active community providing support and sharing improvements.</p>
-</div>
-
-<div class="resource-card">
-<h4><a href="https://www.adafruit.com/" target="_blank" rel="noopener">Adafruit</a></h4>
-<p>A reliable source for components, microcontrollers, sensors, and maker gear. Their Learn guides walk you through projects step by step, which is great for building adaptive switches, USB HID inputs, and simple assistive tools. A community favorite for AAC makers is the TRRS Trinkey USB key for assistive technology.</p>
-</div>
-</div>
-
-<div class="info-step">
-<h4>Getting Started with DIY Hardware:</h4>
-<ul>
-<li><strong>Simple button switches</strong> – Convert large arcade buttons or even doorbell buttons into effective switches with basic wiring</li>
-<li><strong>3D printed housings</strong> – Use community designs to create custom switch enclosures that fit specific needs</li>
-<li><strong>Mounting solutions</strong> – Build adjustable mounts using PVC pipe, clamps, and basic hardware store materials</li>
-<li><strong>Pressure-sensitive switches</strong> – Create switches activated by head movement, foot pressure, or hand placement</li>
-</ul>
-
-<p>The key is finding what works reliably for your person's specific movement patterns and comfort needs. Start simple, test thoroughly, and build complexity gradually.</p>
-</div>
-
-<div class="info-step">
-<h4>Ben's Two-Button Setup</h4>
-<p>Here are the exact parts and files we use so you can replicate the build quickly.</p>
-<div class="resource-grid">
-<div class="resource-card">
-<h4><a href="https://www.adafruit.com/product/5954" target="_blank" rel="noopener">TRRS Trinkey (Adafruit)</a></h4>
-<p>USB key that acts as a simple HID interface for assistive switches. Plugs right into a USB port and is easy to program.</p>
-</div>
-
-<div class="resource-card">
-<h4><a href="https://a.co/d/e90E91m" target="_blank" rel="noopener">3.5mm Stereo to Mono Splitter</a></h4>
-<p>Splits left and right channels so you can connect two single-switch inputs with standard 3.5 mm plugs.</p>
-</div>
-
-<div class="resource-card">
-<h4><a href="https://www.switchedtoys.org/collections/switch-buttons" target="_blank" rel="noopener">Switched Toys Switches</a></h4>
-<p>Affordable, reliable switches with community-tested designs. Good for head-turn or light-pressure activation.</p>
-</div>
-
-<div class="resource-card">
-<h4><a href="https://github.com/NARBEHOUSE/Benny-s-Trinkey" target="_blank" rel="noopener">NARBE House | Benny's Trinkey Setup Files</a></h4>
-<p>Code and configuration for the TRRS Trinkey so you can map two switches to keyboard inputs and get running fast.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<section class="info-section" style="background: #f8fafc;">
-<div class="container">
-<div class="info-content">
-<div class="info-header">
-<h2>Switch-Based Games and Interactive Resources</h2>
-<p style="color: #475569; font-size: 1.05rem; line-height: 1.7; max-width: 800px; margin: 0 auto;">One of the primary reasons we founded NARBE Foundation was to ensure Ben and others like him could access engaging games and interactive experiences through simple switch controls. Play is essential for development, learning, and joy.</p>
-</div>
-
-<div class="info-preface">
-<h3>Why Switch Gaming Matters</h3>
-<p>Traditional games often require complex motor skills that many individuals cannot perform. Switch-accessible games level the playing field, allowing anyone to participate in digital play through one or two simple button presses.</p>
-<p>We curate and host games created by both professional developers and passionate community members. Our collection continues to grow as we evaluate new games and possibilities for accessible play.</p>
-</div>
-
-<div class="resource-grid">
-<div class="resource-card">
-<h4><a href="bennyshub/index.html" target="_blank" rel="noopener">Benny's Accessibility Hub by NARBE House</a></h4>
-<p>NARBE House collection of switch-accessible games and interactive tools. Built with love for Ben and shared with families worldwide. These games are designed specifically for two-switch access and focus on fun, engagement, and skill development.</p>
-</div>
-
-<div class="resource-card">
-<h4><a href="https://oneswitch.org.uk" target="_blank" rel="noopener">One Switch</a></h4>
-<p>A comprehensive resource for switch-accessible games, software, and hardware information. This UK-based site has been supporting the switch gaming community for years with reviews, tutorials, and a vast library of accessible gaming options.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<section class="info-section">
-<div class="container">
-<div class="info-content">
-<div class="info-header">
-<h2>Building Your Own Assistive Tools and Games</h2>
-<p style="color: #475569; font-size: 1.05rem; line-height: 1.7; max-width: 800px; margin: 0 auto;">If you want to go beyond existing tools and build something personal for your loved one, there are now more ways than ever to get started — even if you're not a programmer.</p>
-</div>
-
-<div class="info-step">
-<div class="info-callout">
-<p><strong>Important Note:</strong> AI tools listed below are typically paid platforms but many have free plans. You have to do what you're comfortable with. The platforms below are just examples and not recommendations — there are many more coming online daily and we want you to explore on your own.</p>
-</div>
-
-<p>We've had great success using AI-assisted app builders and coding companions to guide families through the process of building their own tools. While we don't directly link to AI systems, tools like ChatGPT, Claude, and Gemini can help you brainstorm, design, and even write simple code for your ideas.</p>
-
-<h4>Visual, No-Code Builders to Explore:</h4>
-<p>If you prefer visual, no-code builders, here are a few platforms you can explore. These are simply mentions so you can search for them yourself:</p>
-
-<ul>
-<li><strong>Lovable</strong> - An AI-powered no-code builder that helps you turn an idea into a web app in minutes</li>
-<li><strong>Glide Apps</strong> - Turns Google Sheets into mobile apps without any coding</li>
-<li><strong>Thunkable</strong> - A beginner-friendly platform for building mobile apps visually</li>
-<li><strong>Adalo</strong> - A drag-and-drop app builder focused on accessibility and usability</li>
-<li><strong>Bubble</strong> - A more advanced visual app builder that supports logic, data storage, and full interactivity</li>
-</ul>
-</div>
-
-<div class="info-quote">
-We encourage creativity. Start small, test ideas with your loved one, and build from there. Every tap, click, or head turn that leads to communication is progress.
-</div>
-
-<div class="info-step">
-<h3>📘 Guides and Tutorials</h3>
-<p>Step-by-step guides to help families and creators build custom AAC solutions.</p>
-<div class="resource-grid">
-<div class="resource-card">
-<h4><a href="aac-guide.html">NARBE House's Guide and Lessons Learned</a></h4>
-<p>Our family's journey building custom AAC solutions for Ben. This guide shares the principles, lessons learned, and practical approaches we used - written by the NARBE House family, not professionals. Includes 15 chapters covering everything from understanding individual needs to building with AI assistance, plus real-world implementation strategies learned through our experience.</p>
-</div>
-</div>
-<p><strong>More guides coming soon:</strong></p>
-<ul>
-<li>Hardware setup and mounting guide</li>
-<li>DIY switch building tutorial</li>
-<li>AI-assisted app development walkthrough</li>
-<li>Caregiver training materials</li>
-<li>Emergency backup system planning</li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-
-<section class="community" id="community">
-<div class="container">
-<h2>💬 Join Our Community</h2>
-<p style="margin: 1rem 0; color: #475569; font-size: 1.05rem; line-height: 1.7; max-width: 700px; margin-left: auto; margin-right: auto;">If you have questions, ideas, or just need help getting started, join our NARBE Foundation Discord. It's a welcoming space where caregivers, developers, and creators share resources, build accessible tools, and help one another grow.</p>
-<div style="margin-top: 1.5rem;">
-<a class="social-link" href="https://discord.gg/b82emKJhTC" rel="noopener" target="_blank">
-<svg class="discord-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M20.317 4.369A18.07 18.07 0 0 0 16.558 3c-.2.36-.43.85-.589 1.23a16.218 16.218 0 0 0-7.937 0c-.16-.38-.39-.87-.59-1.23-1.36.25-2.67.69-3.96 1.37C.533 9.053-.32 13.58.099 18.06a18.3 18.3 0 0 0 5.612 2.89c.45-.62.85-1.28 1.2-1.97-.66-.25-1.29-.55-1.89-.9.16-.12.32-.24.47-.37 3.64 1.7 7.57 1.7 11.18 0 .16.13.31.25.47.37-.6.35-1.23.65-1.89.9.35.69.75 1.35 1.2 1.97a18.3 18.3 0 0 0 5.61-2.89c.5-5.2-.84-9.65-2.63-13.69zM8.98 15.52c-1.07 0-1.94-.98-1.94-2.18s.86-2.18 1.94-2.18c1.07 0 1.94.98 1.94 2.18s-.86 2.18-1.94 2.18zm6.05 0c-1.07 0-1.94-.98-1.94-2.18s.86-2.18 1.94-2.18 1.94.98 1.94 2.18-.86 2.18-1.94 2.18z"></path>
-</svg>Join our Discord</a>
-</div>
-</div>
-</section>
-</main>
-
-<footer>
-<div class="container">
-<div class="footer-social-links">
-<a class="footer-social-link" href="https://www.facebook.com/narbefoundation" target="_blank" rel="noopener noreferrer">
-<svg class="facebook-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.31h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.324-.593 1.324-1.324V1.325C24 .593 23.407 0 22.675 0z"></path>
-</svg>
-</a>
-<a class="footer-social-link" href="https://www.youtube.com/@narbefoundation" target="_blank" rel="noopener noreferrer">
-<svg class="youtube-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M23.498 6.186a2.99 2.99 0 0 0-2.106-2.106C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.392.58A2.99 2.99 0 0 0 .502 6.186C0 8.08 0 12 0 12s0 3.92.502 5.814a2.99 2.99 0 0 0 2.106 2.106C4.5 20.5 12 20.5 12 20.5s7.5 0 9.392-.58a2.99 2.99 0 0 0 2.106-2.106C24 15.92 24 12 24 12s0-3.92-.502-5.814zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"></path>
-</svg>
-</a>
-<a class="footer-social-link" href="https://www.instagram.com/narbefoundation" target="_blank" rel="noopener noreferrer">
-<svg class="instagram-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
-</svg>
-</a>
-</div>
-<p>© 2025 NARBE Foundation. Building accessible technology for everyone.</p>
-<div class="footer-legal">
-<p>501(c)(3) Nonprofit Organization</p>
-<p>EIN: 39-3343898</p>
-<p>All donations are tax-deductible to the fullest extent allowed by law.</p>
-</div>
-</div>
-</footer>
-
-<!-- Fixed Donate footer for mobile -->
 <div class="mobile-donate-footer">
-<div class="container">
-<a class="donate-btn" href="https://www.paypal.com/donate/?hosted_button_id=RBGVHUDQ9GK66" target="_blank" rel="noopener">Support Our Mission</a>
-</div>
+  <div class="container">
+    <a class="donate-btn" href="https://www.paypal.com/donate/?hosted_button_id=RBGVHUDQ9GK66" target="_blank" rel="noopener">Support Our Mission</a>
+  </div>
 </div>
 
-<script>
-  // Mobile menu toggle
-  document.addEventListener('DOMContentLoaded', () => {
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const navLinks = document.getElementById('navLinks');
-    
-    if (mobileMenuBtn && navLinks) {
-      mobileMenuBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        navLinks.classList.toggle('active');
-        
-        // Animate hamburger menu
-        mobileMenuBtn.classList.toggle('active');
-        const spans = mobileMenuBtn.querySelectorAll('span');
-        if (navLinks.classList.contains('active')) {
-          spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-          spans[1].style.opacity = '0';
-          spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
-        } else {
-          spans[0].style.transform = 'none';
-          spans[1].style.opacity = '1';
-          spans[2].style.transform = 'none';
-        }
-      });
-      
-      // Close menu when clicking on a link
-      navLinks.addEventListener('click', (e) => {
-        if (e.target.tagName === 'A') {
-          navLinks.classList.remove('active');
-          mobileMenuBtn.classList.remove('active');
-          const spans = mobileMenuBtn.querySelectorAll('span');
-          spans[0].style.transform = 'none';
-          spans[1].style.opacity = '1';
-          spans[2].style.transform = 'none';
-        }
-      });
-      
-      // Close menu when clicking outside
-      document.addEventListener('click', (e) => {
-        if (!mobileMenuBtn.contains(e.target) && !navLinks.contains(e.target)) {
-          navLinks.classList.remove('active');
-          mobileMenuBtn.classList.remove('active');
-          const spans = mobileMenuBtn.querySelectorAll('span');
-          spans[0].style.transform = 'none';
-          spans[1].style.opacity = '1';
-          spans[2].style.transform = 'none';
-        }
-      });
+  <script>
+    // Sync header height to CSS variable
+    function syncHeaderHeightVar() {
+      const header = document.querySelector('header');
+      if (!header) return;
+      const h = Math.ceil(header.getBoundingClientRect().height);
+      document.documentElement.style.setProperty('--header-h', h + 'px');
     }
-  });
-</script>
+    window.addEventListener('resize', () => {
+      clearTimeout(window.__hdrT);
+      window.__hdrT = setTimeout(syncHeaderHeightVar, 100);
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+      syncHeaderHeightVar();
+      window.setTimeout(syncHeaderHeightVar, 200);
+      window.addEventListener('load', syncHeaderHeightVar);
+    });
+
+    // Mobile menu toggle
+    document.addEventListener('DOMContentLoaded', () => {
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const navLinks = document.querySelector('.nav-links');
+      
+      if (mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+          mobileMenuBtn.classList.toggle('active');
+          const spans = mobileMenuBtn.querySelectorAll('span');
+          if (navLinks.classList.contains('active')) {
+            spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+            spans[1].style.opacity = '0';
+            spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+          } else {
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+          }
+        });
+        
+        navLinks.addEventListener('click', (e) => {
+          if (e.target.tagName === 'A') {
+            navLinks.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            const spans = mobileMenuBtn.querySelectorAll('span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+          }
+        });
+        
+        document.addEventListener('click', (e) => {
+          if (!mobileMenuBtn.contains(e.target) && !navLinks.contains(e.target)) {
+            navLinks.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            const spans = mobileMenuBtn.querySelectorAll('span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>

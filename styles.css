@@ -1,0 +1,333 @@
+:root {
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --secondary: #ec4899;
+  --accent: #8b5cf6;
+  --background: #f8fafc;
+  --surface: #ffffff;
+  --text: #0f172a;
+  --text-light: #64748b;
+  --success: #22c55e;
+  --header-h: 80px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--background);
+  padding-top: var(--header-h);
+}
+
+/* Accessibility: Skip Link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary);
+  color: white;
+  padding: 8px;
+  z-index: 1001;
+  transition: top 0.3s;
+}
+.skip-link:focus { top: 0; }
+
+/* Navigation */
+header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-h);
+  z-index: 1000;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.logo img { height: 48px; width: auto; }
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--primary); }
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  color: white;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Content Sections */
+.content-section {
+  padding: 4rem 0;
+  background: var(--surface);
+}
+
+.content-block {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.content-block h2 {
+  font-size: 2rem;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.content-block p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: var(--text-light);
+}
+
+/* Community Section */
+.community {
+  background: #f8fafc;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.btn-discord {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #5865F2;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s;
+}
+
+.btn-discord:hover { transform: translateY(-2px); }
+
+/* Footer */
+footer {
+  background: var(--text);
+  color: white;
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.footer-social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.footer-social-link svg {
+  width: 24px;
+  height: 24px;
+  fill: white;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.footer-social-link:hover svg { opacity: 1; }
+
+.footer-legal p {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Mobile Donate Footer */
+.mobile-donate-footer { 
+  display: none; 
+}
+
+.footer-hidden .mobile-donate-footer { 
+  opacity: 0; 
+  pointer-events: none; 
+}
+
+/* Mobile Responsive */
+.mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; }
+.mobile-menu-btn span { display: block; width: 25px; height: 3px; background: var(--text); margin: 5px 0; }
+
+@media (max-width: 992px) {
+  /* Fixed mobile donate footer */
+  .mobile-donate-footer {
+    display: flex;
+    position: fixed;
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    z-index: 1002;
+    justify-content: center;
+    background: rgba(241,245,249,0.96);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(0,0,0,0.12);
+    padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+    transition: opacity 0.2s ease;
+  }
+  
+  .mobile-donate-footer .container { 
+    width: 100%; 
+    display: flex; 
+    justify-content: center; 
+  }
+  
+  .mobile-donate-footer .donate-btn {
+    margin: 0;
+    padding: 0.68rem 1.2rem;
+    font-size: 1rem;
+  }
+  
+  body { 
+    padding-bottom: calc(86px + env(safe-area-inset-bottom)); 
+  }
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-btn { display: block; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    padding: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+  }
+  .nav-links.active { display: flex; }
+  .hero h1 { font-size: 2rem; }
+}
+
+/* Modal Styles */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.modal-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-container {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 1rem;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  text-align: center;
+}
+
+.modal-overlay.active .modal-container {
+  transform: translateY(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-light);
+  transition: color 0.2s;
+  padding: 0.5rem;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: var(--text);
+}
+
+.modal-header {
+  margin-bottom: 1.5rem;
+}
+
+.modal-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.modal-body {
+  margin-bottom: 2rem;
+  color: var(--text-light);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+

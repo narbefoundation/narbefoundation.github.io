@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>NARBE Foundation - Empowering Accessible Technology</title>
-<link rel="icon" type="image/png" href="images/narbefoundation.png"/>
+<title>NARBE Foundation - One and Two Button Games and Tools</title>
+<link rel="icon" type="image/png" href="images/branding/favicon.png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
@@ -16,6 +16,15 @@
   gtag('js', new Date());
   gtag('config', 'G-BXR0H5SN9F');
 </script>
+<!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '1901217');
+</script>
+<!-- End MailerLite Universal -->
 <style>
   :root { --header-h: 96px; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,7 +39,22 @@
   section { scroll-margin-top: var(--header-h); }
   .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-  /* Header - removed any potential purple border/line issues */
+  /* Skip Link */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: #000;
+    color: white;
+    padding: 8px;
+    z-index: 10001;
+    transition: top 0.3s;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
+
+  /* Header */
   header {
     position: fixed; 
     top: 0; 
@@ -41,9 +65,6 @@
     border-bottom: 1px solid rgba(0,0,0,0.1);
     z-index: 1000;
     transition: all 0.3s ease;
-    border-left: none;
-    border-right: none;
-    border-top: none;
   }
   
   nav {
@@ -94,16 +115,6 @@
   
   .mobile-menu-btn { 
     display: none; 
-  }
-  
-  header .donate-btn { 
-    margin-top: 0; 
-    margin-bottom: 0; 
-  }
-    
-  /* Mobile menu styles */
-  .mobile-menu-btn {
-    display: none;
     flex-direction: column;
     cursor: pointer;
     padding: 5px;
@@ -120,15 +131,11 @@
     border-radius: 2px;
   }
   
-  .mobile-donate-footer { 
-    display: none; 
+  header .donate-btn { 
+    margin-top: 0; 
+    margin-bottom: 0; 
   }
 
-  /* Hide mobile donate footer on desktop */
-  .mobile-donate-footer { 
-    display: none; 
-  }
-    
   /* Mobile / tablet styles */
   @media (max-width: 992px) {
     :root { --header-h: 84px; }
@@ -157,16 +164,6 @@
       display: none; 
     }
     
-    .donate-btn {
-      justify-self: center;
-      grid-column: 2;
-      margin: 0;
-      padding: 0.45rem 0.9rem;
-      font-size: 0.85rem;
-      white-space: nowrap;
-      line-height: 1.1;
-    }
-    
     .mobile-menu-btn { 
       justify-self: end; 
       display: flex; 
@@ -175,46 +172,6 @@
     
     .nav-links { 
       display: none; 
-    }
-    
-    .nav-links.active { 
-      display: flex; 
-    }
-    
-    /* Fixed mobile donate footer */
-    .mobile-donate-footer {
-      display: flex;
-      position: fixed;
-      left: 0; 
-      right: 0; 
-      bottom: 0;
-      z-index: 1002;
-      justify-content: center;
-      background: rgba(241,245,249,0.96);
-      backdrop-filter: blur(10px);
-      border-top: 1px solid rgba(0,0,0,0.12);
-      padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
-      transition: opacity 0.2s ease;
-    }
-    
-    .mobile-donate-footer .container { 
-      width: 100%; 
-      display: flex; 
-      justify-content: center; 
-    }
-    
-    .mobile-donate-footer .donate-btn {
-      margin: 0;
-      padding: 0.68rem 1.2rem;
-      font-size: 1rem;
-    }
-    
-    body { 
-      padding-bottom: calc(86px + env(safe-area-inset-bottom)); 
-    }
-    
-    /* Dropdown menu */
-    .nav-links {
       position: absolute;
       top: 100%;
       right: 0;
@@ -222,7 +179,6 @@
       min-width: 220px;
       background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(10px);
-      display: flex;
       flex-direction: column;
       gap: 0;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
@@ -235,7 +191,8 @@
       z-index: 999;
     }
     
-    .nav-links.active {
+    .nav-links.active { 
+      display: flex; 
       transform: translateY(0);
       opacity: 1;
       visibility: visible;
@@ -266,23 +223,8 @@
       padding: 12px 0; 
     }
   }
-  
-  .footer-hidden .mobile-donate-footer { 
-    opacity: 0; 
-    pointer-events: none; 
-  }
 
-  /* Donate button with glow */
-  @keyframes donateGlow {
-    0% { box-shadow: 0 0 0 0 rgba(99,102,241,0.6); }
-    70% { box-shadow: 0 0 0 18px rgba(99,102,241,0); }
-    100% { box-shadow: 0 0 0 0 rgba(99,102,241,0); }
-  }
-  
-  @media (prefers-reduced-motion: reduce) {
-    .donate-btn { animation: none !important; }
-  }
-  
+  /* Buttons */
   .donate-btn {
     background: linear-gradient(135deg, #6366f1, #8b5cf6);
     color: white;
@@ -291,10 +233,7 @@
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    position: relative;
-    animation: donateGlow 2.4s ease-out infinite;
+    display: inline-block;
   }
   
   .donate-btn:hover {
@@ -302,55 +241,37 @@
     transform: translateY(-2px);
   }
 
-  /* Founding Donor section - compact spacing + custom list */
-  .founding-donor {
-    padding: 36px 0; /* reduced from 56px */
-    background: linear-gradient(135deg, #667eea, #764ba2);
+  .cta-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    margin: 0.5rem;
+  }
+
+  .cta-primary {
+    background: #fff;
+    color: #6366f1;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+
+  .cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  }
+
+  .cta-secondary {
+    background: rgba(255,255,255,0.2);
     color: #fff;
-    text-align: center;
+    border: 2px solid rgba(255,255,255,0.5);
   }
-  .donor-inner { max-width: 900px; margin: 0 auto; }
-  .donor-title { font-size: clamp(1.9rem, 1.4vw + 1rem, 2.3rem); font-weight: 800; margin-bottom: 0.25rem; }
-  .donor-subtitle { font-size: 1.02rem; opacity: 0.95; margin-bottom: 1.25rem; }
-  .donor-points { 
-    list-style: none; 
-    padding: 0; 
-    margin: 0.5rem auto 1.25rem; 
-    text-align: left; 
-    max-width: 780px; 
-  }
-  .donor-points li { 
-    position: relative; 
-    padding-left: 1.5rem; 
-    margin: 0.4rem 0; 
-    line-height: 1.6; 
-    color: rgba(255,255,255,0.95);
-  }
-  .donor-points li::before { 
-    content: ""; 
-    position: absolute; 
-    left: 0; 
-    top: 0.6rem; 
-    width: 8px; 
-    height: 8px; 
-    border-radius: 50%; 
-    background: #e0e7ff; 
-    box-shadow: 0 0 0 3px rgba(224,231,255,0.18); 
-  }
-  .donor-cta { 
-    display: inline-block; 
-    background: linear-gradient(135deg, #ffffff, #e0e7ff); 
-    color: #3730a3; 
-    padding: 0.7rem 1.4rem; 
-    border-radius: 999px; 
-    text-decoration: none; 
-    font-weight: 800; 
-    box-shadow: 0 8px 24px rgba(0,0,0,0.18), 0 6px 16px rgba(99,102,241,0.28); 
-    transition: transform .2s ease, box-shadow .2s ease; 
-  }
-  .donor-cta:hover { 
-    transform: translateY(-2px); 
-    box-shadow: 0 12px 30px rgba(0,0,0,0.22), 0 10px 22px rgba(99,102,241,0.35);
+
+  .cta-secondary:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
   }
 
   /* Hero */
@@ -373,44 +294,13 @@
     font-size: 1.125rem; 
     margin-bottom: 2rem; 
     opacity: 0.95; 
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  /* Story (dark blue background) */
-  .story-dark { 
-    padding: 56px 0; 
-    background: #1e293b; 
-    color: white; 
-    text-align: center; 
-  }
-
-  /* You are not alone section */
-  .hope { 
-    padding: 56px 0; 
-    background: #f1f5f9; 
-    text-align: center; 
-  }
-  
-  .hope .section-title { 
-    color: #1e293b; 
-  }
-  
-  .hope .section-subtitle { 
-    color: #64748b; 
-  }
-  
-  .hope-text { 
-    max-width: 800px; 
-    margin: 0 auto 2rem; 
-    font-size: 1.05rem; 
-    color: #475569; 
-    line-height: 1.7; 
-  }
-
-  /* Mission section */
-  .mission { 
-    padding: 56px 0; 
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-  }
+  /* Sections */
+  .section-padding { padding: 56px 0; }
   
   .section-header { 
     text-align: center; 
@@ -427,17 +317,49 @@
   .section-subtitle { 
     font-size: 1.05rem; 
     color: #64748b; 
-    max-width: 640px; 
+    max-width: 800px; 
     margin: 0 auto; 
+    line-height: 1.7;
   }
-    
-  .mission .section-title { 
-    color: #fff; 
+
+  /* Story (dark blue background) */
+  .story-dark { 
+    padding: 56px 0; 
+    background: #1e293b; 
+    color: white; 
+    text-align: center; 
   }
   
-  .mission .section-subtitle { 
-    color: rgba(255,255,255,0.95); 
+  .story-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    text-align: left;
   }
+
+  .story-text p {
+    font-size: 1.05rem; 
+    color: rgba(255,255,255,0.9); 
+    margin-bottom: 1rem; 
+    line-height: 1.7;
+  }
+  
+  .story-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+  }
+
+  /* Mission section */
+  .mission { 
+    padding: 56px 0; 
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+    color: white;
+  }
+  
+  .mission .section-title { color: #fff; }
+  .mission .section-subtitle { color: rgba(255,255,255,0.95); }
     
   .mission-grid { 
     display: grid; 
@@ -447,315 +369,221 @@
   }
   
   .mission-card { 
-    background: rgba(255, 255, 255, 0.95);
+    background: #ffffff;
     color: #1e293b;
-    padding: 2rem; 
-    border-radius: 20px; 
-    box-shadow: 0 5px 25px rgba(0,0,0,0.15); 
-    transition: all 0.3s ease; 
-    opacity: 0; 
-    transform: translateY(30px); 
+    padding: 2.5rem 2rem; 
+    border-radius: 16px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+    border: 1px solid rgba(255, 255, 255, 0.5);
     position: relative;
     overflow: hidden;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    z-index: 1;
   }
   
+  /* Image Layer (Hidden by default) */
+  .mission-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+  }
+
+  /* Specific Images with Dark Overlay */
+  .card-hardware::before { 
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/content/hardware-kits.png');
+  }
+  .card-hub::before { 
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/content/bennys-hub.png');
+  }
+  .card-resources::before { 
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/content/resources.jpg');
+  }
+  .card-discord::before { 
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/content/discord-community.jpeg');
+  }
+  
+  /* Top Gradient Strip */
+  .mission-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6);
+    transition: opacity 0.3s ease;
+    z-index: 2;
+  }
+
+  /* Hover Effects */
   .mission-card:hover { 
-    transform: translateY(-5px); 
-    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-    background: rgba(255, 255, 255, 1);
+    transform: translateY(-8px); 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    border-color: transparent;
   }
-  
-  .mission-card.animate { 
-    opacity: 1; 
-    transform: translateY(0); 
+
+  .mission-card:hover::before {
+    opacity: 1;
   }
-  
-  .mission-card:nth-child(1) { 
-    transition-delay: 0.1s; 
-  }
-  
-  .mission-card:nth-child(2) { 
-    transition-delay: 0.3s; 
-  }
-  
-  .mission-card:nth-child(3) { 
-    transition-delay: 0.5s; 
+
+  .mission-card:hover::after {
+    opacity: 0;
   }
   
   .mission-card h3 { 
-    color: #1e293b;
-    position: relative; 
-    z-index: 2; 
-    font-size: 1.3rem;
-    font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 800;
     margin-bottom: 1rem;
-  }
-  
-  .mission-card p { 
-    color: #475569;
-    position: relative; 
-    z-index: 2; 
-    line-height: 1.6;
-  }
-
-  /* Feature content layout */
-  .feature-content { 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    gap: 4rem; 
-    align-items: center; 
-    margin-top: 4rem; 
-  }
-  
-  .feature-text h3 { 
-    font-size: 1.8rem; 
-    font-weight: 700; 
-    margin-bottom: 1rem; 
-    color: #fff;
-  }
-  
-  .feature-text p { 
-    font-size: 1.05rem; 
-    color: rgba(255, 255, 255, 0.95);
-    margin-bottom: 1rem; 
-    line-height: 1.7; 
-    text-align: left;
-  }
-
-  /* Video container */
-  .video-image {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    border-radius: 20px;
-    padding: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  }
-  
-  .video-inner { 
-    border-radius: 16px; 
-    background: #000; 
-    overflow: visible; 
-    width: 100%; 
-  }
-    
-  .tiktok-embed { 
-    margin: 0 auto !important; 
-    width: 100% !important; 
-    max-width: 100% !important; 
-  }
-  
-  /* TikTok placeholder */
-  .tiktok-placeholder {
-    width: 100%;
-    aspect-ratio: 9 / 16;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
+    color: #1e293b;
+    letter-spacing: -0.02em;
     position: relative;
+    z-index: 3;
+    transition: color 0.3s ease;
+  }
+
+  .mission-card:hover h3 {
+    color: #ffffff;
+    margin-bottom: 0; /* Center vertically when p is gone */
+  }
+
+  a.mission-card {
+    text-decoration: none;
+    display: block;
     cursor: pointer;
+  }
+
+  a.mission-card p {
+    color: #64748b;
+    font-weight: 500;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    position: relative;
+    z-index: 3;
+    max-height: 100px;
+    opacity: 1;
+    transition: all 0.3s ease;
+  }
+
+  .mission-card:hover p {
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
     overflow: hidden;
   }
-  
-  .tiktok-placeholder .play-hit {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 150px;
-    height: 150px;
-    border-radius: 9999px;
-    border: 0;
-    background: transparent;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+
+  /* Initiatives */
+  .initiatives {
+    padding: 56px 0;
+    background: #f8fafc;
   }
-  
-  .tiktok-placeholder .play-hit:focus-visible {
-    outline: 3px solid rgba(255,255,255,0.7);
-    outline-offset: 4px;
+
+  .initiatives-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+    gap: 2rem;
+    margin-top: 3rem;
   }
-  
-  .tiktok-placeholder .play {
+
+  .initiative-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+  }
+
+  .initiative-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+  }
+
+  .initiative-card h3 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+
+  .initiative-card p {
+    color: #64748b;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-link {
+    color: #6366f1;
+    text-decoration: none;
+    font-weight: 600;
     display: inline-flex;
     align-items: center;
-    gap: 11px;
-    background: rgba(0,0,0,0.35);
-    padding: 12px 20px;
-    border-radius: 999px;
-    font-weight: 600;
-    backdrop-filter: blur(2px);
-    color: #fff;
-    font-size: 1rem;
-  }
-  
-  .tiktok-placeholder .triangle {
-    width: 0; 
-    height: 0;
-    border-left: 14px solid #fff;
-    border-top: 9px solid transparent;
-    border-bottom: 9px solid transparent;
-  }
-  
-  .tiktok-placeholder .spinner {
-    position: absolute;
-    top: 50%; 
-    left: 50%;
-    width: 36px; 
-    height: 36px;
-    border: 3px solid rgba(255,255,255,0.4);
-    border-top-color: #fff;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    animation: spin 1s linear infinite;
-    pointer-events: none;
-  }
-  
-  @keyframes spin { 
-    to { transform: translate(-50%, -50%) rotate(360deg); } 
+    gap: 0.5rem;
   }
 
-  /* Want to help section */
-  .help { 
-    padding: 56px 0; 
-    background: #f8fafc; 
-    color: #1e293b; 
-    text-align: center; 
+  .card-link:hover {
+    text-decoration: underline;
   }
-  
-  .help .section-title { 
-    color: #1e293b; 
-  }
-  
-  .help .section-subtitle { 
-    color: #64748b; 
-  }
-  
-  .help-content { 
-    max-width: 900px; 
-    margin: 0 auto; 
-  }
-  
-  .help-text { 
-    font-size: 1.05rem; 
-    color: #475569; 
-    line-height: 1.7; 
-    margin-bottom: 1rem; 
+
+  /* Support Section */
+  .support-section {
+    padding: 56px 0;
+    background: #fff;
     text-align: center;
   }
-  
-  .help-list { 
-    list-style: none; 
-    padding: 0; 
-    margin: 2rem 0; 
-    text-align: left; 
-    max-width: 800px; 
-    margin-left: auto; 
-    margin-right: auto;
+
+  .support-content {
+    max-width: 800px;
+    margin: 0 auto;
   }
-  
-  .help-list li { 
-    font-size: 1.05rem; 
-    color: #475569; 
-    line-height: 1.7; 
-    margin-bottom: 1rem; 
-    padding-left: 1.5rem; 
+
+  .support-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem auto;
+    text-align: left;
+    max-width: 600px;
+  }
+
+  .support-list li {
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
     position: relative;
-  }
-  
-  .help-list li:before { 
-    content: "•"; 
-    color: #6366f1; 
-    font-size: 1.2rem; 
-    position: absolute; 
-    left: 0; 
-    top: 0;
+    color: #475569;
   }
 
-  /* Founding Donor section */
-  .founding-donor {
-    padding: 36px 0;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: #fff;
+  .support-list li::before {
+    content: "•";
+    color: #6366f1;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+  }
+
+  .newsletter-section {
+    padding: 56px 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     text-align: center;
   }
-  
-  .donor-inner { 
-    max-width: 900px; 
-    margin: 0 auto; 
-  }
-  
-  .donor-title { 
-    font-size: clamp(1.9rem, 1.4vw + 1rem, 2.3rem); 
-    font-weight: 800; 
-    margin-bottom: 0.25rem; 
-  }
-  
-  .donor-subtitle { 
-    font-size: 1.02rem; 
-    opacity: 0.95; 
-    margin-bottom: 1.25rem; 
-  }
-  
-  .donor-points { 
-    list-style: none; 
-    padding: 0; 
-    margin: 0.5rem auto 1.25rem; 
-    text-align: left; 
-    max-width: 780px; 
-  }
-  
-  .donor-points li { 
-    position: relative; 
-    padding-left: 1.5rem; 
-    margin: 0.4rem 0; 
-    line-height: 1.6; 
-    color: rgba(255,255,255,0.95); 
-  }
-  
-  .donor-points li::before { 
-    content: ""; 
-    position: absolute; 
-    left: 0; 
-    top: 0.6rem; 
-    width: 8px; 
-    height: 8px; 
-    border-radius: 50%; 
-    background: #e0e7ff; 
-    box-shadow: 0 0 0 3px rgba(224,231,255,0.18); 
-  }
-  
-  .donor-cta { 
-    display: inline-block; 
-    background: linear-gradient(135deg, #ffffff, #e0e7ff); 
-    color: #3730a3; 
-    padding: 0.7rem 1.4rem; 
-    border-radius: 999px; 
-    text-decoration: none; 
-    font-weight: 800; 
-    box-shadow: 0 8px 24px rgba(0,0,0,0.18), 0 6px 16px rgba(99,102,241,0.28); 
-    transition: transform .2s ease, box-shadow .2s ease; 
-  }
-  
-  .donor-cta:hover { 
-    transform: translateY(-2px); 
-    box-shadow: 0 12px 30px rgba(0,0,0,0.22), 0 10px 22px rgba(99,102,241,0.35); 
+
+  .transparency-note {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    margin: 2rem 0;
   }
 
   /* Contact section */
   .contact { 
     padding: 56px 0 20px; 
-    background: #ffffff; 
+    background: #f1f5f9; 
     text-align: center; 
   }
   
@@ -772,96 +600,113 @@
     padding: 2rem; 
     border-radius: 15px; 
     box-shadow: 0 5px 20px rgba(0,0,0,0.08); 
-    position: relative;
-    overflow: hidden;
-    opacity: 0; 
-    transform: translateY(30px); 
-    transition: all 0.3s ease;
-  }
-  
-  .contact-card.animate { 
-    opacity: 1; 
-    transform: translateY(0); 
-  }
-  
-  .contact-card:nth-child(1) { 
-    transition-delay: 0.1s; 
-  }
-  
-  .contact-card:nth-child(2) { 
-    transition-delay: 0.3s;
-    animation: helpGlow 2.4s ease-out infinite;
-  }
-  
-  .contact-card:nth-child(3) { 
-    transition-delay: 0.5s;
   }
   
   .contact-card h4 { 
     color: white; 
     margin-bottom: 1rem; 
-    position: relative; 
-    z-index: 2; 
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3); 
+    font-size: 1.2rem;
   }
   
-  .contact-card p { 
+  .contact-card p, .contact-card a { 
     color: rgba(255,255,255,0.9); 
-    position: relative; 
-    z-index: 2; 
-    text-shadow: 0 1px 3px rgba(0,0,0,0.3); 
-  }
-  
-  .contact-card a { 
-    color: rgba(255,255,255,0.9); 
+    text-decoration: none;
   }
 
+  @keyframes bounce-glow {
+    0%, 100% { transform: translateY(0); box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+    50% { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(99, 102, 241, 0.6); }
+  }
+  
   .contact-card.clickable {
+    animation: bounce-glow 3s infinite ease-in-out;
     cursor: pointer;
-    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
   }
   
-  .contact-card.clickable:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-  }
-  
-  .contact-card.clickable h4,
-  .contact-card.clickable p {
+  .contact-card.clickable::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 15px;
+    box-shadow: inset 0 0 20px rgba(255,255,255,0.3);
     pointer-events: none;
   }
+
+  /* RSS Feed Section */
+  .rss-feed-section {
+    padding: 56px 0;
+    background: #f8fafc;
+  }
   
-  @keyframes helpGlow {
-    0% { box-shadow: 0 5px 20px rgba(0,0,0,0.08), 0 0 0 0 rgba(102,126,234,0.6); }
-    70% { box-shadow: 0 5px 20px rgba(0,0,0,0.08), 0 0 0 18px rgba(102,126,234,0); }
-    100% { box-shadow: 0 5px 20px rgba(0,0,0,0.08), 0 0 0 0 rgba(102,126,234,0); }
+  .rss-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
   }
   
-  @media (prefers-reduced-motion: reduce) {
-    .contact-card:nth-child(2) { animation: none !important; }
+  .rss-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
   }
-
-  .instagram-icon {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
+  
+  .rss-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
   }
-
-  .facebook-icon {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
+  
+  .rss-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-color: #e2e8f0;
   }
-
-  .youtube-icon {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
+  
+  .rss-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .rss-date {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+  }
+  
+  .rss-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: #1e293b;
+    line-height: 1.4;
+  }
+  
+  .rss-description {
+    font-size: 0.95rem;
+    color: #475569;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   /* Footer */
   footer { 
-    background: #1e293b !important; 
+    background: #1e293b; 
     color: white; 
     text-align: center; 
     padding: 2rem 0; 
@@ -897,454 +742,1118 @@
     fill: currentColor;
   }
 
-  .legal-note { 
-    margin-bottom: 12px; 
-    text-align: center; 
-  }
-
-  .form-success {
-    display: none;
-    text-align: center;
-    font-size: 1.05rem;
-    color: rgba(255,255,255,0.95);
-    padding: 1rem 0;
-  }
-
-  /* Social media section */
-  .social-media {
-    background: #f1f5f9;
-    padding: 2rem 0;
-    text-align: center;
-  }
-  
-  .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 1rem;
-  }
-  
-  .social-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-  }
-  
-  .social-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-  }
-  
-  .discord-icon {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
-  }
-
-  .instagram-icon {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
-  }
-
-  .legal-note { 
-    margin-bottom: 12px; 
-    text-align: center; 
-  }
-
-  /* Section paddings */
-  .hero { padding: 90px 0 56px; }
-  .story-dark { padding: 56px 0; }
-  .hope { padding: 56px 0; }
-  .mission { padding: 56px 0; }
-  .help { padding: 56px 0; }
-  .founding-donor { padding: 36px 0; }
-  .contact { padding: 56px 0 20px; }
-
-  /* Our Story layout */
-  .story-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-  }
-  
-  .story-text h2 { 
-    color: #fff; 
-  }
-  
-  .story-image {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .story-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 15px;
-  }
-
-  /* Responsive adjustments */
   @media (max-width: 900px) {
-    .feature-content { 
-      grid-template-columns: 1fr; 
-    }
-    
     .story-content { 
       display: flex; 
       flex-direction: column; 
       gap: 2rem; 
     }
-    
-    .story-image { 
-      order: 0; 
-    }
+    .story-image { order: 0; }
   }
 
-  @media (min-width: 901px) {
-    .video-image {
-      width: 100%;
-      max-width: min(922px, calc((100vh - var(--header-h) - 80px) * 0.5625));
-      justify-self: center;
+  /* Mobile Donate Footer */
+  .mobile-donate-footer { 
+    display: none; 
+  }
+
+  .footer-hidden .mobile-donate-footer { 
+    opacity: 0; 
+    pointer-events: none; 
+  }
+
+  @media (max-width: 992px) {
+    /* Fixed mobile donate footer */
+    .mobile-donate-footer {
+      display: flex;
+      position: fixed;
+      left: 0; 
+      right: 0; 
+      bottom: 0;
+      z-index: 1002;
+      justify-content: center;
+      background: rgba(241,245,249,0.96);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(0,0,0,0.12);
+      padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+      transition: opacity 0.2s ease;
+    }
+    
+    .mobile-donate-footer .container { 
+      width: 100%; 
+      display: flex; 
+      justify-content: center; 
+    }
+    
+    .mobile-donate-footer .donate-btn {
+      margin: 0;
+      padding: 0.68rem 1.2rem;
+      font-size: 1rem;
+    }
+    
+    body { 
+      padding-bottom: calc(86px + env(safe-area-inset-bottom)); 
     }
   }
 </style>
+  <style type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1766132");</style>
+  <style type="text/css">
+    /* LOADER */
+    .ml-form-embedSubmitLoad {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+    }
+
+    .g-recaptcha {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
+
+    .ml-form-embedSubmitLoad:after {
+      content: " ";
+      display: block;
+      width: 11px;
+      height: 11px;
+      margin: 1px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+    border-color: #ffffff #ffffff #ffffff transparent;
+    animation: ml-form-embedSubmitLoad 1.2s linear infinite;
+    }
+    @keyframes ml-form-embedSubmitLoad {
+      0% {
+      transform: rotate(0deg);
+      }
+      100% {
+      transform: rotate(360deg);
+      }
+    }
+      #mlb2-35030211.ml-form-embedContainer {
+        box-sizing: border-box;
+        display: table;
+        margin: 0 auto;
+        position: static;
+        width: 100% !important;
+      }
+      #mlb2-35030211.ml-form-embedContainer h4,
+      #mlb2-35030211.ml-form-embedContainer p,
+      #mlb2-35030211.ml-form-embedContainer span,
+      #mlb2-35030211.ml-form-embedContainer button {
+        text-transform: none !important;
+        letter-spacing: normal !important;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper {
+        background-color: #ffffff;
+        border: none !important;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        box-sizing: border-box;
+        display: inline-block !important;
+        margin: 0;
+        padding: 0;
+        position: relative;
+              }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper.embedPopup,
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper.embedDefault { width: 400px; }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper.embedForm { max-width: 400px; width: 100%; }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-align-left { text-align: left; }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-align-center { text-align: center; }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-align-default { display: table-cell !important; vertical-align: middle !important; text-align: center !important; }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-align-right { text-align: right; }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedHeader img {
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        height: auto;
+        margin: 0 auto !important;
+        max-width: 100%;
+        width: undefinedpx;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody,
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody {
+        padding: 20px 20px 0 20px;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody.ml-form-embedBodyHorizontal {
+        padding-bottom: 0;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent,
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent {
+        text-align: left;
+        margin: 0 0 20px 0;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent h4,
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent h4 {
+        color: #1e293b;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0 0 0.5rem 0;
+        text-align: center;
+        word-break: break-word;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p,
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p {
+        color: #64748b;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.6;
+        margin: 0 0 1.5rem 0;
+        text-align: center;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent ul,
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent ol,
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent ul,
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent ol {
+        color: #64748b;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 14px;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent ol ol,
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent ol ol {
+        list-style-type: lower-alpha;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent ol ol ol,
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent ol ol ol {
+        list-style-type: lower-roman;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p a,
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p a {
+        color: #000000;
+        text-decoration: underline;
+      }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-block-form .ml-field-group {
+        text-align: left!important;
+      }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-block-form .ml-field-group label {
+        margin-bottom: 5px;
+        color: #333333;
+        font-size: 14px;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: bold; font-style: normal; text-decoration: none;;
+        display: inline-block;
+        line-height: 20px;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p:last-child,
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p:last-child {
+        margin: 0;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody form {
+        margin: 0;
+        width: 100%;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-formContent,
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow {
+        margin: 0 0 20px 0;
+        width: 100%;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow {
+        float: left;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-formContent.horozintalForm {
+        margin: 0;
+        padding: 0 0 20px 0;
+        width: 100%;
+        height: auto;
+        float: left;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow {
+        margin: 0 0 10px 0;
+        width: 100%;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow.ml-last-item {
+        margin: 0;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow.ml-formfieldHorizintal {
+        margin: 0;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input {
+        background-color: #ffffff !important;
+        color: #1e293b !important;
+        border-color: #e2e8f0;
+        border-radius: 8px !important;
+        border-style: solid !important;
+        border-width: 1px !important;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 1rem !important;
+        height: auto;
+        line-height: 1.5 !important;
+        margin-bottom: 0;
+        margin-top: 0;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0.75rem 1rem !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        max-width: 100% !important;
+        transition: border-color 0.3s ease;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input:focus {
+        border-color: #6366f1 !important;
+        outline: none;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input::-webkit-input-placeholder,
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input::-webkit-input-placeholder { color: #333333; }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input::-moz-placeholder,
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input::-moz-placeholder { color: #333333; }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input:-ms-input-placeholder,
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input:-ms-input-placeholder { color: #333333; }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input:-moz-placeholder,
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input:-moz-placeholder { color: #333333; }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow textarea, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow textarea {
+        background-color: #ffffff !important;
+        color: #333333 !important;
+        border-color: #cccccc;
+        border-radius: 8px !important;
+        border-style: solid !important;
+        border-width: 1px !important;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 14px !important;
+        height: auto;
+        line-height: 21px !important;
+        margin-bottom: 0;
+        margin-top: 0;
+        padding: 10px 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        max-width: 100% !important;
+      }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-label::before, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-label::before, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label::before, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label::before, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before {
+          border-color: #cccccc!important;
+          background-color: #ffffff!important;
+      }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input.custom-control-input[type="checkbox"]{
+        box-sizing: border-box;
+        padding: 0;
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+        margin-top: 5px;
+        margin-left: -1.5rem;
+        overflow: visible;
+      }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label::before, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label::before, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before {
+        border-radius: 4px!important;
+      }
+
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow input[type=checkbox]:checked~.label-description::after, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox input[type=checkbox]:checked~.label-description::after, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-input:checked~.custom-control-label::after, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-input:checked~.custom-control-label::after, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox input[type=checkbox]:checked~.label-description::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+      }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-input:checked~.custom-control-label::after, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-input:checked~.custom-control-label::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+      }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-label::before, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-label::before, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-input:checked~.custom-control-label::before, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-input:checked~.custom-control-label::before, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox input[type=checkbox]:checked~.label-description::before, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox input[type=checkbox]:checked~.label-description::before, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow input[type=checkbox]:checked~.label-description::before  {
+          border-color: #6366f1!important;
+          background-color: #6366f1!important;
+      }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-label::before, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-label::before, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-label::after, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-label::after, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label::before, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label::after, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label::before, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label::after {
+           top: 2px;
+           box-sizing: border-box;
+      }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::after, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::after {
+           top: 0px!important;
+           box-sizing: border-box!important;
+      }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::after {
+        top: 0px!important;
+           box-sizing: border-box!important;
+      }
+
+       #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::after {
+            top: 0px!important;
+            box-sizing: border-box!important;
+            position: absolute;
+            left: -1.5rem;
+            display: block;
+            width: 1rem;
+            height: 1rem;
+            content: "";
+       }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before {
+        top: 0px!important;
+        box-sizing: border-box!important;
+      }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .custom-control-label::before {
+          position: absolute;
+          top: 4px;
+          left: -1.5rem;
+          display: block;
+          width: 16px;
+          height: 16px;
+          pointer-events: none;
+          content: "";
+          background-color: #ffffff;
+          border: #adb5bd solid 1px;
+          border-radius: 50%;
+      }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .custom-control-label::after {
+          position: absolute;
+          top: 2px!important;
+          left: -1.5rem;
+          display: block;
+          width: 1rem;
+          height: 1rem;
+          content: "";
+      }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before {
+          position: absolute;
+          top: 4px;
+          left: -1.5rem;
+          display: block;
+          width: 16px;
+          height: 16px;
+          pointer-events: none;
+          content: "";
+          background-color: #ffffff;
+          border: #adb5bd solid 1px;
+          border-radius: 50%;
+      }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::after {
+          position: absolute;
+          top: 0px!important;
+          left: -1.5rem;
+          display: block;
+          width: 1rem;
+          height: 1rem;
+          content: "";
+      }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::after {
+          position: absolute;
+          top: 0px!important;
+          left: -1.5rem;
+          display: block;
+          width: 1rem;
+          height: 1rem;
+          content: "";
+      }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .custom-radio .custom-control-label::after {
+          background: no-repeat 50%/50% 50%;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .custom-checkbox .custom-control-label::after, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::after, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::after, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::after {
+          background: no-repeat 50%/50% 50%;
+      }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-control, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-control {
+        position: relative;
+        display: block;
+        min-height: 1.5rem;
+        padding-left: 1.5rem;
+      }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-input, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-input, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-input, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-input {
+          position: absolute;
+          z-index: -1;
+          opacity: 0;
+          box-sizing: border-box;
+          padding: 0;
+      }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-label, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-label, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label {
+          color: #000000;
+          font-size: 12px!important;
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          line-height: 22px;
+          margin-bottom: 0;
+          position: relative;
+          vertical-align: top;
+          font-style: normal;
+          font-weight: 700;
+      }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-select, #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-select {
+        background-color: #ffffff !important;
+        color: #333333 !important;
+        border-color: #cccccc;
+        border-radius: 4px !important;
+        border-style: solid !important;
+        border-width: 1px !important;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 14px !important;
+        line-height: 20px !important;
+        margin-bottom: 0;
+        margin-top: 0;
+        padding: 10px 28px 10px 12px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        max-width: 100% !important;
+        height: auto;
+        display: inline-block;
+        vertical-align: middle;
+        background: url('https://assets.mlcdn.com/ml/images/default/dropdown.svg') no-repeat right .75rem center/8px 10px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+      }
+
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow {
+        height: auto;
+        width: 100%;
+        float: left;
+      }
+      .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-input-horizontal { width: 70%; float: left; }
+      .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-button-horizontal { width: 30%; float: left; }
+      .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-button-horizontal.labelsOn { padding-top: 25px;  }
+      .ml-form-formContent.horozintalForm .ml-form-horizontalRow .horizontal-fields { box-sizing: border-box; float: left; padding-right: 10px;  }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input {
+        background-color: #ffffff;
+        color: #333333;
+        border-color: #cccccc;
+        border-radius: 4px;
+        border-style: solid;
+        border-width: 1px;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 0;
+        margin-top: 0;
+        padding: 10px 10px;
+        width: 100%;
+        box-sizing: border-box;
+        overflow-y: initial;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow button {
+        background-color: #691fff !important;
+        border-color: #691fff;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 4px;
+        box-shadow: none;
+        color: #ffffff !important;
+        cursor: pointer;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 14px !important;
+        font-weight: 700;
+        line-height: 20px;
+        margin: 0 !important;
+        padding: 10px !important;
+        width: 100%;
+        height: auto;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow button:hover {
+        background-color: #ac63ff !important;
+        border-color: #ac63ff !important;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow input[type="checkbox"] {
+        box-sizing: border-box;
+        padding: 0;
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+        margin-top: 5px;
+        margin-left: -1.5rem;
+        overflow: visible;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description {
+        color: #000000;
+        display: block;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 12px;
+        text-align: left;
+        margin-bottom: 0;
+        position: relative;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label {
+        font-weight: normal;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        display: block;
+        min-height: 24px;
+        padding-left: 24px;
+
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label a {
+        color: #000000;
+        text-decoration: underline;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label p {
+        color: #000000 !important;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+        font-size: 12px !important;
+        font-weight: normal !important;
+        line-height: 18px !important;
+        padding: 0 !important;
+        margin: 0 5px 0 0 !important;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label p:last-child {
+        margin: 0;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit {
+        margin: 0 0 20px 0;
+        float: left;
+        width: 100%;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+        border: none !important;
+        border-radius: 50px !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+        color: #ffffff !important;
+        cursor: pointer;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        line-height: 1.5 !important;
+        height: auto;
+        padding: 0.75rem 1.5rem !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        transition: all 0.3s ease !important;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.loading {
+        display: none;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button:hover {
+        box-shadow: 0 10px 25px rgba(99,102,241,0.45) !important;
+        transform: translateY(-2px) !important;
+      }
+      .ml-subscribe-close {
+        width: 30px;
+        height: 30px;
+        background: url('https://assets.mlcdn.com/ml/images/default/modal_close.png') no-repeat;
+        background-size: 30px;
+        cursor: pointer;
+        margin-top: -10px;
+        margin-right: -10px;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      .ml-error input, .ml-error textarea, .ml-error select {
+        border-color: red!important;
+      }
+
+      .ml-error .custom-checkbox-radio-list {
+        border: 1px solid red !important;
+        border-radius: 4px;
+        padding: 10px;
+      }
+
+      .ml-error .label-description,
+      .ml-error .label-description p,
+      .ml-error .label-description p a,
+      .ml-error label:first-child {
+        color: #ff0000 !important;
+      }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow.ml-error .label-description p,
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow.ml-error .label-description p:first-letter {
+        color: #ff0000 !important;
+      }
+            @media only screen and (max-width: 400px){
+
+        .ml-form-embedWrapper.embedDefault, .ml-form-embedWrapper.embedPopup { width: 100%!important; }
+        .ml-form-formContent.horozintalForm { float: left!important; }
+        .ml-form-formContent.horozintalForm .ml-form-horizontalRow { height: auto!important; width: 100%!important; float: left!important; }
+        .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-input-horizontal { width: 100%!important; }
+        .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-input-horizontal > div { padding-right: 0px!important; padding-bottom: 10px; }
+        .ml-form-formContent.horozintalForm .ml-button-horizontal { width: 100%!important; }
+        .ml-form-formContent.horozintalForm .ml-button-horizontal.labelsOn { padding-top: 0px!important; }
+
+      }
+    </style>
+    <style type="text/css">
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions { text-align: left; float: left; width: 100%; }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent {
+        margin: 0 0 15px 0;
+        text-align: left;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent.horizontal {
+        margin: 0 0 15px 0;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent h4 {
+        color: #000000;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 18px;
+        margin: 0 0 10px 0;
+        word-break: break-word;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent p {
+        color: #000000;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 12px;
+        line-height: 18px;
+        margin: 0 0 10px 0;
+      }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent.privacy-policy p {
+        color: #000000;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 12px;
+        line-height: 22px;
+        margin: 0 0 10px 0;
+      }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent.privacy-policy p a {
+        color: #6366f1;
+      }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent.privacy-policy p:last-child {
+        margin: 0;
+      }
+
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent p a {
+        color: #6366f1;
+        text-decoration: underline;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent p:last-child { margin: 0 0 15px 0; }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptions {
+        margin: 0;
+        padding: 0;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox {
+        margin: 0 0 10px 0;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox:last-child {
+        margin: 0;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox label {
+        font-weight: normal;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        display: block;
+        min-height: 24px;
+        padding-left: 24px;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description {
+        color: #000000;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 12px;
+        line-height: 18px;
+        text-align: left;
+        margin-bottom: 0;
+        position: relative;
+        font-style: normal;
+        font-weight: 700;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .description {
+        color: #000000;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 12px;
+        font-style: italic;
+        font-weight: 400;
+        line-height: 18px;
+        margin: 5px 0 0 0;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox input[type="checkbox"] {
+        box-sizing: border-box;
+        padding: 0;
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+        margin-top: 5px;
+        margin-left: -1.5rem;
+        overflow: visible;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedMailerLite-GDPR {
+        padding-bottom: 20px;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedMailerLite-GDPR p {
+        color: #000000;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 10px;
+        line-height: 14px;
+        margin: 0;
+        padding: 0;
+      }
+      #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedMailerLite-GDPR p a {
+        color: #000000;
+        text-decoration: underline;
+
+      }
+      @media (max-width: 768px) {
+        #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent p {
+          font-size: 12px !important;
+          line-height: 18px !important;
+        }
+        #mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedMailerLite-GDPR p {
+          font-size: 10px !important;
+          line-height: 14px !important;
+        }
+      }
+    </style>
 </head>
 <body>
-<header>
-  <nav class="container">
-    <div class="logo">
-      <a aria-label="Home" href="index.html">
-        <img alt="NARBE Foundation Logo" src="https://raw.githubusercontent.com/narbefoundation/images/refs/heads/main/purple%20more%20space.png"/>
-      </a>
-    </div>
-    <div class="site-title">NARBE Foundation</div>
-    <ul class="nav-links">
-      <li><a href="#story">Founders' Story</a></li>
-      <li><a href="#mission">Mission</a></li>
-      <li><a href="#help">Want to Help?</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="getting-started.html">Getting Started</a></li>
-      <li><a href="resources.html">Resources</a></li>
-    </ul>
-    <button class="mobile-menu-btn" id="mobileMenuBtn">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <a class="donate-btn" href="https://www.paypal.com/donate/?hosted_button_id=RBGVHUDQ9GK66" target="_blank" rel="noopener">Support Our Mission</a>
-  </nav>
-</header>
+  <a href="#main" class="skip-link">Skip to content</a>
 
-<section class="hero">
-  <div class="container">
-    <h1>Learning the Latest Technology to Build Custom Accessible Solutions</h1>
-    <p class="hero-subtitle">Where families and creators come together to build access through free tools and games.</p>
-  </div>
-</section>
-<section class="story-dark" id="story">
-  <div class="container">
-    <div class="story-content">
-      <div class="story-text">
-        <h2 class="section-title" style="color:#fff;">Founders' Story</h2>
-        <div style="max-width: 800px; margin: 0; text-align: left;">
-          <p style="font-size: 1.05rem; color: rgba(255,255,255,0.9); margin-bottom: 1rem; line-height: 1.7;">We are Ari, Nancy, and Ben — a brother and sister-in-law caregiving team.</p>
-          <p style="font-size: 1.05rem; color: rgba(255,255,255,0.9); margin-bottom: 1rem; line-height: 1.7;">Ben lives with an ultra-rare condition called TUBB4A-related leukodystrophy. As his condition progressed, he became nonverbal and quadriplegic, leaving him with very limited options for interaction. His mind, however, remains sharp and full of life.</p>
-          <p style="font-size: 1.05rem; color: rgba(255,255,255,0.9); margin-bottom: 1rem; line-height: 1.7;">When we searched for tools to help Ben, most focused only on basic communication. They were slow to get, costly, and limited in what they offered. Ben wanted more — to play games, browse the internet, watch his favorite shows, and truly connect with the world.</p>
-          <p style="font-size: 1.05rem; color: rgba(255,255,255,0.9); margin-bottom: 1rem; line-height: 1.7;">So, we built our own. Using creativity and AI, we designed a custom two-button system that Ben controls with his head. Now he can type, communicate, watch shows and movies on any streaming platform, search YouTube and Google Images, and play custom-built games — all through one simple, accessible hub.</p>
-          <p style="font-size: 1.05rem; color: rgba(255,255,255,0.9); margin-bottom: 1rem; line-height: 1.7;">Our journey showed us what's possible when families and technology come together to create tools built not just for basic needs, but for connection and joy.</p>
+  <header>
+    <nav class="container">
+      <div class="logo">
+        <a aria-label="Home" href="index.html">
+          <img alt="NARBE Foundation Logo" src="https://raw.githubusercontent.com/narbefoundation/images/refs/heads/main/purple%20more%20space.png"/>
+        </a>
+      </div>
+      <div class="site-title">NARBE Foundation</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#story">Founders</a></li>
+        <li><a href="#latest-updates">News</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="getting-started.html">Getting Started</a></li>
+      </ul>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a class="donate-btn" href="https://www.paypal.com/donate/?hosted_button_id=RBGVHUDQ9GK66" target="_blank" rel="noopener">Support Our Mission</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <h1>Accessible Games and Tools</h1>
+        <p class="hero-subtitle">We build one and two switch entertainment tools and host accessibility resources for everyone. Our goal is to share free games, tools, and guides that help people reconnect and play.</p>
+        
+        <div class="mission-grid" style="grid-template-columns: repeat(2, 1fr); margin-top: 3rem; margin-bottom: 3rem; text-align: left;">
+          <a href="#contact" class="mission-card card-hardware">
+            <h3>Hardware Kits</h3>
+            <p>We are working on accessible hardware solutions. Contact us for more information.</p>
+          </a>
+          <a href="/bennyshub/" target="_blank" rel="noopener" class="mission-card card-hub">
+            <h3>Benny’s Hub</h3>
+            <p>Our central library of accessible games and tools.</p>
+          </a>
+          <a href="resources.html" class="mission-card card-resources">
+            <h3>Trusted Resources</h3>
+            <p>Switch-focused tools, platforms, and organizations we trust.</p>
+          </a>
+          <a href="https://discord.gg/b82emKJhTC" target="_blank" rel="noopener" class="mission-card card-discord">
+            <h3>Discord Community</h3>
+            <p>Join our community of families and developers.</p>
+          </a>
         </div>
+
+        <p class="hero-subtitle" style="font-size: 1.1rem; max-width: 900px;">Our primary focus is building and maintaining Benny’s Hub for one and two switch access. Alongside this work, the Foundation supports individuals and organizations creating open and low-cost solutions that expand access to play, communication, and independence for people with disabilities. Everything we build and support is designed to be simple, clear, and enjoyable.</p>
       </div>
-      <div class="story-image">
-        <img alt="NARBE Foundation Family" src="https://raw.githubusercontent.com/narbefoundation/images/main/website-family.png">
-        </img>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="hope" id="hope">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">You are not alone.</h2>
-      <p class="section-subtitle">We understand the feeling of being stuck, wondering if anyone will help, and searching for hope.</p>
-    </div>
-    <div class="hope-text">
-      <p>We've been exactly where you are. The countless hours researching solutions that don't quite fit. The frustration of expensive tools that promise everything but deliver limitations. The feeling that your loved one might never have the access they deserve.</p>
-      <p>But here's what we've learned: with today's rapidly evolving technology — especially AI — families no longer have to wait for someone else to build the perfect solution. We can take the power into our own hands and create exactly what our loved ones need.</p>
-      <p>What seemed impossible just a few years ago is now within reach for any determined family. You don't need to be a programmer or engineer. You just need the willingness to learn, experiment, and build something meaningful together.</p>
-      <p>Our story with Ben is proof that extraordinary things happen when love meets innovation. We're here to show you what's possible and help you discover the tools and confidence to create your own breakthrough moments.</p>
-    </div>
-  </div>
-</section>
-<section class="mission" id="mission">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Our Mission</h2>
-      <p class="section-subtitle">To connect and support a community dedicated to creating and sharing free or affordable tools and games that bring immediate, meaningful access to those who need it most.</p>
-    </div>
-    <div class="mission-grid">
-      <div class="mission-card">
-        <h3>Free Games and Tools</h3>
-        <p>Accessible games and interactive tools that work for people with limited mobility.</p>
-      </div>
-      <div class="mission-card">
-        <h3>Community Support</h3>
-        <p>Resources, education, and community that help families move forward.</p>
-      </div>
-      <div class="mission-card">
-        <h3>Custom Solutions</h3>
-        <p>Community driven templates and guides for how to make it work for you.</p>
-      </div>
-    </div>
-    <div style="text-align: center; margin-top: 2rem;">
-      <p style="font-size: 1.1rem; color: rgba(255,255,255,0.9); margin-bottom: 1rem;">Want to get started?</p>
-      <a href="getting-started.html" style="color: #fff; text-decoration: underline; font-size: 1.1rem; font-weight: 600;">View Getting Started Guide</a>
-    </div>
-    <div class="feature-content">
-      <div class="video-image">
-        <div class="video-inner">
-          <div class="tiktok-placeholder" data-video-id="7525825420613192991" style="background-image:url('https://raw.githubusercontent.com/narbefoundation/images/refs/heads/main/CONCENTRATION-COMPETITIVE.png'); background-size:cover; background-position:center;">
-            <button aria-label="Play Video" class="play-hit">
-              <div class="play"><span class="triangle"></span> <span>Play Video</span></div>
-            </button>
+    </section>
+
+    <section class="story-dark" id="story">
+      <div class="container">
+        <div class="story-content">
+          <div class="story-text">
+            <h2 class="section-title" style="color:#fff;">Founders' Story</h2>
+            <p>We are Ari, Nancy, and Ben — a brother and sister-in-law caregiving team. Ben lives with an ultra-rare condition called TUBB4A-related leukodystrophy. As his condition progressed, he became nonspeaking and quadriplegic, leaving him with very limited options for interaction.</p>
+            <p>When we searched for tools to help Ben, most focused only on basic communication. Ben wanted more — to play games, browse the internet, watch his favorite shows, and truly connect with the world. So, we built our own custom two-button system that Ben controls with his head.</p>
+            <p>Our focus is now on sharing these games and tools, optimized specifically for one and two button users, so others can find the same joy and connection.</p>
+          </div>
+          <div class="story-image">
+            <img alt="NARBE Foundation Family" src="https://raw.githubusercontent.com/narbefoundation/images/main/website-family.png">
           </div>
         </div>
       </div>
-      <div class="feature-text" style="text-align: center;">
-        <h3>Mission in Action</h3>
-        <p>We had no background in software development — only a need to give Ben a way to connect with the world. With the help of AI, we learned step by step how to build completely custom tools for him.</p>
-        <p>Now, with just two buttons, Ben can:</p>
-        <p>• Watch his favorite shows and movies on any streaming platform</p>
-        <p>• Search YouTube and Google Images</p>
-        <p>• Play custom-built games made just for him</p>
-        <p>• Type and communicate with a predictive keyboard and phrase boards</p>
-        <p>• Control computer settings</p>
-        <p>• Ask questions, play music, and get answers through a voice assistant</p>
-        <p>What started as a solution for Ben has grown into a mission to help others. Families and professionals shouldn't be held back by high costs, long wait times, or one-size-fits-all tools.</p>
-        <p>We share our tools, guides, and games freely so others can create solutions tailored to their own needs. AI can speed up the process, but it's never required — the focus is on giving people access to powerful, affordable tools that make life easier.</p>
+    </section>
+
+
+
+    <section class="rss-feed-section" id="latest-updates">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Latest Updates</h2>
+          <p class="section-subtitle">News and announcements from the NARBE Foundation.</p>
+        </div>
+        <div class="rss-grid" id="rss-feed-container">
+          <!-- RSS items will be loaded here -->
+          <div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: #64748b;">
+            Loading updates...
+          </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="https://narbe-foundation-lwazzv.mailerpage.io/updates" target="_blank" rel="noopener" class="donate-btn">View All News</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter-section">
+      <div class="container">
+          <div id="mlb2-35030211" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-35030211">
+      <div class="ml-form-align-center ">
+        <div class="ml-form-embedWrapper embedForm">
+
+          
+          
+
+          <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+
+            <div class="ml-form-embedContent">
+              
+                <h4>Signup for Updates</h4>
+                <p style="background-color: transparent;">Get the latest news direct to your email.</p>
+              
+            </div>
+
+            <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/1901217/forms/174779771981399660/subscribe" data-code="" method="post" target="_blank">
+              <div class="ml-form-formContent">
+                
+
+                  
+                  <div class="ml-form-fieldRow ml-last-item">
+                    <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+
+                      
+
+
+                      <!-- input -->
+                      <input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Email" autocomplete="email">
+                      <!-- /input -->
+
+                      <!-- textarea -->
+                      
+                      <!-- /textarea -->
+
+                      <!-- select -->
+                      
+                      <!-- /select -->
+
+                      <!-- checkboxes -->
+            
+            <!-- /checkboxes -->
+
+                      <!-- radio -->
+                      
+                      <!-- /radio -->
+
+                      <!-- countries -->
+                      
+                      <!-- /countries -->
+
+
+
+
+
+                    </div>
+                  </div>
+                
+              </div>
+
+              
+
+              <!-- Privacy policy -->
+              <div class="ml-form-embedPermissions">
+                <div class="ml-form-embedPermissionsContent default privacy-policy">
+
+                  
+
+                  <p style="background-color: transparent;">You can unsubscribe anytime.&nbsp;</p>
+
+                  
+                </div>
+              </div>
+              <!-- /Privacy policy -->
+
+              
+
+              
+
+              
+
+
+
+<div class="ml-form-recaptcha ml-validate-required" style="float: left;">
+                <style type="text/css">
+  .ml-form-recaptcha {
+    margin-bottom: 20px;
+  }
+
+  .ml-form-recaptcha.ml-error iframe {
+    border: solid 1px #ff0000;
+  }
+
+  @media screen and (max-width: 480px) {
+    .ml-form-recaptcha {
+      width: 220px!important
+    }
+    .g-recaptcha {
+      transform: scale(0.78);
+      -webkit-transform: scale(0.78);
+      transform-origin: 0 0;
+      -webkit-transform-origin: 0 0;
+    }
+  }
+</style>
+  <script src="https://www.google.com/recaptcha/api.js"></script>
+  <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+</div>
+
+
+              
+              <input type="hidden" name="ml-submit" value="1">
+
+              <div class="ml-form-embedSubmit">
+                
+                  <button type="submit" class="primary">Subscribe</button>
+                
+                <button disabled="disabled" style="display: none;" type="button" class="loading">
+                  <div class="ml-form-embedSubmitLoad"></div>
+                  <span class="sr-only">Loading...</span>
+                </button>
+              </div>
+
+              
+              <input type="hidden" name="anticsrf" value="true">
+            </form>
+          </div>
+
+          <div class="ml-form-successBody row-success" style="display: none">
+
+            <div class="ml-form-successContent">
+              
+                <h4>Thank you!</h4>
+                
+                  <p>You have successfully joined our subscriber list.</p>
+                
+              
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-<section class="help" id="help">
-  <div class="container">
-    <div class="help-content">
-      <div class="section-header">
-        <h2 class="section-title">Want to help?</h2>
-        <p class="section-subtitle">We are always looking for volunteers and collaborators to join our community.</p>
+
+  
+
+  
+  
+  <script>
+    function ml_webform_success_35030211() {
+      var $ = ml_jQuery || jQuery;
+      $('.ml-subscribe-form-35030211 .row-success').show();
+      $('.ml-subscribe-form-35030211 .row-form').hide();
+    }
+      </script>
+  
+  
+      <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024" type="text/javascript"></script>
+        <script>
+            fetch("https://assets.mailerlite.com/jsonp/1901217/forms/174779771981399660/takel")
+        </script>
+        </div>
       </div>
-      <div class="help-text">
-        <p><strong>Spread the word.</strong> Share our mission with families, professionals, and communities who might benefit from accessible technology solutions.</p>
-        <p><strong>Start a campaign.</strong> Our operational costs are low, but with additional funding, we can do extraordinary things:</p>
+    </section>
+
+    <section class="support-section">
+      <div class="container">
+        <div class="support-content">
+          <h2 class="section-title">Support the Mission</h2>
+          <p class="section-subtitle">Your support helps us design, build, and maintain one and two button games and tools with large, readable, text-to-speech interfaces, and make them freely available through Benny’s Hub.</p>
+          
+          <ul class="support-list">
+            <li>Building and improving one and two button games and tools</li>
+            <li>Maintaining Benny’s Hub and keeping it free to use</li>
+            <li>Supporting hardware kits, testing, and accessibility improvements</li>
+            <li>Covering basic infrastructure costs like hosting, software, and accessibility tools</li>
+            <li>Allowing us to keep this work sustainable over time</li>
+          </ul>
+
+          <p class="transparency-note">The NARBE Foundation is a registered nonprofit. Donations are used to directly support our programs and the people doing the work behind them.</p>
+          
+          <a class="donate-btn" href="https://www.paypal.com/donate/?hosted_button_id=RBGVHUDQ9GK66" target="_blank" rel="noopener">Donate via PayPal</a>
+        </div>
       </div>
-      <ul class="help-list">
-        <li>Provide tablets and hardware to families who need access but can't afford the tools</li>
-        <li>Fund travel to work hands-on with individuals and families in their communities</li>
-        <li>Organize game development contests and community events that bring creators together</li>
-        <li>Support promising community projects by hiring developers to package and distribute them</li>
-        <li>Create comprehensive training programs for caregivers and professionals</li>
-        <li>Develop emergency backup systems for families who depend on assistive technology</li>
-        <li>Build partnerships with schools and therapy centers to expand access</li>
-      </ul>
-      <div class="help-text">
-        <p><strong>Calling streamers and content creators:</strong> If you're a Twitch streamer, consider starting a campaign through the PayPal giving fund directly on your platform. Reach out to us so we can rally our community to support you and amplify your impact.</p>
-        <p>Every contribution, whether it's time, expertise, or funding, helps us build a more accessible world for everyone.</p>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Get In Touch</h2>
+          <p class="section-subtitle">We'd love to hear from you.</p>
+        </div>
+        <div class="contact-info">
+          <div class="contact-card">
+            <h4>Email</h4>
+            <p><a href="mailto:info@narbefoundation.org" style="color:rgba(255,255,255,0.9); text-decoration:none;">info@narbefoundation.org</a></p>
+          </div>
+          <a class="contact-card clickable" href="https://forms.gle/au6DDP1FExDm5DRd6" rel="noopener noreferrer" style="text-decoration: none; color: inherit;" target="_blank">
+            <h4>Need Help?</h4>
+            <p>Complete our intake form to get started</p>
+          </a>
+          <div class="contact-card">
+            <h4>Mail and Packages</h4>
+            <p>NARBE Foundation<br/>5775 Post Rd #149<br/>East Greenwich, RI 02818</p>
+          </div>
+        </div>
+        
+
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-social-links">
+        <a class="footer-social-link" href="https://www.facebook.com/narbefoundation" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg class="facebook-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.675 0h-21.35c-0.733 0-1.325 0.592-1.325 1.325v21.351c0 0.733 0.592 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.463 0.099 2.795 0.143v3.24l-1.918 0.001c-1.504 0-1.794 0.715-1.794 1.763v2.312h3.587l-0.467 3.622h-3.12v9.294h6.116c0.733 0 1.325-0.591 1.325-1.324v-21.351c0-0.733-0.592-1.325-1.325-1.325z"/>
+          </svg>
+        </a>
+        <a class="footer-social-link" href="https://www.youtube.com/@narbefoundation" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <svg class="youtube-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M23.498 6.186c-0.273-1.031-1.081-1.84-2.112-2.112-1.863-0.504-9.326-0.504-9.326-0.504s-7.463 0-9.326 0.504c-1.031 0.273-1.84 1.081-2.112 2.112-0.504 1.863-0.504 5.754-0.504 5.754s0 3.891 0.504 5.754c0.273 1.031 1.081 1.84 2.112 2.112 1.863 0.504 9.326 0.504 9.326 0.504s7.463 0 9.326-0.504c1.031-0.273 1.84-1.081 2.112-2.112 0.504-1.863 0.504-5.754 0.504-5.754s0-3.891-0.504-5.754zM9.545 15.568v-7.136l6.545 3.568-6.545 3.568z"/>
+          </svg>
+        </a>
+        <a class="footer-social-link" href="https://www.instagram.com/narbefoundation" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg class="instagram-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+          </svg>
+        </a>
+      </div>
+      <p>© 2025 NARBE Foundation. Unlocking the world, one switch at a time.</p>
+      <div class="footer-legal">
+        <p>501(c)(3) Nonprofit Organization</p>
+        <p>EIN: 39-3343898</p>
+        <p>All donations are tax-deductible to the fullest extent allowed by law.</p>
       </div>
     </div>
-  </div>
-</section>
-<section class="founding-donor" id="founding-donor">
-  <div class="container">
-    <div class="donor-inner">
-      <h2 class="donor-title">Support Our Mission</h2>
-      <p class="donor-subtitle">Help us bring affordable, switch-accessible technology and games to families who need them.</p>
-      <ul class="donor-points">
-        <li>Share DIY guides and recommend low‑cost adaptive hardware and switch devices</li>
-        <li>Host and publish free, switch‑accessible games and open tools</li>
-        <li>Provide community‑led training and hands‑on setup support</li>
-      </ul>
-      <div class="donor-card" style="background: transparent; box-shadow: none; padding: 0;">
-        <a class="donor-cta" href="https://www.paypal.com/donate/?hosted_button_id=RBGVHUDQ9GK66" target="_blank" rel="noopener" aria-label="Donate via PayPal">Donate via PayPal</a>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="contact" id="contact">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Get In Touch</h2>
-      <p class="section-subtitle">We'd love to hear from you.</p>
-    </div>
-    <div class="contact-info">
-      <div class="contact-card">
-        <h4>Email</h4>
-        <p><a href="mailto:info@narbefoundation.org" style="color:rgba(255,255,255,0.9); text-decoration:none;">info@narbefoundation.org</a></p>
-      </div>
-      <a class="contact-card clickable" href="https://forms.gle/au6DDP1FExDm5DRd6" rel="noopener noreferrer" style="text-decoration: none; color: inherit;" target="_blank">
-        <h4>Need Help?</h4>
-        <p>Complete our intake form to get started with accessible technology solutions</p>
-      </a>
-      <div class="contact-card">
-        <h4>Mail and Packages</h4>
-        <p>NARBE Foundation<br/>5775 Post Rd #149<br/>East Greenwich, RI 02818</p>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="social-media">
-  <div class="container">
-    <h3 style="color: #1e293b; margin-bottom: 0.5rem;">Join Our Community</h3>
-    <p style="color: #64748b; margin-bottom: 1rem;">Connect with other families, developers, and advocates</p>
-    <div class="social-links">
-      <a class="social-link" href="https://discord.gg/b82emKJhTC" rel="noopener noreferrer" target="_blank">
-        <svg class="discord-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"></path>
-        </svg>
-        Join our Discord
-      </a>
-      <a class="social-link" href="https://instagram.com/narbefoundation" rel="noopener noreferrer" target="_blank">
-        <svg class="instagram-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
-        </svg>
-        Follow on Instagram
-      </a>
-    </div>
-  </div>
-</section>
-<footer>
-  <div class="container">
-    <div class="footer-social-links">
-      <a class="footer-social-link" href="https://www.facebook.com/narbefoundation" target="_blank" rel="noopener noreferrer">
-        <svg class="facebook-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M22.675 0h-21.35c-0.733 0-1.325 0.592-1.325 1.325v21.351c0 0.733 0.592 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.463 0.099 2.795 0.143v3.24l-1.918 0.001c-1.504 0-1.794 0.715-1.794 1.763v2.312h3.587l-0.467 3.622h-3.12v9.294h6.116c0.733 0 1.325-0.591 1.325-1.324v-21.351c0-0.733-0.592-1.325-1.325-1.325z"/>
-        </svg>
-      </a>
-      <a class="footer-social-link" href="https://www.youtube.com/@narbefoundation" target="_blank" rel="noopener noreferrer">
-        <svg class="youtube-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M23.498 6.186c-0.273-1.031-1.081-1.84-2.112-2.112-1.863-0.504-9.326-0.504-9.326-0.504s-7.463 0-9.326 0.504c-1.031 0.273-1.84 1.081-2.112 2.112-0.504 1.863-0.504 5.754-0.504 5.754s0 3.891 0.504 5.754c0.273 1.031 1.081 1.84 2.112 2.112 1.863 0.504 9.326 0.504 9.326 0.504s7.463 0 9.326-0.504c1.031-0.273 1.84-1.081 2.112-2.112 0.504-1.863 0.504-5.754 0.504-5.754s0-3.891-0.504-5.754zM9.545 15.568v-7.136l6.545 3.568-6.545 3.568z"/>
-        </svg>
-      </a>
-      <a class="footer-social-link" href="https://www.instagram.com/narbefoundation" target="_blank" rel="noopener noreferrer">
-        <svg class="instagram-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
-        </svg>
-      </a>
-    </div>
-    <p>© 2025 NARBE Foundation. Building accessible technology for everyone.</p>
-    <div class="footer-legal">
-      <p>501(c)(3) Nonprofit Organization</p>
-      <p>EIN: 39-3343898</p>
-      <p>All donations are tax-deductible to the fullest extent allowed by law.</p>
-    </div>
-  </div>
-</footer>
+  </footer>
+
 <div class="mobile-donate-footer">
   <div class="container">
     <a class="donate-btn" href="https://www.paypal.com/donate/?hosted_button_id=RBGVHUDQ9GK66" target="_blank" rel="noopener">Support Our Mission</a>
   </div>
 </div>
-<script>
-    // TikTok tap-to-play with autoplay: on user gesture, inject iframe that starts playing
-    document.addEventListener('DOMContentLoaded', () => {
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-      const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-      const preferUnmuted = !(isIOS || isSafari); // Try unmuted autoplay on non-iOS, non-Safari
 
-      const buildUrl = (vid, { muted, endpoint = 'player' } = {}) => {
-        const base = endpoint === 'embed'
-          ? `https://www.tiktok.com/embed/v2/video/${vid}`
-          : `https://www.tiktok.com/player/v1/${vid}`;
-        const params = new URLSearchParams({ lang: 'en-US', autoplay: '1', muted: muted ? '1' : '0', playsinline: '1', controls: '1' });
-        return `${base}?${params.toString()}`;
-      };
-
-      const mountIframe = (ph, src) => {
-        ph.innerHTML = '';
-        ph.style.background = 'black';
-        // Spinner while iframe initializes
-        const spinner = document.createElement('div');
-        spinner.className = 'spinner';
-        ph.appendChild(spinner);
-        const iframe = document.createElement('iframe');
-        iframe.src = src;
-        iframe.setAttribute('allow', 'autoplay; fullscreen; accelerometer; gyroscope; clipboard-write; encrypted-media; picture-in-picture; web-share');
-        iframe.setAttribute('allowfullscreen', 'true');
-        iframe.setAttribute('title', 'TikTok video');
-        iframe.setAttribute('loading', 'eager');
-        iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-        iframe.style.position = 'absolute';
-        iframe.style.inset = '0';
-        iframe.style.width = '100%';
-        iframe.style.height = '100%';
-        iframe.style.border = '0';
-        iframe.style.zIndex = '2';
-        iframe.style.pointerEvents = 'auto';
-        iframe.addEventListener('load', () => { spinner.remove(); }, { once: true });
-        ph.appendChild(iframe);
-        return iframe;
-      };
-
-      const startEmbedWithFallback = (ph, vid) => {
-        // Try unmuted first where likely supported; fallback to muted via embed endpoint
-        const primary = buildUrl(vid, { muted: !preferUnmuted, endpoint: 'player' });
-        const alt = preferUnmuted
-          ? buildUrl(vid, { muted: true, endpoint: 'embed' })
-          : buildUrl(vid, { muted: true, endpoint: 'player' });
-        const iframe = mountIframe(ph, primary);
-        // Temporarily hide mobile donate footer so it doesn't cover TikTok controls
-        document.body.classList.add('footer-hidden');
-        const restoreFooter = () => document.body.classList.remove('footer-hidden');
-        const restoreTimer = setTimeout(restoreFooter, 12000); // auto-restore after 12s
-        // Restore on scroll or outside tap
-        const onPointer = (e) => { if (!ph.contains(e.target)) { cleanup(); restoreFooter(); } };
-        const onScroll = () => { cleanup(); restoreFooter(); };
-        const cleanup = () => {
-          clearTimeout(restoreTimer);
-          document.removeEventListener('pointerdown', onPointer, true);
-          document.removeEventListener('touchstart', onPointer, true);
-          document.removeEventListener('scroll', onScroll, { once: true, passive: true, capture: true });
-        };
-        document.addEventListener('pointerdown', onPointer, true);
-        document.addEventListener('touchstart', onPointer, true);
-        document.addEventListener('scroll', onScroll, { once: true, passive: true, capture: true });
-        // Time-based fallback for browsers that block unmuted autoplay
-        const t = setTimeout(() => {
-          try { iframe.src = alt; } catch(_) {}
-        }, preferUnmuted ? 900 : 0);
-        // Clear fallback once loaded to avoid unnecessary swap
-        iframe.addEventListener('load', () => { clearTimeout(t); }, { once: true });
-      };
-
-      const attachPlayHandler = (ph) => {
-        let activated = false;
-        const playBtn = ph.querySelector('.play-hit');
-        const handler = (e) => {
-          e.stopPropagation();
-          e.preventDefault();
-          if (activated) return;
-          activated = true;
-          const vid = ph.getAttribute('data-video-id');
-          if (!vid) return;
-          startEmbedWithFallback(ph, vid);
-        };
-        // Do not trigger on the whole thumbnail; only the play-hit button
-        if (playBtn) {
-          // Use click only to avoid accidental triggers while scrolling on mobile
-          playBtn.addEventListener('click', handler, { once: true });
-        }
-      };
-
-      document.querySelectorAll('.tiktok-placeholder').forEach(attachPlayHandler);
-    });
-    // Sync header height to CSS variable to eliminate any gap precisely
+  <script>
+    // Sync header height to CSS variable
     function syncHeaderHeightVar() {
       const header = document.querySelector('header');
       if (!header) return;
@@ -1352,16 +1861,15 @@
       document.documentElement.style.setProperty('--header-h', h + 'px');
     }
     window.addEventListener('resize', () => {
-      // Debounce resize updates
       clearTimeout(window.__hdrT);
       window.__hdrT = setTimeout(syncHeaderHeightVar, 100);
     });
     document.addEventListener('DOMContentLoaded', () => {
       syncHeaderHeightVar();
-      // Also update after fonts/images/logo load
       window.setTimeout(syncHeaderHeightVar, 200);
       window.addEventListener('load', syncHeaderHeightVar);
     });
+
     // Mobile menu toggle
     document.addEventListener('DOMContentLoaded', () => {
       const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -1370,8 +1878,6 @@
       if (mobileMenuBtn && navLinks) {
         mobileMenuBtn.addEventListener('click', () => {
           navLinks.classList.toggle('active');
-          
-          // Animate hamburger menu
           mobileMenuBtn.classList.toggle('active');
           const spans = mobileMenuBtn.querySelectorAll('span');
           if (navLinks.classList.contains('active')) {
@@ -1385,7 +1891,6 @@
           }
         });
         
-        // Close menu when clicking on a link
         navLinks.addEventListener('click', (e) => {
           if (e.target.tagName === 'A') {
             navLinks.classList.remove('active');
@@ -1397,7 +1902,6 @@
           }
         });
         
-        // Close menu when clicking outside
         document.addEventListener('click', (e) => {
           if (!mobileMenuBtn.contains(e.target) && !navLinks.contains(e.target)) {
             navLinks.classList.remove('active');
@@ -1411,20 +1915,71 @@
       }
     });
 
-    // Keep only scroll animations
+    // RSS Feed Loader
     document.addEventListener('DOMContentLoaded', () => {
-      const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('animate'); });
-      }, observerOptions);
-      document.querySelectorAll('.mission-card, .contact-card').forEach(card => observer.observe(card));
+      const RSS_URL = 'https://narbe-foundation-lwazzv.mailerpage.io/rss';
+      const API_URL = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}`;
+      const container = document.getElementById('rss-feed-container');
+
+      if (!container) return;
+
+      fetch(API_URL)
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === 'ok' && data.items.length > 0) {
+            container.innerHTML = ''; // Clear loading message
+            
+            // Take first 3 items
+            data.items.slice(0, 3).forEach(item => {
+              // Extract image from content if available, or use a placeholder/fallback
+              let imageUrl = 'images/branding/favicon.png'; // Default fallback
+              
+              // Try to find an image in the description/content
+              const imgMatch = item.description.match(/<img[^>]+src="([^">]+)"/);
+              if (item.thumbnail) {
+                imageUrl = item.thumbnail;
+              } else if (item.enclosure && item.enclosure.link) {
+                 imageUrl = item.enclosure.link;
+              } else if (imgMatch) {
+                imageUrl = imgMatch[1];
+              }
+
+              // Clean up description (remove HTML tags)
+              const cleanDesc = item.description.replace(/<[^>]*>?/gm, '').substring(0, 150) + '...';
+              
+              // Format date
+              const date = new Date(item.pubDate).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              });
+
+              const card = document.createElement('a');
+              card.className = 'rss-card';
+              card.href = item.link;
+              card.target = '_blank';
+              card.rel = 'noopener';
+              
+              card.innerHTML = `
+                <div class="rss-image" style="background-image: url('${imageUrl}')"></div>
+                <div class="rss-content">
+                  <div class="rss-date">${date}</div>
+                  <h3 class="rss-title">${item.title}</h3>
+                  <p class="rss-description">${cleanDesc}</p>
+                </div>
+              `;
+              
+              container.appendChild(card);
+            });
+          } else {
+            container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 2rem;">No updates found.</div>';
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching RSS feed:', error);
+          container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: #ef4444;">Unable to load updates at this time.</div>';
+        });
     });
   </script>
-<form data-netlify="true" data-netlify-honeypot="bot-field" hidden="" method="POST" name="contact" netlify="">
-  <input name="form-name" type="hidden" value="contact"/>
-  <input name="name" type="text"/>
-  <input name="email" type="email"/>
-  <textarea name="message"></textarea>
-</form>
 </body>
 </html>
