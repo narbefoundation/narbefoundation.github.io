@@ -222,6 +222,10 @@
     nav { 
       padding: 12px 0; 
     }
+
+    .mission-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   /* Buttons */
@@ -363,7 +367,7 @@
     
   .mission-grid { 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); 
+    grid-template-columns: repeat(2, 1fr); 
     gap: 2rem; 
     margin-top: 3rem; 
   }
@@ -471,7 +475,7 @@
     line-height: 1.6;
     position: relative;
     z-index: 3;
-    max-height: 100px;
+    max-height: 200px;
     opacity: 1;
     transition: all 0.3s ease;
   }
@@ -1545,7 +1549,7 @@
         <h1>Accessible Games and Tools</h1>
         <p class="hero-subtitle">We build one and two switch entertainment tools and host accessibility resources for everyone. Our goal is to share free games, tools, and guides that help people reconnect and play.</p>
         
-        <div class="mission-grid" style="grid-template-columns: repeat(2, 1fr); margin-top: 3rem; margin-bottom: 3rem; text-align: left;">
+        <div class="mission-grid" style="margin-top: 3rem; margin-bottom: 3rem; text-align: left;">
           <a href="#contact" class="mission-card card-hardware">
             <h3>Hardware Kits</h3>
             <p>We are working on accessible hardware solutions. Contact us for more information.</p>
