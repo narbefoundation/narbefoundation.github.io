@@ -373,93 +373,86 @@
   }
   
   .mission-card { 
-    background: #ffffff;
+    background-color: #ffffff;
     color: #1e293b;
-    padding: 2.5rem 2rem; 
-    border-radius: 16px; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 2rem; 
+    border-radius: 24px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 3px solid #f97316;
+    border-bottom-width: 8px;
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100%;
+    align-items: center;
+    text-align: center;
+    min-height: 200px;
     z-index: 1;
+    text-decoration: none;
   }
   
-  /* Image Layer (Hidden by default) */
-  .mission-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: 1;
-  }
-
-  /* Specific Images with Dark Overlay */
-  .card-hardware::before { 
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/content/hardware-kits.png');
-  }
-  .card-hub::before { 
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/content/bennys-hub.png');
-  }
-  .card-resources::before { 
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/content/resources.jpg');
-  }
-  .card-discord::before { 
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/content/discord-community.jpeg');
-  }
-  
-  /* Top Gradient Strip */
-  .mission-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 6px;
-    background: linear-gradient(90deg, #6366f1, #8b5cf6);
-    transition: opacity 0.3s ease;
-    z-index: 2;
-  }
-
-  /* Hover Effects */
-  .mission-card:hover { 
-    transform: translateY(-8px); 
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    border-color: transparent;
-  }
-
-  .mission-card:hover::before {
-    opacity: 1;
-  }
-
-  .mission-card:hover::after {
-    opacity: 0;
+  .mission-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(249, 115, 22, 0.25);
   }
   
   .mission-card h3 { 
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-    color: #1e293b;
+    font-size: 1.6rem;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+    color: #ea580c;
     letter-spacing: -0.02em;
     position: relative;
     z-index: 3;
-    transition: color 0.3s ease;
+    line-height: 1.2;
+    text-transform: uppercase;
   }
 
-  .mission-card:hover h3 {
-    color: #ffffff;
-    margin-bottom: 0; /* Center vertically when p is gone */
+  .mission-card p {
+    position: relative;
+    z-index: 3;
+    color: #475569;
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    margin: 0;
+    opacity: 1;
+  }
+
+  .mission-card .card-icon {
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    opacity: 0.1;
+    filter: grayscale(100%);
+    pointer-events: none;
+    font-size: 12rem;
+  }
+
+  .card-hardware .card-icon {
+    width: 180%;
+    height: 180%;
+    top: 0;
+    left: -40%;
+    opacity: 0.15;
+  }
+
+  .mission-card .card-icon img, .mission-card .card-icon svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .card-hardware .card-icon img {
+    object-position: bottom center;
   }
 
   a.mission-card {
@@ -468,23 +461,28 @@
     cursor: pointer;
   }
 
-  a.mission-card p {
-    color: #64748b;
-    font-weight: 500;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    position: relative;
-    z-index: 3;
-    max-height: 200px;
-    opacity: 1;
-    transition: all 0.3s ease;
-  }
-
-  .mission-card:hover p {
-    max-height: 0;
-    opacity: 0;
-    margin: 0;
-    overflow: hidden;
+  /* Mobile Styles */
+  @media (max-width: 992px) {
+    .mission-card {
+      min-height: auto;
+      padding: 1.5rem;
+      align-items: flex-start;
+      text-align: left;
+    }
+    
+    .mission-card h3 {
+      font-size: 1.25rem;
+    }
+    
+    .mission-card p {
+      font-size: 1rem;
+      text-align: left;
+    }
+    
+    .mission-card:active {
+      transform: scale(0.98);
+      border-color: #ea580c;
+    }
   }
 
   /* Initiatives */
@@ -1547,28 +1545,30 @@
     <section class="hero">
       <div class="container">
         <h1>Accessible Games and Tools</h1>
-        <p class="hero-subtitle">We build one and two switch entertainment tools and host accessibility resources for everyone. Our goal is to share free games, tools, and guides that help people reconnect and play.</p>
+        <p class="hero-subtitle">We develop and support simple one and two switch entertainment tools and host accessibility resources. Our goal is to share free and low cost games, tools, and guides that help people engage, explore, and enjoy play.</p>
         
-        <div class="mission-grid" style="margin-top: 3rem; margin-bottom: 3rem; text-align: left;">
-          <a href="#contact" class="mission-card card-hardware">
-            <h3>Hardware Kits</h3>
-            <p>We are working on accessible hardware solutions. Contact us for more information.</p>
-          </a>
+        <div class="mission-grid" style="margin-top: 2rem; margin-bottom: 3rem; text-align: left;">
           <a href="/bennyshub/" target="_blank" rel="noopener" class="mission-card card-hub">
             <h3>Benny’s Hub</h3>
-            <p>Our central library of accessible games and tools.</p>
+            <div class="card-icon"><img src="images/branding/beamin-benny.png" alt="Benny Logo"></div>
+            <p>Free library of accessible games and tools</p>
+          </a>
+          <a href="#contact" class="mission-card card-hardware">
+            <h3>Hardware (Coming Soon)</h3>
+            <div class="card-icon"><img src="images/content/hardware.png" alt="Hardware Icon"></div>
+            <p>Low cost switch solutions, contact us for more info.</p>
           </a>
           <a href="resources.html" class="mission-card card-resources">
             <h3>Trusted Resources</h3>
-            <p>Switch-focused tools, platforms, and organizations we trust.</p>
+            <div class="card-icon">📚</div>
+            <p>Accessibility tools and platforms we trust</p>
           </a>
           <a href="https://discord.gg/b82emKJhTC" target="_blank" rel="noopener" class="mission-card card-discord">
-            <h3>Discord Community</h3>
-            <p>Join our community of families and developers.</p>
+            <h3>Community</h3>
+            <div class="card-icon"><svg viewBox="0 0 24 24" style="fill: #5865F2;" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.3698a19.7913 19.7913 0 0 0-4.8851-1.5152.0741.0741 0 0 0-.0785.0371c-.211.3753-.4447.7748-.6083 1.1696a18.4034 18.4034 0 0 0-5.4868 0 20.149 20.149 0 0 0-.6172-1.1696.077.077 0 0 0-.0785-.0376 19.7238 19.7238 0 0 0-4.8852 1.5151.0699.0699 0 0 0-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 0 0 .0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 0 0 .0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 0 0-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 0 1-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 0 1 .0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 0 1 .0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 0 1-.0066.1276 12.2986 12.2986 0 0 1-1.873.8914.0766.0766 0 0 0-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 0 0 .0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 0 0 .0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 0 0-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1569 2.419zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1568 2.419z"/></svg></div>
+            <p>A place where people can collaborate and support DIY accessibility.</p>
           </a>
         </div>
-
-        <p class="hero-subtitle" style="font-size: 1.1rem; max-width: 900px;">Our primary focus is building and maintaining Benny’s Hub for one and two switch access. Alongside this work, the Foundation supports individuals and organizations creating open and low-cost solutions that expand access to play, communication, and independence for people with disabilities. Everything we build and support is designed to be simple, clear, and enjoyable.</p>
       </div>
     </section>
 
@@ -1780,14 +1780,17 @@
       <div class="container">
         <div class="support-content">
           <h2 class="section-title">Support the Mission</h2>
-          <p class="section-subtitle">Your support helps us design, build, and maintain one and two button games and tools with large, readable, text-to-speech interfaces, and make them freely available through Benny’s Hub.</p>
+          <p class="section-subtitle">Your support helps make access possible for people who are often left out of technology, play, and expression. We focus on building and supporting simple, usable tools that work with limited input and real world constraints.</p>
           
+          <p class="section-subtitle" style="margin-top: 1rem; font-weight: 600;">Your support helps us:</p>
+
           <ul class="support-list">
-            <li>Building and improving one and two button games and tools</li>
-            <li>Maintaining Benny’s Hub and keeping it free to use</li>
-            <li>Supporting hardware kits, testing, and accessibility improvements</li>
-            <li>Covering basic infrastructure costs like hosting, software, and accessibility tools</li>
-            <li>Allowing us to keep this work sustainable over time</li>
+            <li>Develop accessible games and tools where options are limited</li>
+            <li>Maintain and grow shared libraries of accessible tools and games</li>
+            <li>Develop, test, and support simple, low cost and DIY hardware solutions</li>
+            <li>Support open, low cost accessibility projects and collaborators</li>
+            <li>Cover essential infrastructure such as hosting and software</li>
+            <li>Sustain this work over time</li>
           </ul>
 
           <p class="transparency-note">The NARBE Foundation is a registered nonprofit. Donations are used to directly support our programs and the people doing the work behind them.</p>
