@@ -379,6 +379,7 @@ givebutter-widget {
 .ml-form-embedBody, .ml-form-embedContent {
   background-color: transparent !important;
   color: white !important;
+  margin-bottom: 15px !important;
 }
 
 .newsletter-section h4 {
@@ -392,16 +393,16 @@ givebutter-widget {
 }
 
 .ml-form-fieldRow input.form-control {
-  background: rgba(255,255,255,0.15) !important;
+  background: #ffffff !important;
   border: 1px solid rgba(255,255,255,0.3) !important;
-  color: white !important;
-  border-radius: 50px !important;
+  color: #000000 !important;
+  border-radius: 4px !important;
   padding: 12px 24px !important;
   text-align: center;
 }
 
 .ml-form-fieldRow input.form-control::placeholder {
-  color: rgba(255,255,255,0.7) !important;
+  color: rgba(0,0,0,0.6) !important;
 }
 
 .ml-form-embedSubmit button {
@@ -427,6 +428,35 @@ givebutter-widget {
   margin-bottom: 20px;
   display: flex !important;
   justify-content: center;
+}
+
+/* Layout Adjustment for side-by-side input and button */
+.ml-block-form {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 15px !important;
+}
+
+.ml-form-formContent {
+  width: auto !important;
+  min-width: 250px; /* Ensure input isn't too small */
+}
+
+.ml-form-embedSubmit {
+  margin-top: 0 !important; /* Reset any top margin */
+}
+
+.ml-form-embedPermissions {
+  width: 100% !important;
+  flex: 1 1 100% !important;
+}
+
+.ml-form-embedPermissions .ml-form-embedPermissionsContent p {
+  font-size: 0.85rem !important;
+  opacity: 0.9 !important;
+  margin-top: 5px !important;
 }
 
 @media (min-width: 768px) {
