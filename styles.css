@@ -202,12 +202,12 @@ footer {
 @media (max-width: 992px) {
   /* Fixed mobile donate footer */
   .mobile-donate-footer {
-    display: flex;
-    position: fixed;
+    display: flex !important;
+    position: fixed !important;
     left: 0; 
     right: 0; 
-    bottom: 0;
-    z-index: 1002;
+    bottom: 0 !important;
+    z-index: 10000 !important;
     justify-content: center;
     background: rgba(241,245,249,0.96);
     backdrop-filter: blur(10px);
@@ -226,6 +226,9 @@ footer {
     margin: 0;
     padding: 0.68rem 1.2rem;
     font-size: 1rem;
+    width: auto;
+    font-weight: 700;
+    letter-spacing: 0.5px;
   }
   
   body { 
@@ -329,5 +332,148 @@ footer {
   display: flex;
   justify-content: center;
   gap: 1rem;
+}
+
+/* Givebutter Donate Embed */
+.givebutter-embed {
+  margin-top: 2rem;
+  width: 100%;
+  background: transparent;
+  box-shadow: none;
+}
+
+givebutter-widget {
+  display: block;
+  width: 100%;
+  min-height: 620px;
+  box-shadow: none !important;
+  background-color: #fff !important; 
+  border-radius: 0 !important;
+}
+
+.fallback-message {
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-light);
+  background: white;
+}
+
+.fallback-message a {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+@media (min-width: 640px) {
+  givebutter-widget {
+    min-height: 680px;
+  }
+}
+
+/* MailerLite Modern Overrides */
+.ml-form-embedWrapper { 
+  background-color: transparent !important; 
+  box-shadow: none !important; 
+  border: none !important; 
+}
+
+.ml-form-embedBody, .ml-form-embedContent {
+  background-color: transparent !important;
+  color: white !important;
+}
+
+.newsletter-section h4 {
+  color: white !important;
+  font-size: 2rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.newsletter-section p {
+  color: rgba(255,255,255,0.9) !important;
+}
+
+.ml-form-fieldRow input.form-control {
+  background: rgba(255,255,255,0.15) !important;
+  border: 1px solid rgba(255,255,255,0.3) !important;
+  color: white !important;
+  border-radius: 50px !important;
+  padding: 12px 24px !important;
+  text-align: center;
+}
+
+.ml-form-fieldRow input.form-control::placeholder {
+  color: rgba(255,255,255,0.7) !important;
+}
+
+.ml-form-embedSubmit button {
+  background: white !important;
+  color: #6366f1 !important;
+  border-radius: 50px !important;
+  padding: 12px 32px !important;
+  font-weight: 700 !important; 
+  width: auto !important;
+  transition: transform 0.2s !important;
+}
+
+.ml-form-embedSubmit button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
+}
+
+/* Hide recaptcha badge frame background if possible or style */
+.ml-form-recaptcha {
+  margin-bottom: 20px;
+  display: flex !important;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .ml-form-embedContent h4 {
+     font-size: 2rem !important;
+     white-space: nowrap !important;
+  }
+}
+
+/* Support Section - Side by Side Layout */
+.support-content {
+  max-width: 1000px !important; /* Narrower width to center content better */
+  margin: 0 auto;
+  display: grid;
+  gap: 4rem;
+}
+
+.givebutter-embed {
+  margin-top: 0;
+}
+
+@media (min-width: 992px) {
+  .support-content {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    text-align: left;
+  }
+  
+  .support-text {
+    padding-top: 0;
+  }
+}
+
+/* MailerLite Background Blend & Transparency */
+.ml-form-embedWrapper,
+.ml-form-embedBody,
+.ml-form-embedContent,
+#mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper {
+    background-color: transparent !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+#mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper {
+    padding: 0 !important;
+}
+
+#mlb2-35030211 .ml-form-embedContent h4,
+#mlb2-35030211 .ml-form-embedContent p {
+  color: white !important;
 }
 
