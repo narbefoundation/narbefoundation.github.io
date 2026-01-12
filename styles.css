@@ -405,18 +405,21 @@ givebutter-widget {
 }
 
 .ml-form-embedSubmit button {
-  background: white !important;
-  color: #6366f1 !important;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+  color: white !important;
+  border: none !important;
   border-radius: 50px !important;
-  padding: 12px 32px !important;
-  font-weight: 700 !important; 
+  padding: 0.75rem 1.5rem !important;
+  font-weight: 600 !important; 
   width: auto !important;
-  transition: transform 0.2s !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
 }
 
 .ml-form-embedSubmit button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 25px rgba(99,102,241,0.45) !important;
 }
 
 /* Hide recaptcha badge frame background if possible or style */
@@ -461,19 +464,21 @@ givebutter-widget {
 .ml-form-embedWrapper,
 .ml-form-embedBody,
 .ml-form-embedContent,
-#mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper {
+#mlb2-32971103.ml-form-embedContainer .ml-form-embedWrapper {
     background-color: transparent !important;
     background: transparent !important;
     box-shadow: none !important;
     border: none !important;
 }
 
-#mlb2-35030211.ml-form-embedContainer .ml-form-embedWrapper {
+#mlb2-32971103.ml-form-embedContainer .ml-form-embedWrapper {
     padding: 0 !important;
 }
 
-#mlb2-35030211 .ml-form-embedContent h4,
-#mlb2-35030211 .ml-form-embedContent p {
+#mlb2-32971103 .ml-form-embedContent h4,
+#mlb2-32971103 .ml-form-embedContent p {
   color: white !important;
 }
+
+
 
