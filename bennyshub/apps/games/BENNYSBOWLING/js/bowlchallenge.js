@@ -905,7 +905,6 @@ function updateGame(player, dt) {
 				var standingNow = (distanceSquared < STANDING_PIN_SQUARED_OFFSET_MAX) && upright;
 				if (player._sfxPinStanding && player._sfxPinStanding[i] && !standingNow) {
 					// Transition: standing -> fallen
-					stopRollingSound();
 					playSfx('sound/single-pin.mp3', 0.9);
 				}
 				if (player._sfxPinStanding) player._sfxPinStanding[i] = standingNow;
@@ -1427,7 +1426,9 @@ function onActionUp(clientX, clientY, time) {
 		var angle = Math.atan2(-releaseVector.x, -releaseVector.z);
 		localPlayer.physics.releaseBall(velocity, angle);
 		// SFX: ball rolling
-		playRollingSound();
+		if (localPlayer.physics.simulationActive) {
+			playRollingSound();
+		}
 	}
 
 	pickingBall = false;
