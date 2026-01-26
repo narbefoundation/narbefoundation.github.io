@@ -69,20 +69,49 @@ var celebrationHideTimer = null; // timeout handle for hiding celebration
 var musicEl = null;              // background music element (optional)
 var ambientEl = null;            // ambient bowling background loop
 var SFX_ENABLED = true;          // reflects settings.sfx but cached for quick checks
+var rollingSound = null;         // Track rolling ball sound to cut it off
+var rollingSoundTimer = null;    // Timer to limit rolling sound duration
 
 function playSfx(src, volume) {
 	try {
-		if (!SFX_ENABLED) return;
+		if (!SFX_ENABLED) return null;
         // Use NarbeAudioHelper for solid iOS support if available
         if (window.NarbeAudioHelper && window.NarbeAudioHelper.play) {
-            window.NarbeAudioHelper.play(src, (typeof volume === 'number') ? volume : 1.0);
-            return;
+            return window.NarbeAudioHelper.play(src, (typeof volume === 'number') ? volume : 1.0);
         }
         // Fallback for older browsers
 		var a = new Audio(src);
 		a.volume = (typeof volume === 'number') ? Math.max(0, Math.min(1, volume)) : 1.0;
 		a.play().catch(function(){});
-	} catch(e) {}
+		return a;
+	} catch(e) { return null; }
+}
+
+function stopRollingSound() {
+	if (rollingSoundTimer) { clearTimeout(rollingSoundTimer); rollingSoundTimer = null; }
+	if (rollingSound) {
+		try {
+			// If it's a standard Audio element
+			if (typeof rollingSound.pause === 'function') {
+				rollingSound.pause();
+				if (typeof rollingSound.currentTime === 'number') rollingSound.currentTime = 0;
+			}
+			// If it's a Howl or other wrapper returned by NarbeAudioHelper
+			else if (typeof rollingSound.stop === 'function') {
+				rollingSound.stop();
+			}
+		} catch(e) {}
+		rollingSound = null;
+	}
+}
+
+function playRollingSound() {
+	stopRollingSound();
+	rollingSound = playSfx('sound/rolling-ball.wav', 1.0);
+	// Limit to 1.5 seconds max
+	rollingSoundTimer = setTimeout(function() {
+		stopRollingSound();
+	}, 1500);
 }
 
 var ambientController = null;
@@ -808,7 +837,7 @@ function updateImitation(imitation, dt) {
 	imitation.player.physics.positionBall(position, false);
 	imitation.player.physics.releaseBall(velocity, angle);
 	// SFX: ball rolling for imitation throws too
-	playSfx('sound/rolling-ball.wav', 1.0);
+	playRollingSound();
 }
 
 function initScene() {
@@ -876,6 +905,7 @@ function updateGame(player, dt) {
 				var standingNow = (distanceSquared < STANDING_PIN_SQUARED_OFFSET_MAX) && upright;
 				if (player._sfxPinStanding && player._sfxPinStanding[i] && !standingNow) {
 					// Transition: standing -> fallen
+					stopRollingSound();
 					playSfx('sound/single-pin.mp3', 0.9);
 				}
 				if (player._sfxPinStanding) player._sfxPinStanding[i] = standingNow;
@@ -1286,7 +1316,7 @@ function handleGameInputUp() {
 		var velocity = BALL_VELOCITY_MIN + (BALL_VELOCITY_MAX - BALL_VELOCITY_MIN) * kPow;
 		
 		localPlayer.physics.releaseBall(velocity, currentAimAngle);
-		playSfx('sound/rolling-ball.wav', 1.0);
+		playRollingSound();
 		
 		charging = false;
 		aimingMode = false;
@@ -1397,7 +1427,7 @@ function onActionUp(clientX, clientY, time) {
 		var angle = Math.atan2(-releaseVector.x, -releaseVector.z);
 		localPlayer.physics.releaseBall(velocity, angle);
 		// SFX: ball rolling
-		playSfx('sound/rolling-ball.wav', 1.0);
+		playRollingSound();
 	}
 
 	pickingBall = false;
@@ -1642,7 +1672,7 @@ function onDocumentKeyUp(event) {
 			// Fire!
 			localPlayer.physics.releaseBall(velocity, currentAimAngle);
 			// SFX: ball rolling
-			playSfx('sound/rolling-ball.wav', 1.0);
+			playRollingSound();
 
 			// Cleanup aiming state
 			charging = false;
