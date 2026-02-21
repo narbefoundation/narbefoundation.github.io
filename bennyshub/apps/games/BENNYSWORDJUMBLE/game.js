@@ -407,19 +407,10 @@ class WordJumbleGame {
             const input = document.createElement('input');
             input.type = 'file';
             input.accept = '.json,application/json';
-            
-            // Track if file was selected
-            let fileSelected = false;
-            
             input.onchange = (e) => {
                 const file = e.target.files[0];
-                if (!file) {
-                    // User cancelled - return to settings
-                    self.renderSettingsMenu();
-                    return;
-                }
+                if (!file) return;
                 
-                fileSelected = true;
                 self.customFileName = file.name;
                 
                 const reader = new FileReader();
@@ -479,19 +470,6 @@ class WordJumbleGame {
                 };
                 reader.readAsText(file);
             };
-            
-            // Detect when file picker is cancelled (user returns without selecting)
-            const onFocus = () => {
-                setTimeout(() => {
-                    if (!fileSelected) {
-                        // User cancelled file picker - return to settings
-                        self.renderSettingsMenu();
-                    }
-                    window.removeEventListener('focus', onFocus);
-                }, 300);
-            };
-            window.addEventListener('focus', onFocus);
-            
             input.click();
         }, 'settings');
     }
@@ -595,16 +573,16 @@ class WordJumbleGame {
         
         document.getElementById('warning-proceed').onclick = () => {
              document.body.removeChild(overlay);
-             if (this.state.warningCallback) {
-                 this.state.warningCallback();
-             }
+             if (this.state.warningCallback) this.state.warningCallback();
              this.state.warningCallback = null;
              
-             // Don't immediately return to settings/menu here
-             // Let the callback handle the UI flow (e.g., file upload will render settings after loading)
-             // For editor launch, the main window stays active
-             // Set mode back to what we came from so input still works if needed
-             this.state.mode = this.state.returnMode === 'menu' ? 'menu' : 'settings';
+             // After proceed (e.g. launching editor), where do we stay?
+             // Usually we stay on the screen we launched from.
+             if (this.state.returnMode === 'menu') this.showMainMenu();
+             else this.renderSettingsMenu();
+             
+             // But wait, showMainMenu/renderSettingsMenu sets the mode.
+             // If we just launched a window (editor), the main window is still active.
         };
 
         this.state.warningButtons = [
@@ -732,7 +710,6 @@ class WordJumbleGame {
     showMainMenu() {
         this.state.mode = 'menu';
         this.state.menuIndex = 0;
-        this.state.inputFrozen = false; // Reset input frozen flag
         this.pauseOverlay.style.display = 'none';
         
         this.mainContent.innerHTML = `
@@ -835,8 +812,7 @@ class WordJumbleGame {
     
     renderSettingsMenu() {
         const s = this.settings;
-        // Use pauseOverlay if settings opened from pause menu, otherwise use mainContent
-        const container = this.state.fromPause ? this.pauseOverlay : this.mainContent;
+        const container = this.mainContent;
         
         let currentAutoScan = s.autoScan;
         let speedLabel = scanSpeeds[s.scanSpeedIndex].label;
@@ -859,7 +835,7 @@ class WordJumbleGame {
             <div class="menu-title" style="margin-bottom: 1vh; font-size: 6vmin;">Settings</div>
             <div id="menu-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2vmin; width: 80%; max-width: 1000px; margin: 0 auto; box-sizing: border-box;">
                 <button class="menu-button" style="width: 100%; margin: 0; font-size: 3vmin; white-space: normal; height: 100%; min-height: 8vh;" onclick="game.toggleTheme()">Theme: ${themes[s.themeIndex].name}</button>
-                <button class="menu-button" style="width: 100%; margin: 0; font-size: 3vmin; white-space: normal; height: 100%; min-height: 8vh;" onclick="game.toggleTTS()">TTS: ${s.tts ? 'On' : 'Off'}</button>
+                <button class="menu-button" style="width: 100%; margin: 0; font-size: 3vmin; white-space: normal; height: 100%; min-height: 8vh;" onclick="game.toggleTTS()">TTS: ${window.NarbeVoiceManager ? (window.NarbeVoiceManager.getSettings().ttsEnabled ? 'On' : 'Off') : (s.tts ? 'On' : 'Off')}</button>
                 <button class="menu-button" style="width: 100%; margin: 0; font-size: 3vmin; white-space: normal; height: 100%; min-height: 8vh;" onclick="game.toggleAutoScan()">Auto Scan: ${currentAutoScan ? 'On' : 'Off'}</button>
                 <button class="menu-button" style="width: 100%; margin: 0; font-size: 3vmin; white-space: normal; height: 100%; min-height: 8vh;" onclick="game.toggleScanSpeed()" data-spoken="Scan Speed: ${speedSpoken}">Speed: ${speedLabel}</button>
                 <button class="menu-button" style="width: 100%; margin: 0; font-size: 3vmin; white-space: normal; height: 100%; min-height: 8vh;" onclick="game.toggleHighlightColor()" data-spoken="Highlight Color: ${hColor.name}">
@@ -885,7 +861,12 @@ class WordJumbleGame {
         this.speak("Theme: " + themes[this.settings.themeIndex].name);
     }
     toggleTTS() {
-        this.settings.tts = !this.settings.tts;
+        if (window.NarbeVoiceManager) {
+            window.NarbeVoiceManager.toggleTTS();
+            this.settings.tts = window.NarbeVoiceManager.getSettings().ttsEnabled;
+        } else {
+            this.settings.tts = !this.settings.tts;
+        }
         this.saveSettings();
         this.renderSettingsMenu();
         this.speak("TTS: " + (this.settings.tts ? 'On' : 'Off'));
@@ -1309,29 +1290,15 @@ class WordJumbleGame {
     clearGameData() {
         if (confirm("Are you sure you want to clear the 'Local' words cache and high scores? This does not delete files saved to your computer.")) {
             try {
-                // Remove all wordjumble_list_* entries from localStorage
-                const keysToRemove = [];
-                for (let i = 0; i < localStorage.length; i++) {
-                    const key = localStorage.key(i);
-                    if (key.startsWith('wordjumble_list_')) {
-                        keysToRemove.push(key);
-                    }
-                }
-                keysToRemove.forEach(key => localStorage.removeItem(key));
-                
                 localStorage.removeItem('wordjumble_custom_words');
-                localStorage.removeItem('wordjumble_highscores');
-                
+                localStorage.removeItem('wordjumble_high_scores');
                 this.speak("Game Cache Cleared");
+                alert("Local Cache Cleared. Reselect Source to refresh.");
                 
-                // Reset source to online default since local sources are gone
-                this.settings.currentSourceId = 'online_default';
-                this.settings.dataSource = 'online';
-                this.saveSettings();
+                // If we were on 'local', we are now empty. 
+                // Reloading source would handle this (usually falling back to empty or online if we force it)
                 this.loadWordsSource();
                 this.renderSettingsMenu();
-                
-                alert("Local Cache Cleared. Source reset to online default.");
                 
             } catch (e) {
                 console.error(e);
