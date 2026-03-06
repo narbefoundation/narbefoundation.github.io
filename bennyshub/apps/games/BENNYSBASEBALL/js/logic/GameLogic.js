@@ -2081,6 +2081,14 @@ class GameLogic {
         gameState.strikes = 0;
 
         if (gameState.half === 'top') {
+            // Check if game should end: if home team (Blue) is ahead after top of 9th or later,
+            // they don't need to bat - game is over
+            if (gameState.currentInning >= GAME_CONSTANTS.GAME_RULES.INNINGS_PER_GAME && 
+                gameState.score.Blue > gameState.score.Red) {
+                // Home team is ahead after the top of the 9th (or later) - game ends
+                this.endGame();
+                return;
+            }
             // Switch to bottom of the same inning
             gameState.half = 'bottom';
         } else {
