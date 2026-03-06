@@ -1915,54 +1915,59 @@
 
     // RSS Feed Loader
     document.addEventListener('DOMContentLoaded', () => {
-      const RSS_URL = 'https://narbefoundation.blogspot.com/feeds/posts/default?alt=rss';
-      const API_URL = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}`;
+      // Use Blogger's native JSON feed (more reliable than rss2json)
+      const BLOGGER_JSON_URL = 'https://narbefoundation.blogspot.com/feeds/posts/default?alt=json&max-results=3';
       const container = document.getElementById('rss-feed-container');
 
       if (!container) return;
 
-      fetch(API_URL)
-        .then(response => response.json())
-        .then(data => {
-          if (data.status === 'ok' && data.items.length > 0) {
+      // Helper function to upgrade Blogger/Google image URLs to high resolution
+      function getHighResImage(url) {
+        if (!url) return null;
+        // Remove any size restrictions from Blogger/Google URLs
+        // Patterns: /s72-c/, /s320/, /w465-h620/, =s72-c, =s320, =w400-h300-c, etc.
+        let highRes = url
+          .replace(/\/s\d+(-[a-z])?(-c)?\//gi, '/s1600/')
+          .replace(/\/w\d+(-h\d+)?(-[a-z])?(-c)?\//gi, '/s1600/')
+          .replace(/=s\d+(-[a-z])?(-c)?$/gi, '=s1600')
+          .replace(/=w\d+(-h\d+)?(-[a-z])?(-c)?$/gi, '=s1600')
+          .replace(/-rw$/, '');
+        return highRes;
+      }
+
+      // Use JSONP for Blogger feed (bypasses CORS)
+      const script = document.createElement('script');
+      window.bloggerCallback = function(data) {
+        try {
+          if (data.feed && data.feed.entry && data.feed.entry.length > 0) {
             container.innerHTML = ''; // Clear loading message
             
-            // Helper function to upgrade Blogger/Google image URLs to high resolution
-            function getHighResImage(url) {
-              if (!url) return null;
-              // Remove any size restrictions from Blogger/Google URLs
-              // Patterns: /s72-c/, /s320/, =s72-c, =s320, =w400-h300-c, etc.
-              let highRes = url
-                .replace(/\/s\d+(-[a-z])?(-c)?\//gi, '/s1600/')
-                .replace(/=s\d+(-[a-z])?(-c)?/gi, '=s1600')
-                .replace(/=w\d+(-h\d+)?(-[a-z])?(-c)?/gi, '=s1600')
-                .replace(/-rw$/, '');
-              return highRes;
-            }
-
-            // Take first 3 items
-            data.items.slice(0, 3).forEach(item => {
+            data.feed.entry.forEach(entry => {
               let imageUrl = 'images/branding/favicon.png'; // Default fallback
               
-              // Priority 1: Extract image from the full content/description HTML (best quality source)
-              const contentToSearch = item.content || item.description || '';
-              const imgMatch = contentToSearch.match(/<img[^>]+src=["']([^"']+)["']/i);
+              // Priority 1: Extract image from content (best quality source)
+              const content = entry.content ? entry.content.$t : '';
+              const imgMatch = content.match(/<img[^>]+src=["']([^"']+)["']/i);
               
               if (imgMatch && imgMatch[1]) {
                 imageUrl = getHighResImage(imgMatch[1]);
-              } else if (item.enclosure && item.enclosure.link) {
-                // Priority 2: Enclosure link
-                imageUrl = getHighResImage(item.enclosure.link);
-              } else if (item.thumbnail) {
-                // Priority 3: Thumbnail (usually low-res, but upgrade it)
-                imageUrl = getHighResImage(item.thumbnail);
+              } else if (entry.media$thumbnail && entry.media$thumbnail.url) {
+                // Priority 2: media:thumbnail (upgrade from 72px)
+                imageUrl = getHighResImage(entry.media$thumbnail.url);
+              }
+
+              // Get the post link
+              let postLink = '#';
+              if (entry.link) {
+                const altLink = entry.link.find(l => l.rel === 'alternate');
+                if (altLink) postLink = altLink.href;
               }
 
               // Clean up description (remove HTML tags)
-              const cleanDesc = item.description.replace(/<[^>]*>?/gm, '').substring(0, 150) + '...';
+              const cleanDesc = content.replace(/<[^>]*>?/gm, '').substring(0, 150) + '...';
               
               // Format date
-              const date = new Date(item.pubDate).toLocaleDateString('en-US', {
+              const date = new Date(entry.published.$t).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'
@@ -1970,7 +1975,7 @@
 
               const card = document.createElement('a');
               card.className = 'rss-card';
-              card.href = item.link;
+              card.href = postLink;
               card.target = '_blank';
               card.rel = 'noopener';
               
@@ -1978,7 +1983,7 @@
                 <div class="rss-image" style="background-image: url('${imageUrl}')"></div>
                 <div class="rss-content">
                   <div class="rss-date">${date}</div>
-                  <h3 class="rss-title">${item.title}</h3>
+                  <h3 class="rss-title">${entry.title.$t}</h3>
                   <p class="rss-description">${cleanDesc}</p>
                 </div>
               `;
@@ -1988,11 +1993,18 @@
           } else {
             container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 2rem;">No updates found.</div>';
           }
-        })
-        .catch(error => {
-          console.error('Error fetching RSS feed:', error);
+        } catch (e) {
+          console.error('Error processing Blogger feed:', e);
           container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: #ef4444;">Unable to load updates at this time.</div>';
-        });
+        }
+      };
+      
+      script.src = BLOGGER_JSON_URL + '&callback=bloggerCallback';
+      script.onerror = function() {
+        console.error('Error loading Blogger feed');
+        container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: #ef4444;">Unable to load updates at this time.</div>';
+      };
+      document.body.appendChild(script);
     });
   </script>
 </body>
