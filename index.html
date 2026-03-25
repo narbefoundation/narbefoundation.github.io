@@ -9,6 +9,9 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="accessibility.css" />
+<!-- OpenDyslexic Font for Accessibility -->
+<link href="https://fonts.cdnfonts.com/css/opendyslexic" rel="stylesheet"/>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXR0H5SN9F"></script>
 <script>
@@ -1536,7 +1539,7 @@
     </style>
 </head>
 <body>
-  <a href="#main" class="skip-link">Skip to content</a>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
   <header>
     <nav class="container">
@@ -1546,18 +1549,18 @@
         </a>
       </div>
       <div class="site-title">NARBE Foundation</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
+      <ul class="nav-links" id="nav-links" role="navigation" aria-label="Main navigation">
+        <li><a href="index.html" aria-current="page">Home</a></li>
         <li><a href="#story">Founders</a></li>
         <li><a href="#latest-updates">News</a></li>
         <li><a href="resources.html">Resources</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="getting-started.html">Getting Started</a></li>
       </ul>
-      <button class="mobile-menu-btn" id="mobileMenuBtn">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
       </button>
       <a class="donate-btn" href="#support">Donate</a>
     </nav>
@@ -1835,7 +1838,7 @@
           </svg>
         </a>
       </div>
-      <p>© 2026 NARBE Foundation. Unlocking the world, one switch at a time.</p>
+      <p>© 2026 NARBE Foundation. Helping others unlock the world, one switch at a time.</p>
       <div class="footer-legal">
         <p>501(c)(3) Nonprofit Organization</p>
         <p>EIN: 39-3343898</p>
@@ -1877,8 +1880,10 @@
         mobileMenuBtn.addEventListener('click', () => {
           navLinks.classList.toggle('active');
           mobileMenuBtn.classList.toggle('active');
+          const isExpanded = navLinks.classList.contains('active');
+          mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
           const spans = mobileMenuBtn.querySelectorAll('span');
-          if (navLinks.classList.contains('active')) {
+          if (isExpanded) {
             spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
             spans[1].style.opacity = '0';
             spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
@@ -1893,6 +1898,7 @@
           if (e.target.tagName === 'A') {
             navLinks.classList.remove('active');
             mobileMenuBtn.classList.remove('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
             const spans = mobileMenuBtn.querySelectorAll('span');
             spans[0].style.transform = 'none';
             spans[1].style.opacity = '1';
@@ -1904,6 +1910,7 @@
           if (!mobileMenuBtn.contains(e.target) && !navLinks.contains(e.target)) {
             navLinks.classList.remove('active');
             mobileMenuBtn.classList.remove('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
             const spans = mobileMenuBtn.querySelectorAll('span');
             spans[0].style.transform = 'none';
             spans[1].style.opacity = '1';
@@ -2007,5 +2014,8 @@
       document.body.appendChild(script);
     });
   </script>
+  
+  <!-- Accessibility Widget -->
+  <script src="accessibility.js"></script>
 </body>
 </html>

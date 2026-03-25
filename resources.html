@@ -8,6 +8,9 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="accessibility.css" />
+<!-- OpenDyslexic Font for Accessibility -->
+<link href="https://fonts.cdnfonts.com/css/opendyslexic" rel="stylesheet"/>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXR0H5SN9F"></script>
 <script>
@@ -448,7 +451,7 @@
 </style>
 </head>
 <body>
-  <a href="#main" class="skip-link">Skip to content</a>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
   <header>
     <nav class="container">
@@ -458,18 +461,18 @@
         </a>
       </div>
       <div class="site-title">NARBE Foundation</div>
-      <ul class="nav-links">
+      <ul class="nav-links" id="nav-links" role="navigation" aria-label="Main navigation">
         <li><a href="index.html">Home</a></li>
         <li><a href="index.html#story">Founders</a></li>
         <li><a href="index.html#latest-updates">News</a></li>
-        <li><a href="resources.html" class="active">Resources</a></li>
+        <li><a href="resources.html" class="active" aria-current="page">Resources</a></li>
         <li><a href="index.html#contact">Contact</a></li>
         <li><a href="getting-started.html">Getting Started</a></li>
       </ul>
-      <button class="mobile-menu-btn" id="mobileMenuBtn">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
       </button>
       <a class="donate-btn" href="index.html#support">Donate</a>
     </nav>
@@ -627,6 +630,40 @@
       </div>
     </section>
 
+    <section class="resource-section">
+      <div class="container">
+        <h2 class="section-title">Community &amp; Maker Groups</h2>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <div class="resource-logo">
+              <img src="https://i0.wp.com/atmakers.org/wp-content/uploads/2016/10/cropped-atmclearsq.png?fit=240%2C240&ssl=1" alt="ATMakers Logo">
+            </div>
+            <h4><a href="https://atmakers.org/" target="_blank" rel="noopener">ATMakers.org</a></h4>
+            <p>A nonprofit organization and community dedicated to creating and sharing assistive technology solutions. Great resource for DIY AT projects and connecting with other makers.</p>
+            <a href="https://atmakers.org/" class="resource-link" target="_blank" rel="noopener">Visit Site &rarr;</a>
+          </div>
+          <div class="resource-card">
+            <div class="resource-logo" style="position: relative;">
+              <img src="https://i0.wp.com/atmakers.org/wp-content/uploads/2016/10/cropped-atmclearsq.png?fit=240%2C240&ssl=1" alt="AT Makers Facebook Group Logo">
+              <svg viewBox="0 0 24 24" style="position: absolute; bottom: 0; right: 0; width: 20px; height: 20px; fill: #1877F2; background: white; border-radius: 4px; padding: 2px;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </div>
+            <h4><a href="https://www.facebook.com/groups/ATMakers/" target="_blank" rel="noopener">AT Makers Facebook Group</a></h4>
+            <p>Active Facebook community of assistive technology makers sharing projects, ideas, and support for DIY accessibility solutions.</p>
+            <a href="https://www.facebook.com/groups/ATMakers/" class="resource-link" target="_blank" rel="noopener">Join Group &rarr;</a>
+          </div>
+          <div class="resource-card">
+            <div class="resource-logo" style="position: relative;">
+              <img src="https://scontent-bos5-1.xx.fbcdn.net/v/t1.6435-9/119928393_10158421096705792_3826465934732274771_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=25d718&_nc_ohc=aCrrL4C4h_4Q7kNvwEMLwfr&_nc_oc=AdpC2VIP-By2FKNVY9vwPW8glv4QJ42uXM0YkMza8cJVIM6Gk80VLc18_HbfG1bRohd7TNCnUXP5vP_DFPaaC1rv&_nc_zt=23&_nc_ht=scontent-bos5-1.xx&_nc_gid=wn48jrgJ6RzGoe9Br8krYQ&_nc_ss=7a32e&oh=00_AfxMMCH_98A-YcRfR-gEX2pwFOrzIUCZTfn7q9zXdUy8Zg&oe=69EB6A96" alt="Assistive Technology Facebook Group Logo">
+              <svg viewBox="0 0 24 24" style="position: absolute; bottom: 0; right: 0; width: 20px; height: 20px; fill: #1877F2; background: white; border-radius: 4px; padding: 2px;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </div>
+            <h4><a href="https://www.facebook.com/groups/125241767530963" target="_blank" rel="noopener">Assistive Technology Facebook Group</a></h4>
+            <p>A Facebook community focused on assistive technology discussions, resources, and support for people with disabilities and their families.</p>
+            <a href="https://www.facebook.com/groups/125241767530963" class="resource-link" target="_blank" rel="noopener">Join Group &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="resource-section" style="background: #f8fafc;">
       <div class="container">
         <h2 class="section-title">Want to build your own?</h2>
@@ -666,7 +703,7 @@
           </svg>
         </a>
       </div>
-      <p>© 2026 NARBE Foundation. Unlocking the world, one switch at a time.</p>
+      <p>© 2026 NARBE Foundation. Helping others unlock the world, one switch at a time.</p>
       <div class="footer-legal">
         <p>501(c)(3) Nonprofit Organization</p>
         <p>EIN: 39-3343898</p>
@@ -744,5 +781,8 @@
       }
     });
   </script>
+  
+  <!-- Accessibility Widget -->
+  <script src="accessibility.js"></script>
 </body>
 </html>
