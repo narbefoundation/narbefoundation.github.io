@@ -62,16 +62,29 @@
                 sharedCtx.resume().catch(e => {});
             }
 
+            var controller = {
+                source: null,
+                stop: function() {
+                    try { if (this.source) this.source.stop(); } catch(e){}
+                    this.source = null;
+                    this.stopped = true;
+                },
+                stopped: false
+            };
+
             loadBuffer(url, sharedCtx).then(buffer => {
-                if (!buffer) return;
+                if (!buffer || controller.stopped) return;
                 const source = sharedCtx.createBufferSource();
                 source.buffer = buffer;
                 const gain = sharedCtx.createGain();
                 gain.gain.value = volume;
                 source.connect(gain);
                 gain.connect(sharedCtx.destination);
+                source.onended = function() { controller.source = null; };
                 source.start(0);
+                controller.source = source;
             });
+            return controller;
         },
         resumeAll: function() {
             unlockAudio();
