@@ -461,6 +461,37 @@
     object-position: bottom center;
   }
 
+  /* Out of Stock Card State */
+  .card-out-of-stock {
+    border-color: #94a3b8;
+  }
+
+  .card-out-of-stock:hover {
+    box-shadow: 0 15px 35px rgba(148, 163, 184, 0.25);
+  }
+
+  .card-out-of-stock h3 {
+    color: #64748b;
+  }
+
+  .card-out-of-stock .out-of-stock-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #ef4444;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 700;
+    z-index: 5;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+  }
+
   a.mission-card {
     text-decoration: none;
     display: block;
@@ -1578,10 +1609,11 @@
             <div class="card-icon"><img src="images/branding/beamin-benny.png" alt="Benny Logo"></div>
             <p>Free library of accessible games and tools</p>
           </a>
-          <a href="switchkit.html" class="mission-card card-hardware">
+          <a href="switchkit.html" class="mission-card card-hardware card-out-of-stock">
+            <span class="out-of-stock-badge">✕</span>
             <h3>Switch Kits</h3>
             <div class="card-icon"><img src="images/content/hardware-kits.png" alt="Switch Kit Icon"></div>
-            <p>Our donation program for Benny's 2-button switch kits</p>
+            <p>Temporarily out of stock — applications reopen July for our next quarterly batch</p>
           </a>
           <a href="resources.html" class="mission-card card-resources">
             <h3>Trusted Resources</h3>
