@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -229,9 +229,6 @@
       padding: 12px 0; 
     }
 
-    .mission-grid {
-      grid-template-columns: 1fr;
-    }
   }
 
   /* Buttons */
@@ -361,104 +358,10 @@
     border-radius: 15px;
   }
 
-  /* Mission section */
-  .mission { 
-    padding: 56px 0; 
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-    color: white;
-  }
-  
-  .mission .section-title { color: #fff; }
-  .mission .section-subtitle { color: rgba(255,255,255,0.95); }
-    
-  .mission-grid { 
-    display: grid; 
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 2rem; 
-    margin-top: 3rem; 
-  }
-  
-  .mission-card {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-    text-decoration: none;
-    color: #1e293b;
-    position: relative;
-  }
-  
-  .mission-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 28px rgba(0,0,0,0.18);
-  }
-
-  .mission-card .card-icon {
-    font-size: 2rem;
-    line-height: 1;
-    margin-bottom: 0.25rem;
-  }
-
-  .mission-card h3 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #1e293b;
-    letter-spacing: 0;
-    line-height: 1.3;
-    text-transform: none;
-    margin: 0;
-  }
-
-  .mission-card p {
-    color: #64748b;
-    font-weight: 400;
-    font-size: 0.88rem;
-    line-height: 1.5;
-    margin: 0;
-  }
-
-  /* Out of Stock Card State */
-  .card-out-of-stock {
-    opacity: 0.8;
-  }
-
-  .card-out-of-stock .out-of-stock-badge {
-    display: inline-block;
-    background: #fef2f2;
-    color: #ef4444;
-    font-size: 0.68rem;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 20px;
-    letter-spacing: 0.02em;
-    vertical-align: middle;
-    margin-left: 0.4rem;
-  }
-
-  a.mission-card {
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  /* Mobile Styles */
-  @media (max-width: 992px) {
-    .mission-card {
-      padding: 1.25rem;
-    }
-
-    .mission-card:active {
-      transform: scale(0.97);
-    }
-  }
-
   /* Initiatives */
   .initiatives {
     padding: 56px 0;
-    background: #f8fafc;
+    background: #ffffff;
   }
 
   .initiatives-grid {
@@ -474,6 +377,15 @@
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     transition: transform 0.3s ease;
+  }
+
+  .initiative-card .card-logo {
+    height: 48px;
+    width: auto;
+    max-width: 160px;
+    display: block;
+    margin-bottom: 1rem;
+    object-fit: contain;
   }
 
   .initiative-card:hover {
@@ -1515,11 +1427,11 @@
       <div class="site-title">NARBE Foundation</div>
       <ul class="nav-links" id="nav-links" role="navigation" aria-label="Main navigation">
         <li><a href="index.html" aria-current="page">Home</a></li>
-        <li><a href="#story">Founders</a></li>
-        <li><a href="#latest-updates">News</a></li>
+        <li><a href="#founder">Founder</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#news">News</a></li>
         <li><a href="resources.html">Resources</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="getting-started.html">Getting Started</a></li>
       </ul>
       <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
         <span aria-hidden="true"></span>
@@ -1533,40 +1445,22 @@
   <main id="main">
     <section class="hero">
       <div class="container">
-        <h1>Accessible Games and Tools</h1>
-        <p class="hero-subtitle">We’re a nonprofit hub that supports the creation of open-source assistive tools, connects a community, and helps underserved people with complex needs find the tech and engagement they deserve.</p>
-        
-        <div class="mission-grid" style="margin-top: 2rem; margin-bottom: 3rem;">
-          <a href="https://switchedgames.org" target="_blank" rel="noopener" class="mission-card card-hub">
-            <div class="card-icon"><img src="images/logos/switchedgames_emblem_v5.svg" alt="SwitchedGames" style="width:40px;height:40px;display:block;margin:0 auto;" /></div>
-            <h3>Play Games</h3>
-            <p>Free library of one and two-button accessible games and tools</p>
-          </a>
-          <a href="switchkit.html" class="mission-card card-hardware card-out-of-stock">
-            <div class="card-icon">🔌</div>
-            <h3>Switch Kits <span class="out-of-stock-badge">Out of Stock</span></h3>
-            <p>Applications reopen July for our next quarterly batch</p>
-          </a>
-          <a href="resources.html" class="mission-card card-resources">
-            <div class="card-icon">📚</div>
-            <h3>Trusted Resources</h3>
-            <p>Accessibility tools and platforms we trust</p>
-          </a>
-          <a href="https://discord.gg/b82emKJhTC" target="_blank" rel="noopener" class="mission-card card-discord">
-            <div class="card-icon"><svg viewBox="0 0 24 24" width="32" height="32" fill="#5865F2" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.3698a19.7913 19.7913 0 0 0-4.8851-1.5152.0741.0741 0 0 0-.0785.0371c-.211.3753-.4447.7748-.6083 1.1696a18.4034 18.4034 0 0 0-5.4868 0 20.149 20.149 0 0 0-.6172-1.1696.077.077 0 0 0-.0785-.0376 19.7238 19.7238 0 0 0-4.8852 1.5151.0699.0699 0 0 0-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 0 0 .0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 0 0 .0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 0 0-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 0 1-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 0 1 .0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 0 1 .0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 0 1-.0066.1276 12.2986 12.2986 0 0 1-1.873.8914.0766.0766 0 0 0-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 0 0 .0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 0 0 .0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 0 0-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1569 2.419zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1568 2.419z"/></svg></div>
-            <h3>Community</h3>
-            <p>Collaborate and support DIY accessibility</p>
-          </a>
+        <h1>Our Mission</h1>
+        <p class="hero-subtitle">NARBE Foundation invests in projects that prove people with complex needs deserve autonomy, connection, and choice. We support the builders and share what works.</p>
+
+        <div style="margin-top: 1rem;">
+          <a href="#projects" class="cta-btn cta-primary">See Our Projects</a>
+          <a href="#support" class="cta-btn cta-secondary">Support Our Work</a>
         </div>
       </div>
     </section>
 
-    <section class="story-dark" id="story">
+    <section class="story-dark" id="founder">
       <div class="container">
         <div class="story-content">
           <div class="story-text">
             <h2 class="section-title" style="color:#fff;">Founders' Story</h2>
-            <p>We are Ari, Nancy, and Ben — a brother and sister-in-law caregiving team. Ben lives with an ultra-rare condition called TUBB4A-related leukodystrophy. As his condition progressed, he became nonspeaking and quadriplegic, leaving him with very limited options for interaction.</p>
+            <p>We are Ari, Nancy, and Ben — a family, and a team. Ben lives with an ultra-rare condition called TUBB4A-related leukodystrophy. As his condition progressed, he became nonspeaking and quadriplegic, leaving him with very limited options for interaction.</p>
             <p>When we searched for tools to help Ben, most focused only on basic communication. Ben wanted more — to play games, browse the internet, watch his favorite shows, and truly connect with the world. So, we built our own custom two-button system that Ben controls with his head.</p>
             <p>Our focus is now on sharing these games and tools, optimized specifically for one and two button users, so others can find the same joy and connection.</p>
           </div>
@@ -1577,9 +1471,48 @@
       </div>
     </section>
 
+    <section class="initiatives" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Our Projects</h2>
+          <p class="section-subtitle">NARBE Foundation supports independent projects that advance switch access. Here's what we're backing right now.</p>
+        </div>
+        <div class="initiatives-grid">
+          <div class="initiative-card">
+            <img class="card-logo" src="images/branding/beamin-benny.png" alt="Benny's Hub logo" />
+            <h3>Benny's Hub</h3>
+            <p>The project that started it all. Built specifically for Ben — nonspeaking, quadriplegic, with two-button access — and released for anyone to use. Available as a free web app, and the Electron App is available on GitHub.</p>
+            <a href="https://narbehouse.github.io/bennyshub" target="_blank" rel="noopener" class="card-link">Explore Benny's Hub &rarr;</a>
+          </div>
+          <div class="initiative-card">
+            <img class="card-logo" src="images/branding/switchedgames_emblem_v5.svg" alt="SwitchedGames logo" />
+            <h3>SwitchedGames</h3>
+            <p>A growing library of free one and two switch games, built by NARBE House and a community of volunteers. Play free in your browser and explore games designed for one and two switch access.</p>
+            <a href="https://switchedgames.org" target="_blank" rel="noopener" class="card-link">Explore SwitchedGames &rarr;</a>
+          </div>
+          <div class="initiative-card">
+            <svg class="card-logo" viewBox="0 0 64 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="16" cy="16" r="14" fill="#ef4444"/>
+              <circle cx="16" cy="16" r="14" fill="none" stroke="#b91c1c" stroke-width="2"/>
+              <ellipse cx="11" cy="10" rx="5" ry="3" fill="#ffffff" opacity="0.35"/>
+              <circle cx="48" cy="16" r="14" fill="#3b82f6"/>
+              <circle cx="48" cy="16" r="14" fill="none" stroke="#1d4ed8" stroke-width="2"/>
+              <ellipse cx="43" cy="10" rx="5" ry="3" fill="#ffffff" opacity="0.35"/>
+            </svg>
+            <h3>Switch Kit Donation Program</h3>
+            <p>Free 2-button accessibility kits for recreational use, made possible by donor support. Apply while supplies last — first come, first served.</p>
+            <a href="switchkit.html" class="card-link">Explore the Switch Kit Program &rarr;</a>
+          </div>
+          <div class="initiative-card">
+            <h3>More Coming Soon</h3>
+            <p>We're always looking for new ways to support this community — through grants, partnerships, and new projects. Check back as we grow.</p>
+            <a href="#news" class="card-link">Get Updates &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-
-    <section class="rss-feed-section" id="latest-updates">
+    <section class="rss-feed-section" id="news">
       <div class="container">
         <div class="section-header">
           <h2 class="section-title">Latest Updates</h2>
@@ -1731,16 +1664,15 @@
             <h2 class="section-title">Support Us</h2>
             
             <ul class="support-list" style="margin: 1rem 0;">
-              <li>Develop accessible games and tools where options are limited for people with disabilities and complex needs</li>
-              <li>Maintain and expand shared libraries of assistive technology tools and accessible games</li>
-              <li>Design, test, and support simple, low cost, and DIY hardware solutions</li>
-              <li>Support open and low cost accessibility projects and collaborators</li>
-              <li>Fund outreach efforts to reach underserved individuals and families</li>
-              <li>Cover essential infrastructure like hosting and software</li>
-              <li>Sustain this work long term so these tools remain available to those who need them</li>
+              <li>Develop open-source games and tools for people with complex accessibility needs</li>
+              <li>Maintain free libraries of switch-accessible games and software</li>
+              <li>Design and distribute low-cost DIY hardware solutions</li>
+              <li>Fund grants and partnerships with builders and organizations</li>
+              <li>Cover hosting, infrastructure, and essential software</li>
+              <li>Sustain this work long-term so these tools stay free and available</li>
             </ul>
 
-            <p class="transparency-note">The NARBE Foundation is a registered nonprofit. Donations are used to directly support our programs and the people doing the work behind them.</p>
+            <p class="transparency-note">The NARBE Foundation is a registered nonprofit. Donations fund the infrastructure that keeps our projects and community free.</p>
             <p style="margin-top: 1rem;"><a href="https://givebutter.com/donate-narbe" target="_blank" rel="noopener" style="color: #6366f1; font-weight: 600;">Givebutter Campaign</a></p>
           </div>
 
@@ -1778,7 +1710,7 @@
             <p>NARBE Foundation<br/>5775 Post Rd #149<br/>East Greenwich, RI 02818</p>
           </div>
         </div>
-        
+        <p style="margin-top: 2rem; color: #64748b;">For switch kit applications, visit our <a href="resources.html" style="color: #6366f1; font-weight: 600;">Resources page</a>.</p>
 
     </section>
   </main>
@@ -1799,6 +1731,11 @@
         <a class="footer-social-link" href="https://www.instagram.com/narbefoundation" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
           <svg class="instagram-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+          </svg>
+        </a>
+        <a class="footer-social-link" href="https://discord.gg/b82emKJhTC" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.317 4.3698a19.7913 19.7913 0 0 0-4.8851-1.5152.0741.0741 0 0 0-.0785.0371c-.211.3753-.4447.8648-.6083 1.2496a18.4034 18.4034 0 0 0-5.4868 0 20.149 20.149 0 0 0-.6172-1.2496.077.077 0 0 0-.0785-.0376 19.7238 19.7238 0 0 0-4.8852 1.5151.0699.0699 0 0 0-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 0 0 .0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 0 0 .0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 0 0-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 0 1-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 0 1 .0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 0 1 .0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 0 1-.0066.1276 12.2986 12.2986 0 0 1-1.873.8914.0766.0766 0 0 0-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 0 0 .0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 0 0 .0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 0 0-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1569 2.419zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1568 2.419z"/>
           </svg>
         </a>
       </div>
