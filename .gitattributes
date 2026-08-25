@@ -1,0 +1,5 @@
+# This repo is served byte-for-byte by GitHub Pages, and its files already carry
+# a mix of line endings (resources.html is LF; the other pages are CRLF).
+# Letting git's autocrlf rewrite them turns a two-line edit into a whole-file
+# diff, so disable all end-of-line conversion and store every file verbatim.
+* -text

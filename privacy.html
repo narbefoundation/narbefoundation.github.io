@@ -1,0 +1,1222 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Privacy Policy - NARBE Foundation</title>
+<meta name="description" content="How the NARBE Foundation collects, uses, protects, and shares information about the families, donors, and visitors we serve."/>
+<link rel="canonical" href="https://narbefoundation.org/privacy.html"/>
+<link rel="icon" type="image/png" href="images/branding/favicon.png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="accessibility.css" />
+<!-- OpenDyslexic Font for Accessibility -->
+<link href="https://fonts.cdnfonts.com/css/opendyslexic" rel="stylesheet"/>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BXR0H5SN9F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BXR0H5SN9F');
+</script>
+<style>
+  :root { --header-h: 96px; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background: #ffffff;
+    padding-top: var(--header-h);
+  }
+  section { scroll-margin-top: var(--header-h); }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+  /* Skip Link */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: #000;
+    color: white;
+    padding: 8px;
+    z-index: 10001;
+    transition: top 0.3s;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
+
+  /* Header */
+  header {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+  
+  nav {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 15px 0 0 0;
+    position: relative;
+  }
+  
+  .logo { 
+    font-size: 1.5rem; 
+    font-weight: 700; 
+    color: #6366f1; 
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img { 
+    height: 80px;
+    width: auto;
+    max-width: 320px;
+    display: block;
+  }
+  
+  .site-title { 
+    display: none; 
+    font-weight: 700; 
+    color: #6366f1; 
+    letter-spacing: 0.2px; 
+  }
+  
+  .nav-links { 
+    display: flex; 
+    list-style: none; 
+    gap: 2rem; 
+  }
+  
+  .nav-links a { 
+    text-decoration: none; 
+    color: #333; 
+    font-weight: 500; 
+  }
+  
+  .nav-links a:hover, .nav-links a.active { 
+    color: #6366f1; 
+  }
+  
+  .mobile-menu-btn { 
+    display: none; 
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+    background: none;
+    border: none;
+  }
+  
+  .mobile-menu-btn span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+  }
+  
+  header .donate-btn { 
+    margin-top: 0; 
+    margin-bottom: 0; 
+  }
+
+  /* Mobile / tablet styles */
+  @media (max-width: 992px) {
+    :root { --header-h: 84px; }
+    
+    nav {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    
+    .logo { 
+      justify-self: start; 
+      grid-column: 1; 
+    }
+    
+    .site-title { 
+      display: block; 
+      grid-column: 2; 
+      justify-self: center; 
+      font-size: 1.125rem; 
+    }
+    
+    header .donate-btn { 
+      display: none; 
+    }
+    
+    .mobile-menu-btn { 
+      justify-self: end; 
+      display: flex; 
+      grid-column: 3; 
+    }
+    
+    .nav-links { 
+      display: none; 
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: auto;
+      min-width: 220px;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      flex-direction: column;
+      gap: 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      padding: 0.5rem 0;
+      transform: translateY(-10px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+      z-index: 999;
+    }
+    
+    .nav-links.active { 
+      display: flex; 
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .nav-links li {
+      padding: 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    
+    .nav-links li:last-child { 
+      border-bottom: none; 
+    }
+    
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+    }
+    
+    .logo img { 
+      height: 70px; 
+      max-width: 260px; 
+    }
+    
+    nav { 
+      padding: 12px 0; 
+    }
+  }
+
+  /* Buttons */
+  .donate-btn {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+  
+  .donate-btn:hover {
+    box-shadow: 0 10px 25px rgba(99,102,241,0.45);
+    transform: translateY(-2px);
+  }
+
+  /* Hero */
+  .hero {
+    padding: 60px 0 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white; 
+    text-align: center; 
+  }
+  
+  .hero h1 { 
+    font-size: clamp(2.4rem, 3.5vw + 1rem, 3.5rem); 
+    font-weight: 800; 
+    margin-bottom: 1rem; 
+  }
+  
+  .hero-subtitle { 
+    font-size: 1.125rem; 
+    margin-bottom: 2rem; 
+    opacity: 0.95; 
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Resources Sections */
+  .resource-section {
+    padding: 64px 0;
+  }
+
+  .resource-section:nth-child(even) {
+    background: #f8fafc;
+  }
+
+  .resource-section:nth-child(odd) {
+    background: #ffffff;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  .resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+  
+  .resource-card {
+    background: #fff;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  }
+  
+  .resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    border-color: rgba(99, 102, 241, 0.3);
+  }
+
+  .resource-logo {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .resource-logo img {
+    max-height: 100%;
+    max-width: 150px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .resource-card h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: #1e293b;
+  }  .resource-card h4 a {
+    color: #1e293b;
+    text-decoration: none;
+  }
+  
+  .resource-card h4 a:hover {
+    color: #6366f1;
+  }
+  
+  .resource-card p {
+    color: #475569;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+  }
+
+  .resource-link {
+    color: #6366f1;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .resource-link:hover {
+    text-decoration: underline;
+  }
+
+  .btn-discord {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #5865F2;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s ease;
+    margin-top: 1rem;
+  }
+  .btn-discord:hover { transform: translateY(-2px); }
+
+  /* Footer */
+  footer { 
+    background: #1e293b; 
+    color: white; 
+    text-align: center; 
+    padding: 2rem 0; 
+  }
+
+  .footer-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+  .footer-social-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .footer-social-link svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+
+  /* Mobile Donate Footer */
+  .mobile-donate-footer { 
+    display: none; 
+  }
+
+  .footer-hidden .mobile-donate-footer { 
+    opacity: 0; 
+    pointer-events: none; 
+  }
+
+  @media (max-width: 992px) {
+    /* Fixed mobile donate footer */
+    .mobile-donate-footer {
+      display: flex;
+      position: fixed;
+      left: 0; 
+      right: 0; 
+      bottom: 0;
+      z-index: 1002;
+      justify-content: center;
+      background: rgba(241,245,249,0.96);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(0,0,0,0.12);
+      padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+      transition: opacity 0.2s ease;
+    }
+    
+    .mobile-donate-footer .container { 
+      width: 100%; 
+      display: flex; 
+      justify-content: center; 
+    }
+    
+    .mobile-donate-footer .donate-btn {
+      margin: 0;
+      padding: 0.68rem 1.2rem;
+      font-size: 1rem;
+    }
+    
+    body { 
+      padding-bottom: calc(86px + env(safe-area-inset-bottom)); 
+    }
+  }
+
+  /* ===== Privacy Policy page ===== */
+  .visually-hidden {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .policy-hero {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    color: #fff;
+    padding: 3.5rem 0 3rem;
+  }
+  .policy-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #c4b5fd;
+    margin-bottom: 0.5rem;
+  }
+  .policy-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+  }
+  .policy-dates {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    margin-bottom: 1.5rem;
+  }
+  .policy-lede {
+    max-width: 70ch;
+    color: #e2e8f0;
+    margin-bottom: 1rem;
+  }
+  .policy-lede a { color: #ddd6fe; }
+
+  .policy-body {
+    max-width: 820px;
+    padding-top: 2.5rem;
+    padding-bottom: 3.5rem;
+  }
+  .policy-body h2 {
+    font-size: clamp(1.4rem, 3vw, 1.85rem);
+    margin-top: 2.75rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #ede9fe;
+    scroll-margin-top: calc(var(--header-h) + 16px);
+  }
+  .policy-body h3 {
+    font-size: clamp(1.1rem, 2.4vw, 1.3rem);
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+    color: #334155;
+    scroll-margin-top: calc(var(--header-h) + 16px);
+  }
+  .policy-body p { margin-bottom: 1rem; max-width: 72ch; }
+  .policy-body ul,
+  .policy-body ol {
+    margin: 0 0 1.25rem 1.4rem;
+    max-width: 72ch;
+  }
+  .policy-body li { margin-bottom: 0.55rem; }
+  .policy-body a { color: #6d28d9; }
+  .policy-body a:hover,
+  .policy-body a:focus-visible { text-decoration: underline; }
+  .policy-body code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.9em;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    padding: 0.1em 0.4em;
+    overflow-wrap: anywhere;
+  }
+
+  .policy-toc {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #7c3aed;
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .policy-toc h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 0.75rem;
+    padding: 0;
+    border: 0;
+    color: #475569;
+  }
+  .policy-toc ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    columns: 2;
+    column-gap: 2rem;
+  }
+  .policy-toc li {
+    margin-bottom: 0.4rem;
+    break-inside: avoid;
+  }
+  .policy-toc a {
+    color: #4c1d95;
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  .policy-toc a:hover,
+  .policy-toc a:focus-visible { text-decoration: underline; }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 0 0 1.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .policy-table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 640px;
+    font-size: 0.94rem;
+  }
+  .policy-table th,
+  .policy-table td {
+    border: 1px solid #e2e8f0;
+    padding: 0.7rem 0.85rem;
+    text-align: left;
+    vertical-align: top;
+  }
+  .policy-table thead th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  .policy-table tbody tr:nth-child(even) { background: #fafafa; }
+  .policy-table a { overflow-wrap: anywhere; }
+
+  .policy-address {
+    font-style: normal;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    line-height: 1.8;
+  }
+
+  @media (max-width: 720px) {
+    .policy-toc ul { columns: 1; }
+    .policy-hero { padding: 2.5rem 0 2rem; }
+  }
+</style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header>
+    <nav class="container">
+      <div class="logo">
+        <a aria-label="Home" href="index.html">
+          <img alt="NARBE Foundation Logo" src="https://raw.githubusercontent.com/narbefoundation/images/refs/heads/main/purple%20more%20space.png"/>
+        </a>
+      </div>
+      <div class="site-title">NARBE Foundation</div>
+      <ul class="nav-links" id="nav-links" role="navigation" aria-label="Main navigation">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#founder">Founder</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#news">News</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+      <a class="donate-btn" href="index.html#support">Donate</a>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <section class="policy-hero">
+      <div class="container">
+        <p class="policy-eyebrow">NARBE Foundation</p>
+        <h1>Privacy Policy</h1>
+        <p class="policy-dates">
+          <strong>Effective Date:</strong> July 7, 2026 &nbsp;&middot;&nbsp;
+          <strong>Last updated:</strong> August 25, 2026
+        </p>
+        <p class="policy-lede">
+          The NARBE Foundation (&ldquo;NARBE Foundation,&rdquo; &ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) is committed to protecting
+          the privacy of the families, caregivers, and individuals we serve. This Privacy Policy explains
+          what information we collect, how we use it, how we protect it, and the choices you have.
+        </p>
+        <p class="policy-lede">
+          If you have any questions about this policy, please contact us at
+          <a href="mailto:info@narbefoundation.org">info@narbefoundation.org</a>.
+        </p>
+      </div>
+    </section>
+
+    <div class="container policy-body">
+
+      <nav class="policy-toc" aria-labelledby="toc-heading">
+        <h2 id="toc-heading">On this page</h2>
+        <ul>
+          <li><a href="#who-we-are">Who We Are</a></li>
+          <li><a href="#what-we-collect">Information We Collect</a></li>
+          <li><a href="#cookies">Cookies and Similar Technologies</a></li>
+          <li><a href="#third-parties">Third-Party Services We Use</a></li>
+          <li><a href="#browser-storage">Accessibility Settings Stored in Your Browser</a></li>
+          <li><a href="#how-we-use">How We Use Your Information</a></li>
+          <li><a href="#how-we-protect">How We Protect Your Information</a></li>
+          <li><a href="#what-we-dont-do">What We Do Not Do</a></li>
+          <li><a href="#donor-privacy">Donor Privacy</a></li>
+          <li><a href="#retention">How Long We Keep Your Information</a></li>
+          <li><a href="#newsletters">Emails and Newsletters</a></li>
+          <li><a href="#sharing">When We May Share Information</a></li>
+          <li><a href="#children">Children&rsquo;s Privacy</a></li>
+          <li><a href="#your-rights">Your Choices and Rights</a></li>
+          <li><a href="#breach">If Something Goes Wrong</a></li>
+          <li><a href="#international">Visitors From Outside the United States</a></li>
+          <li><a href="#accessibility">Accessibility of This Policy</a></li>
+          <li><a href="#changes">Changes to This Policy</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <h2 id="who-we-are">Who We Are</h2>
+      <p>
+        The NARBE Foundation is a nonprofit organization dedicated to expanding access to assistive
+        technology, including our switch kit donation program and Benny&rsquo;s Accessibility Hub. We are a
+        separate entity from NARBE House and NARBE LLC.
+      </p>
+
+      <h2 id="what-we-collect">Information We Collect</h2>
+
+      <h3>Switch Kit Donation Program</h3>
+      <p>When you apply for or receive a switch kit through our donation program, we collect:</p>
+      <ul>
+        <li>Your name (and the name of the recipient, if different)</li>
+        <li>Email address</li>
+        <li>Mailing address (needed to ship the kit)</li>
+        <li>Phone number</li>
+        <li>Any additional information you choose to share with us in the application form, such as details about the recipient&rsquo;s needs</li>
+      </ul>
+      <p>
+        Information submitted through our Google Form is stored temporarily in Google Drive and
+        Google Sheets for the purpose of processing and fulfilling your request. Access is restricted to
+        authorized NARBE Foundation personnel only.
+      </p>
+
+      <h3>Emails, Messages, and Inquiries</h3>
+      <p>
+        When you email us, fill out a contact form on our website, message us on social media
+        (Instagram, Facebook, YouTube, TikTok, or other platforms), or otherwise reach out to us, we
+        receive whatever information you choose to share. This often includes:
+      </p>
+      <ul>
+        <li>Your name and contact information</li>
+        <li>Your relationship to the person you are inquiring about</li>
+        <li>Details about your loved one&rsquo;s diagnosis, abilities, or care needs</li>
+        <li>Questions, stories, or experiences you choose to share with us</li>
+      </ul>
+      <p>
+        We understand that families often share deeply personal information when reaching out, and we
+        treat these communications with care and respect.
+      </p>
+      <p>
+        We keep email correspondence as long as it is helpful to us in serving you. Having that history
+        helps us understand your situation and provide better support if you reach out again. You can
+        ask us to delete your messages at any time.
+      </p>
+
+      <h3>Photos, Videos, and Stories</h3>
+      <p>
+        Families sometimes share photos, videos, or written stories with us through email, social media,
+        or as part of switch kit follow-up. We do not share, post, or use this content publicly without your
+        clear permission.
+      </p>
+      <p>There are a few ways permission can be given:</p>
+      <ul>
+        <li><strong>Tagging us on social media.</strong> When families tag the NARBE Foundation in a post, we may repost or share that content on our channels.</li>
+        <li><strong>Signed permission forms.</strong> In some cases, we ask families to complete and sign a release form when uploading content, which includes your agreement to let us share it.</li>
+        <li><strong>Direct request from us.</strong> If we would like to feature your story or photo on NARBE Foundation channels and one of the above does not apply, we will reach out first and confirm what you are comfortable with.</li>
+      </ul>
+      <p>
+        You may request that a post or piece of media be removed at any time by emailing us directly at
+        <a href="mailto:info@narbefoundation.org">info@narbefoundation.org</a>. We will do our best to take down the content, but please note that
+        some materials, such as newsletters or printed outreach that have already been sent out with
+        your permission, may not be possible to fully retract.
+      </p>
+
+      <h3>Benny&rsquo;s Accessibility Hub</h3>
+      <p>When you use Benny&rsquo;s Accessibility Hub, we collect very limited, anonymous usage statistics, including:</p>
+      <ul>
+        <li>That a visitor is using the Hub</li>
+        <li>The country the visitor is connecting from</li>
+      </ul>
+      <p>
+        We do not collect names, email addresses, IP addresses tied to identity, or any personal
+        information through the Hub. These stats simply help us understand how the Hub is being used
+        so we can keep it running and improve it.
+      </p>
+
+      <h3>Website Visitors and Google Analytics</h3>
+      <p>
+        Our website uses Google Analytics to help us understand how visitors find and use it. Google
+        Analytics may collect information such as:
+      </p>
+      <ul>
+        <li>Pages visited and time spent on the site</li>
+        <li>General geographic location (country or region, not a precise address)</li>
+        <li>The type of device and browser you are using</li>
+        <li>How you arrived at our site (for example, from a search engine or a social media link)</li>
+      </ul>
+      <p>
+        This information is collected in aggregate and anonymized. We use it only to improve our
+        website and better understand the needs of our community. Google Analytics data is governed
+        by Google&rsquo;s own privacy policy. We do not use it to identify you personally.
+      </p>
+
+      <h3>Donations</h3>
+      <p>
+        Donations to the NARBE Foundation are processed by <strong>Givebutter</strong>, a third-party
+        fundraising platform. When you donate, you provide your information directly to Givebutter&rsquo;s
+        payment forms. Depending on what you choose to enter, Givebutter may collect your name,
+        email address, mailing address, donation amount, and payment details.
+      </p>
+      <p>
+        <strong>We never see or store your card or bank account numbers.</strong> The NARBE Foundation
+        receives only the donor and donation records that Givebutter reports to us, which we use to
+        acknowledge your gift, issue tax receipts, and meet nonprofit recordkeeping requirements. See
+        <a href="#donor-privacy">Donor Privacy</a> below for how we handle that information.
+      </p>
+
+      <h3>Newsletter Signups</h3>
+      <p>
+        Our newsletter is delivered through <strong>MailerLite</strong>. When you subscribe, we collect the
+        name and email address you provide. MailerLite also records standard email engagement
+        information, such as whether a message was opened or a link was clicked, which helps us
+        understand whether our updates are useful. You can unsubscribe at any time using the link at
+        the bottom of every email we send.
+      </p>
+
+      <h2 id="cookies">Cookies and Similar Technologies</h2>
+      <p>
+        A cookie is a small text file that a website stores in your browser. Some of the services we use
+        to run this website set cookies or use similar technologies. Here is what is running on
+        narbefoundation.org and why:
+      </p>
+      <ul>
+        <li><strong>Google Analytics.</strong> Sets cookies that help us count visitors and understand which pages are useful. These are analytics cookies, not advertising cookies. We do not run ads and we do not use Google Analytics for ad targeting or remarketing.</li>
+        <li><strong>MailerLite.</strong> Loads on pages that offer our newsletter signup and may set a cookie to remember whether you have already seen or dismissed a signup form, so we are not asking you over and over.</li>
+        <li><strong>Givebutter.</strong> Loads on our donation pages and sets cookies needed to run the donation form securely and to keep your donation session working correctly.</li>
+      </ul>
+      <p>
+        <strong>We do not use advertising, retargeting, or social media tracking pixels on this website.</strong>
+        We do not sell or share any of this information.
+      </p>
+
+      <h3>Your choices about cookies</h3>
+      <ul>
+        <li><strong>Browser settings.</strong> Every major browser lets you block or delete cookies. Blocking them will not prevent you from reading this site, though the donation form may not work correctly without its cookies.</li>
+        <li><strong>Opt out of Google Analytics.</strong> Google offers a browser add-on that opts you out of Google Analytics on every site you visit: <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">tools.google.com/dlpage/gaoptout</a>.</li>
+        <li><strong>Global Privacy Control and Do Not Track.</strong> Our website does not track you across other websites, so there is nothing for these signals to switch off here. We also honor them in spirit: we will not add cross-site tracking to this website.</li>
+      </ul>
+
+      <h2 id="third-parties">Third-Party Services We Use</h2>
+      <p>
+        We believe you should be able to see exactly who touches your information. These are the
+        outside services we rely on to run the Foundation&rsquo;s website and programs, and what each one
+        receives. Each service handles your information under its own privacy policy.
+      </p>
+
+      <div class="table-wrap">
+        <table class="policy-table">
+          <caption class="visually-hidden">Third-party services used by the NARBE Foundation, what each is used for, and what information it receives.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Service</th>
+              <th scope="col">What we use it for</th>
+              <th scope="col">What it receives</th>
+              <th scope="col">Their privacy policy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Givebutter</td>
+              <td>Processing donations</td>
+              <td>Name, email, mailing address, donation amount, and payment details you enter</td>
+              <td><a href="https://givebutter.com/privacy" target="_blank" rel="noopener">givebutter.com/privacy</a></td>
+            </tr>
+            <tr>
+              <td>MailerLite</td>
+              <td>Sending our newsletter</td>
+              <td>Name, email address, and whether you opened or clicked an email</td>
+              <td><a href="https://www.mailerlite.com/legal/privacy-policy" target="_blank" rel="noopener">mailerlite.com/legal/privacy-policy</a></td>
+            </tr>
+            <tr>
+              <td>Google Analytics</td>
+              <td>Understanding website traffic</td>
+              <td>Anonymized, aggregated usage data; general location; device and browser type</td>
+              <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td>
+            </tr>
+            <tr>
+              <td>Google Forms, Drive, and Sheets</td>
+              <td>Receiving and processing switch kit applications</td>
+              <td>Everything you submit on the application form</td>
+              <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td>
+            </tr>
+            <tr>
+              <td>Google Fonts and CDN Fonts</td>
+              <td>Loading the page typefaces, including the OpenDyslexic accessibility font</td>
+              <td>Your IP address at the moment the font file loads</td>
+              <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td>
+            </tr>
+            <tr>
+              <td>GitHub Pages</td>
+              <td>Hosting this website</td>
+              <td>Standard web server request information, including your IP address</td>
+              <td><a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">docs.github.com &rarr; GitHub Privacy Statement</a></td>
+            </tr>
+            <tr>
+              <td>USPS and other shipping carriers</td>
+              <td>Delivering switch kits</td>
+              <td>Recipient name and mailing address only</td>
+              <td><a href="https://about.usps.com/who/legal/privacy-policy/" target="_blank" rel="noopener">about.usps.com &rarr; Privacy Policy</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="browser-storage">Accessibility Settings Stored in Your Browser</h2>
+      <p>
+        Our website includes an accessibility toolbar that lets you change things like text size, contrast,
+        and the OpenDyslexic font. So that you do not have to set your preferences again on every page,
+        we save them in your own browser&rsquo;s local storage under the name
+        <code>narbe-accessibility-prefs</code>.
+      </p>
+      <p>
+        <strong>These settings never leave your device.</strong> They are not sent to the NARBE Foundation,
+        they are not shared with anyone, and they are not used to identify or track you. You can erase
+        them at any time by clearing your browser&rsquo;s site data for narbefoundation.org.
+      </p>
+
+      <h2 id="how-we-use">How We Use Your Information</h2>
+      <p>We use the information you give us only for the purpose you provided it. Specifically:</p>
+      <ul>
+        <li>To review and process switch kit applications</li>
+        <li>To ship switch kits and follow up with recipients</li>
+        <li>To check in with switch kit recipients about how things are going and how we can improve our program</li>
+        <li>To answer questions you send us</li>
+        <li>To acknowledge donations and issue tax receipts</li>
+        <li>To keep records required for nonprofit compliance and reporting</li>
+        <li>To improve our programs and the resources we offer</li>
+      </ul>
+      <p>
+        If you applied for a switch kit, please note that the application itself lets you know we may follow
+        up with you after your kit is delivered. That follow-up helps us understand how the kit is being
+        used and how we can better support your family.
+      </p>
+
+      <h2 id="how-we-protect">How We Protect Your Information</h2>
+      <p>Protecting the information of the families we serve is a top priority. Here&rsquo;s how we handle it:</p>
+      <ol>
+        <li><strong>Short-term storage in Google Drive and Google Sheets.</strong> While a switch kit application is being processed, the form responses live in a secure, access-restricted Google Drive and Google Sheets owned by the NARBE Foundation. Only authorized Foundation personnel have access.</li>
+        <li><strong>Long-term storage offline.</strong> Once an application has been processed, we transfer the records from Google Drive to an external hard drive that is not connected to the internet. This significantly reduces the risk of unauthorized access. The original copies in Google Drive are then deleted.</li>
+        <li><strong>Access is limited.</strong> Only NARBE Foundation personnel who need the information to do their work can access it.</li>
+        <li><strong>Sensitive health and personal information.</strong> We recognize that families often share medical, developmental, or other sensitive information when applying for a switch kit or reaching out to us. While the NARBE Foundation is not a medical or healthcare provider and is not bound by HIPAA, we treat this information with the same care we would want for our own family. We do not share it outside the Foundation, and we keep it only as long as needed to serve you.</li>
+        <li><strong>No payment information.</strong> We do not collect or store credit card or banking information through our forms. Donations made to the Foundation are handled by trusted third-party payment processors with their own security practices.</li>
+      </ol>
+
+      <h2 id="what-we-dont-do">What We Do Not Do</h2>
+      <ul>
+        <li>We do not sell your information.</li>
+        <li>We do not rent, trade, or share your information with marketers or data brokers.</li>
+        <li>We do not share your information with third parties for promotional purposes.</li>
+        <li>We do not publicly post your name, contact information, or story without your clear, written permission. We often have forms where you can agree to share information, and doing so is always optional.</li>
+        <li>We do not run advertising, retargeting, or social media tracking pixels on this website.</li>
+        <li>We do not &ldquo;sell&rdquo; or &ldquo;share&rdquo; personal information as those terms are defined under state privacy laws, and we never have.</li>
+      </ul>
+
+      <h2 id="donor-privacy">Donor Privacy</h2>
+      <p>
+        Donors are entitled to know how their information will be treated before they give. This section
+        applies to everyone who donates to the NARBE Foundation.
+      </p>
+      <ul>
+        <li><strong>We never sell, rent, trade, or share our donor list.</strong> Not with other nonprofits, not with marketers, not with anyone.</li>
+        <li><strong>We use donor information only for Foundation purposes:</strong> processing your gift, sending your receipt and acknowledgment, thanking you, keeping the records the IRS requires of us, and letting you know how your support is being used.</li>
+        <li><strong>You can give anonymously.</strong> If you would prefer that your name not appear in any Foundation materials, tell us at <a href="mailto:info@narbefoundation.org">info@narbefoundation.org</a> and we will honor that.</li>
+        <li><strong>We will not publish your name, gift amount, or story without your permission.</strong></li>
+        <li><strong>You can opt out of donor communications</strong> at any time while still remaining a donor. Being on our mailing list is never a condition of giving.</li>
+        <li><strong>Payment details never reach us.</strong> Card and bank information is handled entirely by Givebutter and its payment processors.</li>
+      </ul>
+
+      <h2 id="retention">How Long We Keep Your Information</h2>
+      <p>We keep your information only as long as we need it.</p>
+      <ul>
+        <li><strong>Switch kit applications:</strong> Once your kit has been delivered and any follow-up is complete, we move your information from Google Drive to our offline hard drive. We keep these records for as long as needed for nonprofit recordkeeping and compliance, and to follow up with you about future programs if you have opted in.</li>
+        <li><strong>Emails and inquiries:</strong> We keep email correspondence for as long as it is helpful in serving you. Having that history gives us context if you reach out again, so we can better understand your situation and pick up where we left off. You can ask us to delete your messages at any time.</li>
+        <li><strong>Benny&rsquo;s Accessibility Hub stats:</strong> Anonymous usage stats are kept only in summary form to help us understand how the Hub is being used over time.</li>
+        <li><strong>Donation records:</strong> We keep donation records for as long as required by IRS and state nonprofit reporting rules.</li>
+        <li><strong>Newsletter subscriptions:</strong> We keep your subscription information until you unsubscribe, after which MailerLite retains a suppression record so we do not accidentally email you again.</li>
+      </ul>
+      <p>If you would like us to delete your information sooner, just ask.</p>
+
+      <h2 id="newsletters">Emails and Newsletters</h2>
+      <p>
+        You may receive emails from the NARBE Foundation, such as newsletters, updates, upcoming
+        event announcements, and messages intended to support and inform you.
+      </p>
+      <p>You may receive emails because you:</p>
+      <ul>
+        <li>Signed up for our newsletter through our website</li>
+        <li>Sent us an email asking for help or with an inquiry</li>
+        <li>Made a donation to the Foundation</li>
+        <li>Signed up for a program or event we hosted</li>
+      </ul>
+      <p>
+        You may unsubscribe at any time using the &ldquo;Unsubscribe&rdquo; link at the bottom of any newsletter or
+        email campaign sent by the Foundation.
+      </p>
+
+      <h2 id="sharing">When We May Share Information</h2>
+      <p>We will only share your information in these limited situations:</p>
+      <ul>
+        <li><strong>With your permission.</strong> For example, if you agree to share your story or be featured in NARBE Foundation outreach.</li>
+        <li><strong>With service providers we rely on to operate.</strong> These are listed by name in <a href="#third-parties">Third-Party Services We Use</a> above. When we ship a switch kit, the recipient&rsquo;s name and mailing address are shared with the carrier as a necessary part of fulfillment. These providers only receive what they need to do their job.</li>
+        <li><strong>With NARBE LLC in limited cases that directly support our programs.</strong> NARBE LLC builds and maintains the games and tools available through Benny&rsquo;s Accessibility Hub. If a family shares feedback about how a switch kit recipient is using those resources, that feedback may be shared with NARBE LLC so they can improve accessibility and update the free tools the Foundation provides. Personal information from applications and inquiries is not shared for any promotional or commercial purpose.</li>
+        <li><strong>If required by law,</strong> such as in response to a valid legal request, court order, or to comply with nonprofit reporting requirements.</li>
+      </ul>
+
+      <h2 id="children">Children&rsquo;s Privacy</h2>
+      <p>
+        Many of the individuals who benefit from our switch kit program are minors with disabilities. In
+        those cases, we collect information from a parent, guardian, or caregiver, not directly from the
+        child. We do not knowingly collect personal information from children without parental or
+        guardian involvement.
+      </p>
+      <p>
+        <strong>We do not knowingly collect personal information from children under 13.</strong> Benny&rsquo;s
+        Accessibility Hub is designed to be used by children and collects no personal information at all
+        from anyone who uses it. Our website is directed to parents, guardians, caregivers, educators,
+        and supporters rather than to children. If you believe a child has provided us with personal
+        information, please contact us at <a href="mailto:info@narbefoundation.org">info@narbefoundation.org</a>
+        and we will delete it promptly.
+      </p>
+      <p>
+        When parents or guardians choose to share photos, videos, or stories about a minor with us, we
+        treat that information with extra care and never share it publicly without explicit written
+        permission from the parent or guardian.
+      </p>
+
+      <h2 id="your-rights">Your Choices and Rights</h2>
+      <p>You have the right to:</p>
+      <ul>
+        <li>Ask what information we have about you</li>
+        <li>Ask us to correct information that is wrong</li>
+        <li>Ask us to delete your information (except where we are required to keep it for legal or compliance reasons)</li>
+        <li>Withdraw your application at any time</li>
+        <li>Ask us to stop emailing you, without affecting anything else</li>
+      </ul>
+      <p>
+        To make any of these requests, email us at <a href="mailto:info@narbefoundation.org">info@narbefoundation.org</a>.
+        We will respond within a reasonable time. We will never charge you for making a request, and we
+        will never treat you differently for making one.
+      </p>
+
+      <h2 id="breach">If Something Goes Wrong</h2>
+      <p>
+        We take protecting your information seriously, but no system is perfect. If we ever discover that
+        personal information has been accessed without permission or otherwise compromised, we will:
+      </p>
+      <ul>
+        <li>Take immediate steps to secure the information</li>
+        <li>Notify affected individuals as soon as reasonably possible, and in accordance with applicable Rhode Island law</li>
+        <li>Comply with any legal reporting obligations</li>
+      </ul>
+
+      <h2 id="international">Visitors From Outside the United States</h2>
+      <p>
+        The NARBE Foundation is based in the United States, and any information we collect is stored
+        and processed here. If you are visiting Benny&rsquo;s Accessibility Hub or contacting us from outside
+        the U.S., please know that your information will be handled in accordance with this policy and
+        U.S. law.
+      </p>
+
+      <h2 id="accessibility">Accessibility of This Policy</h2>
+      <p>
+        We serve families who rely on assistive technology, so a privacy policy that is hard to read would
+        be a contradiction. This page is written in plain language, works with screen readers and
+        keyboard navigation, responds to your browser&rsquo;s text size settings, and can be adjusted with the
+        accessibility toolbar on this site.
+      </p>
+      <p>
+        If any part of this policy is difficult for you to read or understand, tell us at
+        <a href="mailto:info@narbefoundation.org">info@narbefoundation.org</a> and we will provide it in
+        another format or explain it to you directly. We mean that.
+      </p>
+
+      <h2 id="changes">Changes to This Policy</h2>
+      <p>
+        We may update this Privacy Policy from time to time. When we do, we&rsquo;ll update the &ldquo;Effective
+        Date&rdquo; at the top of this page. If we make significant changes, we&rsquo;ll do our best to let our
+        community know.
+      </p>
+
+      <h3>Revision history</h3>
+      <div class="table-wrap">
+        <table class="policy-table">
+          <caption class="visually-hidden">Revision history for this Privacy Policy.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">What changed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>July 7, 2026</td>
+              <td>Privacy Policy adopted by the NARBE Foundation board.</td>
+            </tr>
+            <tr>
+              <td>August 25, 2026</td>
+              <td>Published as a web page. Added website-specific disclosures: cookies and similar technologies, a named list of third-party services, browser-stored accessibility settings, donation and newsletter processing, a donor privacy section, and a children&rsquo;s privacy statement.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="contact">Contact Us</h2>
+      <p>
+        If you have any questions, concerns, or requests about this Privacy Policy or how your
+        information is handled, please reach out:
+      </p>
+      <address class="policy-address">
+        <strong>NARBE Foundation</strong><br />
+        Email: <a href="mailto:info@narbefoundation.org">info@narbefoundation.org</a><br />
+        <br />
+        Mailing address:<br />
+        NARBE Foundation<br />
+        5775 Post Road #149<br />
+        East Greenwich, Rhode Island 02818
+      </address>
+
+    </div>
+
+  </main>
+
+
+  <footer>
+    <div class="container">
+      <div class="footer-social-links">
+        <a class="footer-social-link" href="https://www.facebook.com/narbefoundation" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg class="facebook-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.675 0h-21.35c-0.733 0-1.325 0.592-1.325 1.325v21.351c0 0.733 0.592 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.463 0.099 2.795 0.143v3.24l-1.918 0.001c-1.504 0-1.794 0.715-1.794 1.763v2.312h3.587l-0.467 3.622h-3.12v9.294h6.116c0.733 0 1.325-0.591 1.325-1.324v-21.351c0-0.733-0.592-1.325-1.325-1.325z"/>
+          </svg>
+        </a>
+        <a class="footer-social-link" href="https://www.youtube.com/@narbefoundation" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <svg class="youtube-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M23.498 6.186c-0.273-1.031-1.081-1.84-2.112-2.112-1.863-0.504-9.326-0.504-9.326-0.504s-7.463 0-9.326 0.504c-1.031 0.273-1.84 1.081-2.112 2.112-0.504 1.863-0.504 5.754-0.504 5.754s0 3.891 0.504 5.754c0.273 1.031 1.081 1.84 2.112 2.112 1.863 0.504 9.326 0.504 9.326 0.504s7.463 0 9.326-0.504c1.031-0.273 1.84-1.081 2.112-2.112 0.504-1.863 0.504-5.754 0.504-5.754s0-3.891-0.504-5.754zM9.545 15.568v-7.136l6.545 3.568-6.545 3.568z"/>
+          </svg>
+        </a>
+        <a class="footer-social-link" href="https://www.instagram.com/narbefoundation" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg class="instagram-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+          </svg>
+        </a>
+        <a class="footer-social-link" href="https://discord.gg/b82emKJhTC" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.317 4.3698a19.7913 19.7913 0 0 0-4.8851-1.5152.0741.0741 0 0 0-.0785.0371c-.211.3753-.4447.8648-.6083 1.2496a18.4034 18.4034 0 0 0-5.4868 0 20.149 20.149 0 0 0-.6172-1.2496.077.077 0 0 0-.0785-.0376 19.7238 19.7238 0 0 0-4.8852 1.5151.0699.0699 0 0 0-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 0 0 .0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 0 0 .0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 0 0-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 0 1-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 0 1 .0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 0 1 .0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 0 1-.0066.1276 12.2986 12.2986 0 0 1-1.873.8914.0766.0766 0 0 0-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 0 0 .0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 0 0 .0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 0 0-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1569 2.419zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1568 2.419z"/>
+          </svg>
+        </a>
+      </div>
+      <p>© 2026 NARBE Foundation. Helping others unlock the world, one switch at a time.</p>
+      <div class="footer-legal">
+        <p>501(c)(3) Nonprofit Organization</p>
+        <p>EIN: 39-3343898</p>
+        <p>All donations are tax-deductible to the fullest extent allowed by law.</p>
+      </div>
+    </div>
+  </footer>
+
+<div class="mobile-donate-footer">
+  <div class="container">
+    <a class="donate-btn" href="index.html#support">Donate</a>
+  </div>
+</div>
+
+  <script>
+    // Sync header height to CSS variable
+    function syncHeaderHeightVar() {
+      const header = document.querySelector('header');
+      if (!header) return;
+      const h = Math.ceil(header.getBoundingClientRect().height);
+      document.documentElement.style.setProperty('--header-h', h + 'px');
+    }
+    window.addEventListener('resize', () => {
+      clearTimeout(window.__hdrT);
+      window.__hdrT = setTimeout(syncHeaderHeightVar, 100);
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+      syncHeaderHeightVar();
+      window.setTimeout(syncHeaderHeightVar, 200);
+      window.addEventListener('load', syncHeaderHeightVar);
+    });
+
+    // Mobile menu toggle
+    document.addEventListener('DOMContentLoaded', () => {
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const navLinks = document.querySelector('.nav-links');
+      
+      if (mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+          mobileMenuBtn.classList.toggle('active');
+          const spans = mobileMenuBtn.querySelectorAll('span');
+          if (navLinks.classList.contains('active')) {
+            spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+            spans[1].style.opacity = '0';
+            spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+          } else {
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+          }
+        });
+        
+        navLinks.addEventListener('click', (e) => {
+          if (e.target.tagName === 'A') {
+            navLinks.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            const spans = mobileMenuBtn.querySelectorAll('span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+          }
+        });
+        
+        document.addEventListener('click', (e) => {
+          if (!mobileMenuBtn.contains(e.target) && !navLinks.contains(e.target)) {
+            navLinks.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            const spans = mobileMenuBtn.querySelectorAll('span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+          }
+        });
+      }
+    });
+  </script>
+  
+  <!-- Accessibility Widget -->
+  <script src="accessibility.js"></script>
+
+  <!-- Collapsible privacy & legal footer (shared across all pages) -->
+  <script src="footer-legal.js" defer></script>
+</body>
+</html>

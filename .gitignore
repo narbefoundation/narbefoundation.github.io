@@ -1,0 +1,13 @@
+# OS and editor cruft
+Thumbs.db
+ehthumbs.db
+desktop.ini
+.DS_Store
+*.swp
+*~
+
+# Local reference material only - NOT published.
+# Everything else in this folder is served at narbefoundation.org, so anything
+# committed under policies/ would become publicly downloadable. The canonical
+# privacy policy is privacy.html; the board-approved PDF stays local.
+policies/
