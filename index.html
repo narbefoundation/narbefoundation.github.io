@@ -1828,6 +1828,18 @@
 
       if (!container) return;
 
+      // The feed renders after the browser has already jumped to a #link, so sections
+      // below it (like #newsletter) get pushed down. Re-jump once the feed is in,
+      // unless the visitor has already started scrolling on their own.
+      let userScrolled = false;
+      ['wheel', 'touchmove', 'keydown'].forEach(ev =>
+        window.addEventListener(ev, () => { userScrolled = true; }, { once: true, passive: true }));
+      function restoreHashTarget() {
+        if (userScrolled || !location.hash) return;
+        const target = document.getElementById(location.hash.slice(1));
+        if (target) target.scrollIntoView({ behavior: 'instant', block: 'start' });
+      }
+
       // Helper function to upgrade Blogger/Google image URLs to high resolution
       function getHighResImage(url) {
         if (!url) return null;
@@ -1904,12 +1916,14 @@
           console.error('Error processing Blogger feed:', e);
           container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: #ef4444;">Unable to load updates at this time.</div>';
         }
+        restoreHashTarget();
       };
       
       script.src = BLOGGER_JSON_URL + '&callback=bloggerCallback';
       script.onerror = function() {
         console.error('Error loading Blogger feed');
         container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: #ef4444;">Unable to load updates at this time.</div>';
+        restoreHashTarget();
       };
       document.body.appendChild(script);
     });
