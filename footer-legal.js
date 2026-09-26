@@ -57,7 +57,7 @@
     'We collect what you give us - switch kit applications, emails, newsletter signups, and donations - and we use it only for the reason you gave it.',
     'We never sell, rent, or trade your information, and we never share our donor list.',
     'Processed switch kit applications are moved off Google Drive onto an offline hard drive, and the online copies are deleted.',
-    'This site uses Google Analytics, MailerLite, and Givebutter, plus a YouTube video that sets no cookies until you press play. No advertising or social media tracking pixels, ever.',
+    'This site uses Google Analytics, MailerLite, Givebutter, and Google reCAPTCHA (on the newsletter signup), plus a YouTube video that sets no cookies until you press play. No advertising or social media tracking pixels, ever.',
     'Your accessibility toolbar settings are saved in your own browser and never sent to us.',
     'Photos, videos, and stories are never posted publicly without your clear permission - and you can ask us to take something down.',
     'You can ask what we have, ask us to correct it, or ask us to delete it, any time.'
