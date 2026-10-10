@@ -496,6 +496,21 @@
     text-align: center;
   }
 
+  /* Keep newsletter signup controls stacked in reading order. */
+  .newsletter-section .ml-block-form {
+    flex-direction: column;
+    flex-wrap: nowrap !important;
+  }
+
+  .newsletter-section .ml-form-embedSubmit button {
+    background: #ffffff !important;
+    color: #4c1d95 !important;
+  }
+
+  .newsletter-section .ml-form-embedSubmit button:hover {
+    background: #ede9fe !important;
+  }
+
   .transparency-note {
     font-size: 0.9rem;
     color: #94a3b8;
@@ -1500,7 +1515,7 @@
               <ellipse cx="43" cy="10" rx="5" ry="3" fill="#ffffff" opacity="0.35"/>
             </svg>
             <h3>Adaptive Switch Kit Program</h3>
-            <p>Free 2-button switch kits for recreational use, funded entirely by our community and partners. Apply online — first come, first served, while supplies last.</p>
+            <p>Free 2-button switch kits for recreational use, funded entirely by our community and partners. Sign up for our newsletter to receive the application link — kits are first come, first served, while supplies last.</p>
             <a href="switchkit.html" class="card-link">Explore the Adaptive Switch Kit Program &rarr;</a>
           </div>
           <div class="initiative-card">
@@ -1733,7 +1748,7 @@
             <p>NARBE Foundation<br/>5775 Post Rd #149<br/>East Greenwich, RI 02818</p>
           </div>
         </div>
-        <p style="margin-top: 2rem; color: #64748b;">To apply for a kit, visit our <a href="switchkit.html" style="color: #6366f1; font-weight: 600;">Adaptive Switch Kit Program page</a>.</p>
+        <p style="margin-top: 2rem; color: #64748b;">To apply for a kit, <a href="switchkit.html#newsletter" style="color: #6366f1; font-weight: 600;">sign up for our newsletter</a>. We&rsquo;ll include the application link when we send it out.</p>
       </div>
     </section>
   </main>
