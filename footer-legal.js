@@ -14,12 +14,15 @@
 (function () {
   'use strict';
 
-  var POLICY_URL = 'privacy.html';
+  var POLICY_URL = '/privacy.html';
   var CONTACT = 'info@narbefoundation.org';
 
   var CSS = [
     '.footer-legal p{color:#94a3b8;font-size:.9rem;margin-bottom:.5rem;}',
     '.footer-policy{margin-top:1.25rem;}',
+    '.footer-crypto-notice{margin-top:1rem;}',
+    '.footer-crypto-notice a{color:#cbd5e1;text-decoration:underline;text-underline-offset:.15em;}',
+    '.footer-crypto-notice a:focus-visible{outline:3px solid #a78bfa;outline-offset:3px;}',
     '.footer-policy-links{display:flex;flex-wrap:wrap;justify-content:center;',
     'align-items:center;gap:.5rem 1.25rem;margin-bottom:.75rem;}',
     '.footer-policy-links a{color:#cbd5e1;font-size:.9rem;text-decoration:none;',
@@ -134,7 +137,22 @@
     });
 
     var wrap = el('div', { 'class': 'footer-policy' }, [links, toggle, panel]);
+    host.appendChild(el('p', { 'class': 'footer-crypto-notice' }, [
+      'NARBE is not affiliated with any cryptocurrency or crypto token. ',
+      el('a', { href: '/crypto-statement/' }, ['Read our official statement']),
+      '.'
+    ]));
     host.appendChild(wrap);
+
+    // Use the same statement dialog on every informational page.
+    if (!/^\/crypto-statement(?:\/|$)/.test(window.location.pathname)) {
+      var statementScript = el('script', {
+        src: '/crypto-statement/modal.js',
+        'data-theme': 'foundation',
+        'data-auto-open': 'session'
+      });
+      document.body.appendChild(statementScript);
+    }
 
     // Deep links such as footer.html#cookies should open the panel on arrival.
     if (/^#(privacy|cookies|donor)/i.test(window.location.hash)) {
