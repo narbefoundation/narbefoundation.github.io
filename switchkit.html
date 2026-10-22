@@ -334,8 +334,12 @@
   .newsletter-section .section-header { margin-bottom: 2rem; }
   .newsletter-section .section-title,
   .newsletter-section .section-subtitle { color: white; }
+  .newsletter-section .section-subtitle + .section-subtitle { margin-top: 1.25rem; }
+  .newsletter-section .newsletter-donate { margin-top: 1.5rem; background: white; color: #065f46; }
+  .newsletter-section .newsletter-donate:hover { background: #ecfdf5; }
+  .newsletter-section .newsletter-donate:focus-visible { outline: 3px solid white; outline-offset: 4px; }
   .newsletter-section .ml-form-embedContainer { max-width: 560px; margin: 0 auto; }
-  .newsletter-heading { font-size: 1.4rem; margin-bottom: 0.75rem; }
+  .newsletter-heading { font-size: 1.4rem; margin-top: 0.75rem; margin-bottom: 0.75rem; }
   .newsletter-section .ml-block-form { flex-direction: column; }
   .newsletter-section .ml-form-formContent { width: 100% !important; min-width: 0; max-width: 360px; }
   .newsletter-arrow { display: block; margin: 0 auto 12px; }
@@ -834,16 +838,18 @@
     <section class="kit-contents newsletter-section" id="newsletter" aria-labelledby="kit-signup-title">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title" id="kit-signup-title">Apply for a Free Switch Kit</h2>
-          <p class="section-subtitle">We provide these kits free to individuals and families who can benefit from accessible gaming and interaction tools. Kits are offered through an application process, subject to availability. Selection details are provided in the application. <strong>United States only.</strong> The program is funded entirely by our community and partners.</p>
+          <h2 class="section-title" id="kit-signup-title">How to Apply</h2>
+          <p class="section-subtitle">Once a quarter, we award free 2-switch kits to individuals with disabilities and the families and professionals who support them. Because supply is limited, kits are awarded through an application process, and selection details will be included in the application when it opens. This program is for United States residents only.</p>
+          <p class="section-subtitle">These kits are made possible entirely by our community and partners, and every donation helps us reach more people. Please consider giving to help keep this program going.</p>
+          <a class="donate-btn newsletter-donate" href="https://narbefoundation.org/#support">Donate</a>
         </div>
         <div id="mlb2-32971103" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-32971103">
           <div class="ml-form-align-center">
             <div class="ml-form-embedWrapper embedForm">
               <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
                 <div class="ml-form-embedContent">
-                  <h3 class="newsletter-heading">To apply, please sign up for our newsletter.</h3>
-                  <p>We&rsquo;ll include the Switch Kit application link in the NARBE Foundation newsletter when we send it out.</p>
+                  <p>To apply, watch for our next announcement in the NARBE Foundation newsletter, where we&rsquo;ll share the application link.</p>
+                  <h3 class="newsletter-heading">Sign up today so you don&rsquo;t miss the next round!</h3>
                 </div>
                 <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/1901217/forms/170242737816208431/subscribe" data-code="" method="post" target="_blank">
                   <div class="ml-form-formContent">
