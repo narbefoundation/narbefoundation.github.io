@@ -144,16 +144,6 @@
     ]));
     host.appendChild(wrap);
 
-    // Use the same statement dialog on every informational page.
-    if (!/^\/crypto-statement(?:\/|$)/.test(window.location.pathname)) {
-      var statementScript = el('script', {
-        src: '/crypto-statement/modal.js',
-        'data-theme': 'foundation',
-        'data-auto-open': 'session'
-      });
-      document.body.appendChild(statementScript);
-    }
-
     // Deep links such as footer.html#cookies should open the panel on arrival.
     if (/^#(privacy|cookies|donor)/i.test(window.location.hash)) {
       toggle.click();
